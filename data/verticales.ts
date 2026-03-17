@@ -5,6 +5,7 @@ export type Vertical = {
   avgReviews: number
   avgRating: number
   context: string
+  plataformasRelevantes?: string[]
 }
 
 export const verticales: Vertical[] = [
@@ -55,5 +56,32 @@ export const verticales: Vertical[] = [
     avgReviews: 55,
     avgRating: 4.4,
     context: "Los dueños de mascotas eligen veterinarias casi exclusivamente por recomendaciones online."
+  },
+  {
+    slug: "hospitales",
+    label: "Hospital",
+    labelPlural: "Hospitales",
+    avgReviews: 95,
+    avgRating: 3.9,
+    context: "La reputación digital impacta directamente en la elección de centro médico.",
+    plataformasRelevantes: ["google-maps", "google-mi-negocio"]
+  },
+  {
+    slug: "farmacias",
+    label: "Farmacia",
+    labelPlural: "Farmacias",
+    avgReviews: 30,
+    avgRating: 4.2,
+    context: "Las farmacias con más reseñas positivas capturan más búsquedas locales.",
+    plataformasRelevantes: ["google-maps", "google-mi-negocio"]
+  },
+  {
+    slug: "supermercados",
+    label: "Supermercado",
+    labelPlural: "Supermercados",
+    avgReviews: 120,
+    avgRating: 3.8,
+    context: "Un rating alto en Google Maps posiciona mejor en búsquedas de proximidad.",
+    plataformasRelevantes: ["google-maps", "google-mi-negocio"]
   },
 ]

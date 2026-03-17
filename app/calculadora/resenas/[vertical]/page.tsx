@@ -58,7 +58,11 @@ export default async function VerticalIndexPage({ params }: Props) {
             Elegí tu ciudad
           </h2>
           <div className="calc-vertical-cities-grid" role="list">
-            {ciudades.map((c) => (
+            {ciudades
+              .filter((c) =>
+                c.tipo === "comercial" || c.verticalesTouristicos?.includes(vertical.slug)
+              )
+              .map((c) => (
               <Link
                 key={c.slug}
                 href={`/calculadora/resenas/${vertical.slug}/${c.slug}`}
@@ -66,7 +70,7 @@ export default async function VerticalIndexPage({ params }: Props) {
                 role="listitem"
               >
                 <span className="calc-vertical-city-name">{c.label}</span>
-                <span className="calc-vertical-city-provincia">{c.provincia}</span>
+                <span className="calc-vertical-city-provincia">{c.provincia}, {c.paisLabel}</span>
               </Link>
             ))}
           </div>

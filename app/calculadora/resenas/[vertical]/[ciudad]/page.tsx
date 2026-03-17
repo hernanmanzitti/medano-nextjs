@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
+import { plataformas } from "@/data/plataformas"
 import { CalculadoraTool } from "./CalculadoraTool"
 import "./page.css"
 
@@ -11,11 +12,19 @@ type Props = {
 
 export async function generateStaticParams() {
   const params: { vertical: string; ciudad: string }[] = []
-  for (const v of verticales) {
-    for (const c of ciudades) {
-      params.push({ vertical: v.slug, ciudad: c.slug })
+
+  for (const ciudad of ciudades) {
+    for (const vertical of verticales) {
+      if (ciudad.tipo === "comercial") {
+        params.push({ vertical: vertical.slug, ciudad: ciudad.slug })
+      } else {
+        if (ciudad.verticalesTouristicos?.includes(vertical.slug)) {
+          params.push({ vertical: vertical.slug, ciudad: ciudad.slug })
+        }
+      }
     }
   }
+
   return params
 }
 
@@ -100,6 +109,42 @@ export default async function CalculadoraPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── Plataformas ── */}
+      {(() => {
+        const plataformasFiltradas = plataformas.filter((p) => {
+          if (!p.relevantePara.includes(vertical.slug)) return false
+          if (vertical.plataformasRelevantes) {
+            return vertical.plataformasRelevantes.includes(p.slug)
+          }
+          return true
+        })
+
+        if (plataformasFiltradas.length === 0) return null
+
+        return (
+          <section id="calc-plataformas" className="calc-plataformas" aria-labelledby="calc-plataformas-title">
+            <div className="calc-plataformas-inner">
+              <h2 id="calc-plataformas-title" className="calc-plataformas-title">
+                Cómo conseguir más reseñas para tu {vertical.label} en {ciudad.label}
+              </h2>
+              {plataformasFiltradas.map((plataforma) => (
+                <div key={plataforma.slug} className="calc-plataforma-item">
+                  <h3 className="calc-plataforma-nombre">
+                    {plataforma.label} para {vertical.labelPlural} en {ciudad.label}
+                  </h3>
+                  <p className="calc-plataforma-desc">{plataforma.descripcion}</p>
+                  <ul className="calc-plataforma-tips">
+                    {plataforma.tips.map((tip, i) => (
+                      <li key={i} className="calc-plataforma-tip">{tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ── CTA ── */}
       <section id="calc-cta" className="calc-cta" aria-labelledby="calc-cta-title">

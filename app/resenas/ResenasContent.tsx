@@ -402,6 +402,54 @@ export function ResenasContent() {
         </div>
       </section>
 
+      {/* CALCULADORA CTA */}
+      <section id="resenas-calc-cta" aria-label="Calculadora de reseñas">
+        <div className="container">
+          <div className="resenas-calc-cta-inner reveal">
+
+            <div className="resenas-calc-cta-text">
+              <span className="section-label">Herramienta gratuita</span>
+              <h2 className="resenas-calc-cta-title">
+                ¿Cuántas reseñas necesitás para subir de rating?
+              </h2>
+              <p className="resenas-calc-cta-desc">
+                Calculá en segundos cuántas reseñas de 5 estrellas necesita
+                tu negocio para alcanzar el rating que querés. Sin registro,
+                sin costo.
+              </p>
+              <div className="resenas-calc-cta-actions">
+                <Link href="/calculadora/resenas" className="btn-primary">
+                  Usar la calculadora gratis
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </Link>
+              </div>
+            </div>
+
+            <div className="resenas-calc-cta-preview" aria-hidden="true">
+              <div className="resenas-calc-preview-card">
+                <div className="resenas-calc-preview-row">
+                  <span className="resenas-calc-preview-label">Reseñas actuales</span>
+                  <span className="resenas-calc-preview-value">85</span>
+                </div>
+                <div className="resenas-calc-preview-row">
+                  <span className="resenas-calc-preview-label">Rating actual</span>
+                  <span className="resenas-calc-preview-value">4.1 ★</span>
+                </div>
+                <div className="resenas-calc-preview-row">
+                  <span className="resenas-calc-preview-label">Rating objetivo</span>
+                  <span className="resenas-calc-preview-value">4.5 ★</span>
+                </div>
+                <div className="resenas-calc-preview-result">
+                  <span className="resenas-calc-preview-result-num">58</span>
+                  <span className="resenas-calc-preview-result-label">reseñas de 5 ★ necesarias</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIOS */}
       <section id="resenas-testimonios">
         <div className="container">

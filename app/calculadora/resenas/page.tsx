@@ -41,7 +41,11 @@ export default function CalculadoraIndexPage() {
               <div key={v.slug} className="calc-index-vertical-card" role="listitem">
                 <h3 className="calc-index-vertical-name">{v.labelPlural}</h3>
                 <div className="calc-index-ciudad-links">
-                  {ciudades.map((c) => (
+                  {ciudades
+                    .filter((c) =>
+                      c.tipo === "comercial" || c.verticalesTouristicos?.includes(v.slug)
+                    )
+                    .map((c) => (
                     <Link
                       key={c.slug}
                       href={`/calculadora/resenas/${v.slug}/${c.slug}`}

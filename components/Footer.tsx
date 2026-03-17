@@ -61,6 +61,9 @@ export function Footer() {
               <li><Link href="/calculadora/resenas/gimnasios">Gimnasios</Link></li>
               <li><Link href="/calculadora/resenas/inmobiliarias">Inmobiliarias</Link></li>
               <li><Link href="/calculadora/resenas/veterinarias">Veterinarias</Link></li>
+              <li><Link href="/calculadora/resenas/hospitales">Hospitales</Link></li>
+              <li><Link href="/calculadora/resenas/farmacias">Farmacias</Link></li>
+              <li><Link href="/calculadora/resenas/supermercados">Supermercados</Link></li>
             </ul>
           </div>
 
