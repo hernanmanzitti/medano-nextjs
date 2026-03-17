@@ -391,7 +391,7 @@ export default function HomePage() {
               Contanos sobre tu marca.
             </p>
 
-            <form id="contact-form" className="contact-form" name="contacto" method="POST" data-netlify="true" noValidate onSubmit={handleSubmit}>
+            <form id="contact-form" className="contact-form" name="contacto" method="POST" noValidate onSubmit={handleSubmit}>
               <input type="hidden" name="form-name" value="contacto" />
               <div className="form-row">
                 <div className="form-group">
