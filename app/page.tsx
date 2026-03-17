@@ -8,20 +8,38 @@ import './styles/medano-home.css'
 export default function HomePage() {
   const btnRef = useRef<HTMLButtonElement>(null)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const btn = btnRef.current
     if (!btn) return
-    btn.textContent = '¡Mensaje enviado!'
-    btn.style.background = 'var(--color-success)'
-    btn.disabled = true
-    setTimeout(() => {
-      btn.innerHTML = 'Enviar mensaje <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
-      btn.style.background = ''
-      btn.disabled = false
-      const form = e.target as HTMLFormElement
-      form.reset()
-    }, 3000)
+
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      })
+
+      btn.textContent = '¡Mensaje enviado!'
+      btn.style.background = 'var(--color-success)'
+      btn.disabled = true
+      setTimeout(() => {
+        btn.innerHTML = 'Enviar mensaje <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+        btn.style.background = ''
+        btn.disabled = false
+        form.reset()
+      }, 3000)
+    } catch {
+      btn.textContent = 'Error, intentá de nuevo'
+      btn.style.background = 'var(--color-error, #e53e3e)'
+      setTimeout(() => {
+        btn.innerHTML = 'Enviar mensaje <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+        btn.style.background = ''
+      }, 3000)
+    }
   }
 
   return (
@@ -119,7 +137,7 @@ export default function HomePage() {
 
           <div className="clients-grid" role="list" aria-label="Clientes destacados">
             <div className="client-logo-item" role="listitem">
-              <img src="/img/clientes_logo_kansas.png" alt="Kansas" className="client-logo-img client-logo-img--wide" />
+              <img src="/img/clientes_logo_kansas.png" alt="Kansas" className="client-logo-img" />
             </div>
             <div className="client-logo-item" role="listitem">
               <img src="/img/clientes_logo_medicus.png" alt="Medicus" className="client-logo-img" />
@@ -155,7 +173,7 @@ export default function HomePage() {
               <img src="/img/clientes_logo_assistravel.png" alt="Assistravel" className="client-logo-img" />
             </div>
             <div className="client-logo-item" role="listitem">
-              <img src="/img/clientes_logo_outback.png" alt="Outback" className="client-logo-img client-logo-img--wide" />
+              <img src="/img/clientes_logo_outback.png" alt="Outback" className="client-logo-img" />
             </div>
             <div className="client-logo-item" role="listitem">
               <img src="/img/clientes_logo_unicomer.png" alt="Grupo Unicomer" className="client-logo-img" />
@@ -373,7 +391,8 @@ export default function HomePage() {
               Contanos sobre tu marca.
             </p>
 
-            <form id="contact-form" className="contact-form" noValidate onSubmit={handleSubmit}>
+            <form id="contact-form" className="contact-form" name="contacto" method="POST" data-netlify="true" noValidate onSubmit={handleSubmit}>
+              <input type="hidden" name="form-name" value="contacto" />
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre <span className="sr-only">(requerido)</span></label>

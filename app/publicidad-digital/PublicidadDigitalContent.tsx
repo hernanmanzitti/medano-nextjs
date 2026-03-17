@@ -257,7 +257,6 @@ export function PublicidadDigitalContent() {
               <span className="section-label">Nuestra metodología</span>
               <h2 className="section-heading">El proceso</h2>
             </div>
-            <div className="resenas-section-counter" aria-hidden="true">4</div>
           </div>
 
           <div className="resenas-proceso-timeline">
