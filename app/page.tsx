@@ -14,20 +14,31 @@ export default function HomePage() {
     if (!btn) return
 
     const form = e.target as HTMLFormElement
-    const formData = new FormData(form)
+    const data = {
+      nombre:   (form.elements.namedItem('nombre')   as HTMLInputElement).value,
+      empresa:  (form.elements.namedItem('empresa')  as HTMLInputElement).value,
+      email:    (form.elements.namedItem('email')    as HTMLInputElement).value,
+      telefono: (form.elements.namedItem('telefono') as HTMLInputElement).value,
+      mensaje:  (form.elements.namedItem('mensaje')  as HTMLTextAreaElement).value,
+    }
+
+    const originalHTML = btn.innerHTML
+    btn.textContent = 'Enviando…'
+    btn.disabled = true
 
     try {
-      await fetch('/', {
+      const res = await fetch('/api/contacto', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       })
+
+      if (!res.ok) throw new Error('Server error')
 
       btn.textContent = '¡Mensaje enviado!'
       btn.style.background = 'var(--color-success)'
-      btn.disabled = true
       setTimeout(() => {
-        btn.innerHTML = 'Enviar mensaje <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+        btn.innerHTML = originalHTML
         btn.style.background = ''
         btn.disabled = false
         form.reset()
@@ -36,8 +47,9 @@ export default function HomePage() {
       btn.textContent = 'Error, intentá de nuevo'
       btn.style.background = 'var(--color-error, #e53e3e)'
       setTimeout(() => {
-        btn.innerHTML = 'Enviar mensaje <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+        btn.innerHTML = originalHTML
         btn.style.background = ''
+        btn.disabled = false
       }, 3000)
     }
   }
@@ -391,8 +403,7 @@ export default function HomePage() {
               Contanos sobre tu marca.
             </p>
 
-            <form id="contact-form" className="contact-form" name="contacto" method="POST" noValidate onSubmit={handleSubmit}>
-              <input type="hidden" name="form-name" value="contacto" />
+            <form id="contact-form" className="contact-form" noValidate onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre <span className="sr-only">(requerido)</span></label>
