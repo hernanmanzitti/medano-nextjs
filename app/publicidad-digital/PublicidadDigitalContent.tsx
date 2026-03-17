@@ -121,23 +121,22 @@ export function PublicidadDigitalContent() {
           <div className="pd-metrics-grid" role="list" aria-label="Métricas de performance">
 
             <div className="pd-metric-card reveal reveal-delay-1" role="listitem">
-              <span className="pd-metric-value" aria-label="3 veces">3×</span>
-              <p className="pd-metric-label">ROAS promedio<br />en el primer año</p>
+              <span className="pd-metric-value" aria-label="50k leads">+50.000</span>
+              <p className="pd-metric-label">Leads calificados<br />en el último año</p>
             </div>
 
             <div className="pd-metric-card reveal reveal-delay-2" role="listitem">
-              <span className="pd-metric-value" aria-label="Menos 40%">−40%</span>
-              <p className="pd-metric-label">Reducción de CPA<br />en los primeros 3 meses</p>
+              <span className="pd-metric-value" aria-label="+5 mm usd">+5M US$</span>
+              <p className="pd-metric-label"> en ventas generadas<br />para clientes</p>
             </div>
 
             <div className="pd-metric-card reveal reveal-delay-3" role="listitem">
-              <span className="pd-metric-value" aria-label="Más 120%">+120%</span>
-              <p className="pd-metric-label">Incremento de conversiones<br />año contra año</p>
+              <span className="pd-metric-value" aria-label="Más 15 mercados">+15 países</span>
+              <p className="pd-metric-label">con campañas activas<br />múltiples países</p>
             </div>
-
             <div className="pd-metric-card reveal reveal-delay-4" role="listitem">
-              <span className="pd-metric-value" aria-label="24 horas">24 hs</span>
-              <p className="pd-metric-label">Tiempo máximo de respuesta<br />ante alertas de campaña</p>
+              <span className="pd-metric-value" aria-label="24 horas">+10 fuentes</span>
+              <p className="pd-metric-label">de Datos en los Dashboards<br />de nuestros clientes</p>
             </div>
 
           </div>
