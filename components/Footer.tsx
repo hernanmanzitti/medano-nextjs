@@ -52,6 +52,19 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
+            <h5>Calculadoras</h5>
+            <ul>
+              <li><Link href="/calculadora/resenas">Calculadora de Reseñas</Link></li>
+              <li><Link href="/calculadora/resenas/restaurantes">Restaurantes</Link></li>
+              <li><Link href="/calculadora/resenas/clinicas">Clínicas</Link></li>
+              <li><Link href="/calculadora/resenas/hoteles">Hoteles</Link></li>
+              <li><Link href="/calculadora/resenas/gimnasios">Gimnasios</Link></li>
+              <li><Link href="/calculadora/resenas/inmobiliarias">Inmobiliarias</Link></li>
+              <li><Link href="/calculadora/resenas/veterinarias">Veterinarias</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
             <h5>DataTrackers</h5>
             <ul>
               <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Software de reseñas</a></li>

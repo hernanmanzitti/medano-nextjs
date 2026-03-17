@@ -1,0 +1,145 @@
+/* ════════════════════════════════════════════════════
+   CALCULADORA ÍNDICE — Estilos
+   ════════════════════════════════════════════════════ */
+
+.calc-index-hero {
+  position: relative;
+  background: var(--gradient-brand);
+  padding: var(--space-24) var(--space-6) var(--space-16);
+  text-align: center;
+  overflow: hidden;
+}
+
+.calc-index-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.calc-index-hero-content {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.calc-index-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.calc-index-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+/* ── Vertical grid ── */
+
+.calc-index-body {
+  padding: var(--section-padding-y) var(--space-6);
+  background: var(--color-bg-base);
+}
+
+.calc-index-body-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.calc-index-verticals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+}
+
+.calc-index-vertical-card {
+  background: var(--color-bg-subtle);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.calc-index-vertical-card:hover {
+  border-color: var(--color-brand-mid);
+  box-shadow: var(--shadow-card);
+}
+
+.calc-index-vertical-name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.calc-index-ciudad-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.calc-index-ciudad-link {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+  transition:
+    color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out);
+}
+
+.calc-index-ciudad-link:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-brand-mid);
+  background: var(--color-bg-subtle);
+}
+
+/* ── Responsive ── */
+
+@media (min-width: 768px) {
+  .calc-index-verticals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .calc-index-hero {
+    padding: var(--space-32) var(--space-8) var(--space-20);
+  }
+
+  .calc-index-body {
+    padding: var(--section-padding-y) var(--space-8);
+  }
+
+  .calc-index-verticals {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-index-vertical-card:hover {
+    transform: none;
+  }
+}
