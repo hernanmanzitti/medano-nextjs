@@ -258,7 +258,7 @@
   font-family: var(--font-display);
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-border-subtle);
+  color: var(--color-border-default);
   line-height: var(--leading-none);
   user-select: none;
 }
