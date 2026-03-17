@@ -30,7 +30,7 @@
   font-size: 7rem;
   font-weight: var(--font-weight-bold);
   line-height: 1;
-  color: var(--color-brand-royal-25);
+  color: var(--color-border-default);
   letter-spacing: var(--tracking-tighter);
   user-select: none;
   transition: color var(--duration-slower) var(--ease-out),
