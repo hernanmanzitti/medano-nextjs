@@ -427,17 +427,19 @@ export function ResenasContent() {
 
             <div className="resenas-calc-cta-preview" aria-hidden="true">
               <div className="resenas-calc-preview-card">
-                <div className="resenas-calc-preview-row">
-                  <span className="resenas-calc-preview-label">Reseñas actuales</span>
-                  <span className="resenas-calc-preview-value">85</span>
-                </div>
-                <div className="resenas-calc-preview-row">
-                  <span className="resenas-calc-preview-label">Rating actual</span>
-                  <span className="resenas-calc-preview-value">4.1 ★</span>
-                </div>
-                <div className="resenas-calc-preview-row">
-                  <span className="resenas-calc-preview-label">Rating objetivo</span>
-                  <span className="resenas-calc-preview-value">4.5 ★</span>
+                <div className="resenas-calc-preview-chips-grid">
+                  <div className="resenas-calc-preview-chip">
+                    <span className="resenas-calc-preview-chip-label">Reseñas actuales</span>
+                    <span className="resenas-calc-preview-chip-value">85</span>
+                  </div>
+                  <div className="resenas-calc-preview-chip">
+                    <span className="resenas-calc-preview-chip-label">Rating actual</span>
+                    <span className="resenas-calc-preview-chip-value">4.1 <span className="resenas-calc-preview-star">★</span></span>
+                  </div>
+                  <div className="resenas-calc-preview-chip resenas-calc-preview-chip--wide">
+                    <span className="resenas-calc-preview-chip-label">Rating objetivo</span>
+                    <span className="resenas-calc-preview-chip-value">4.5 <span className="resenas-calc-preview-star">★</span></span>
+                  </div>
                 </div>
                 <div className="resenas-calc-preview-result">
                   <span className="resenas-calc-preview-result-num">58</span>

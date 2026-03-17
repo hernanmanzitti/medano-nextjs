@@ -557,6 +557,39 @@
   .resenas-testi-footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .resenas-calc-cta-inner { grid-template-columns: 1fr; gap: var(--space-10); }
   .resenas-calc-cta-preview { order: -1; }
+  /* Calculadora preview — layout compacto mobile */
+  .resenas-calc-preview-chips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  .resenas-calc-preview-chip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-3);
+  }
+  .resenas-calc-preview-chip--wide {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .resenas-calc-preview-result {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  .resenas-calc-preview-result-num {
+    font-size: var(--text-4xl);
+    flex-shrink: 0;
+  }
+  .resenas-calc-preview-result-label {
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
 }
 
 /* ── CALCULADORA CTA ───────────────────────────────────────── */
@@ -600,6 +633,8 @@
   flex-wrap: wrap;
 }
 
+/* ── CALCULADORA PREVIEW CARD ──────────────────────────────── */
+
 .resenas-calc-preview-card {
   background: var(--gradient-surface);
   border: var(--border-width-thin) solid var(--color-border-default);
@@ -610,7 +645,14 @@
   gap: var(--space-4);
 }
 
-.resenas-calc-preview-row {
+/* Desktop: filas horizontales */
+.resenas-calc-preview-chips-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.resenas-calc-preview-chip {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -620,17 +662,22 @@
   border-radius: var(--radius-md);
 }
 
-.resenas-calc-preview-label {
+.resenas-calc-preview-chip-label {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
 }
 
-.resenas-calc-preview-value {
+.resenas-calc-preview-chip-value {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
+}
+
+.resenas-calc-preview-star {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
 }
 
 .resenas-calc-preview-result {
