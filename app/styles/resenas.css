@@ -530,68 +530,6 @@
   #resenas-proceso .resenas-proceso-timeline::before { display: none; }
 }
 
-@media (max-width: 768px) {
-  #resenas-hero { padding-top: 80px; }
-  .resenas-hero-title { font-size: var(--text-4xl); }
-  .resenas-kpi-strip {
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-  .resenas-kpi-card {
-    border-right: none;
-    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
-    padding-right: 0;
-    padding-bottom: var(--space-6);
-  }
-  .resenas-kpi-card:last-child { border-bottom: none; padding-bottom: 0; }
-  .resenas-platforms-bar { position: static; }
-  .resenas-stats-grid { grid-template-columns: 1fr; }
-  .resenas-services-grid { grid-template-columns: 1fr; }
-  .resenas-service-card--wide { grid-column: span 1; }
-  .resenas-service-wide-inner { flex-direction: column; gap: var(--space-5); }
-  #resenas-proceso .resenas-proceso-timeline { grid-template-columns: 1fr !important; }
-  .resenas-testi-grid { grid-template-columns: 1fr; }
-  .resenas-cta-inner { flex-direction: column; align-items: flex-start; gap: var(--space-8); }
-  .resenas-section-counter { font-size: 4rem; }
-  .resenas-platforms-bar-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
-  .resenas-testi-footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
-  .resenas-calc-cta-inner { grid-template-columns: 1fr; gap: var(--space-10); }
-  .resenas-calc-cta-preview { order: -1; }
-  /* Calculadora preview — layout compacto mobile */
-  .resenas-calc-preview-chips-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2);
-  }
-  .resenas-calc-preview-chip {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-1);
-    padding: var(--space-3);
-  }
-  .resenas-calc-preview-chip--wide {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .resenas-calc-preview-result {
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    gap: var(--space-4);
-    padding: var(--space-4);
-  }
-  .resenas-calc-preview-result-num {
-    font-size: var(--text-4xl);
-    flex-shrink: 0;
-  }
-  .resenas-calc-preview-result-label {
-    font-size: var(--text-sm);
-    line-height: var(--leading-snug);
-  }
-}
-
 /* ── CALCULADORA CTA ───────────────────────────────────────── */
 
 #resenas-calc-cta {
@@ -708,4 +646,66 @@
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  #resenas-hero { padding-top: 80px; }
+  .resenas-hero-title { font-size: var(--text-4xl); }
+  .resenas-kpi-strip {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .resenas-kpi-card {
+    border-right: none;
+    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+    padding-right: 0;
+    padding-bottom: var(--space-6);
+  }
+  .resenas-kpi-card:last-child { border-bottom: none; padding-bottom: 0; }
+  .resenas-platforms-bar { position: static; }
+  .resenas-stats-grid { grid-template-columns: 1fr; }
+  .resenas-services-grid { grid-template-columns: 1fr; }
+  .resenas-service-card--wide { grid-column: span 1; }
+  .resenas-service-wide-inner { flex-direction: column; gap: var(--space-5); }
+  #resenas-proceso .resenas-proceso-timeline { grid-template-columns: 1fr !important; }
+  .resenas-testi-grid { grid-template-columns: 1fr; }
+  .resenas-cta-inner { flex-direction: column; align-items: flex-start; gap: var(--space-8); }
+  .resenas-section-counter { font-size: 4rem; }
+  .resenas-platforms-bar-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .resenas-testi-footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .resenas-calc-cta-inner { grid-template-columns: 1fr; gap: var(--space-10); }
+  .resenas-calc-cta-preview { order: -1; }
+  /* Calculadora preview — layout compacto mobile */
+  .resenas-calc-preview-chips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  .resenas-calc-preview-chip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-3);
+  }
+  .resenas-calc-preview-chip--wide {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .resenas-calc-preview-result {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  .resenas-calc-preview-result-num {
+    font-size: var(--text-4xl);
+    flex-shrink: 0;
+  }
+  .resenas-calc-preview-result-label {
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
 }
