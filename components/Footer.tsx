@@ -46,7 +46,7 @@ export function Footer() {
               <li><Link href="/nosotros">Nosotros</Link></li>
               {/*<li><Link href="/#projects">Proyectos</Link></li>*/}
               <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">DataTrackers</a></li>
-              {/*<li><a href="/blog">Blog</a></li>*/}
+              <li><Link href="/notas">Notas</Link></li>
               <li><Link href="/#contact">Contacto</Link></li>
             </ul>
           </div>
