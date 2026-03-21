@@ -1,10 +1,12 @@
+import Link from 'next/link'
 import styles from './MedanoCTA.module.css'
 
 const SERVICIOS = [
-  { icono: '⭐', label: 'Gestión de reseñas' },
-  { icono: '📣', label: 'Paid media Meta & Google' },
-  { icono: '📊', label: 'Reputación online' },
-  { icono: '🎨', label: 'Diseño y contenido' },
+  { label: 'Gestión de reseñas' },
+  { label: 'Paid media Meta & Google' },
+  { label: 'Community Management' },
+  { label: 'Diseño y contenido' },
+  { label: 'SEO & Posicionamiento' },
 ]
 
 export default function MedanoCTA() {
@@ -25,19 +27,26 @@ export default function MedanoCTA() {
           <ul className={styles.servicios}>
             {SERVICIOS.map(s => (
               <li key={s.label} className={styles.servicio}>
-                <span aria-hidden="true">{s.icono}</span>
                 {s.label}
               </li>
             ))}
           </ul>
-          <a
-            href="https://wa.me/5491173616189"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.cta}
-          >
-            Hablar con el equipo →
-          </a>
+          <div className={styles.actions}>
+            <Link href="/#contact" className="btn-outline">
+              Completar formulario
+            </Link>
+            <a
+              href="https://wa.me/5491173616189"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Hablar por WhatsApp
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
 
       </div>
