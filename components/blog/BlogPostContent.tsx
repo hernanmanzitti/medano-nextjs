@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import Image from 'next/image'
 import type { Post } from '@/types/blog'
 import styles from './BlogPostContent.module.css'
 
@@ -40,6 +41,19 @@ export default function BlogPostContent({ post }: Props) {
             <span>{post.readingTimeText}</span>
           </div>
         </header>
+
+        {post.heroImage && (
+          <div className={styles.heroImage}>
+            <Image
+              src={post.heroImage}
+              alt={post.title}
+              width={1200}
+              height={630}
+              priority
+              className={styles.heroImg}
+            />
+          </div>
+        )}
 
         {/* Body */}
         <div className={styles.body}>

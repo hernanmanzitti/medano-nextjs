@@ -9,6 +9,7 @@ export interface PostFrontmatter {
   readingTime?: number     // minutos — calculado automáticamente
   relatedSlug?: string     // slug del post relacionado sugerido
   calculadoraVertical?: string  // si corresponde: "restaurantes" | "hoteles" | etc.
+  heroImage?: string
 }
 
 export interface Post extends PostFrontmatter {

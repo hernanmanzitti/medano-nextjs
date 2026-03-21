@@ -152,6 +152,21 @@
   margin: var(--space-10) 0;
 }
 
+/* Hero Image */
+.heroImage {
+  margin: 0 0 var(--space-12);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .title {
