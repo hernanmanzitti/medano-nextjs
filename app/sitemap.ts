@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { verticales } from '@/data/verticales'
 import { ciudades } from '@/data/ciudades'
+import { getAllPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://medano.co'
 
@@ -52,6 +53,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
     }
   }
+
+  // ── Índice del blog (/notas) ────────────────────────────────
+  rutas.push({
+    url: `${BASE_URL}/notas`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  })
+
+  // ── Posts del blog (/notas/[slug]) ─────────────────────────
+  const posts = getAllPosts()
+  posts.forEach((post) => {
+    rutas.push({
+      url: `${BASE_URL}/notas/${post.slug}`,
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  })
 
   return rutas
 }
