@@ -3,6 +3,7 @@ import { getAllSlugs, getPostBySlug, getRelatedPost } from '@/lib/blog'
 import type { Metadata } from 'next'
 import BlogPostContent from '@/components/blog/BlogPostContent'
 import RelatedPost from '@/components/blog/RelatedPost'
+import MedanoCTA from '@/components/blog/MedanoCTA'
 import CalculadoraCTA from '@/components/blog/CalculadoraCTA'
 
 interface Props {
@@ -93,6 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <BlogPostContent post={post} />
+      <MedanoCTA />
       <CalculadoraCTA vertical={post.calculadoraVertical} />
       {related && <RelatedPost post={related} />}
     </>
