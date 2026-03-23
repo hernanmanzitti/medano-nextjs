@@ -17,11 +17,14 @@ export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
   )
   const [resultado, setResultado] = useState<CalculadoraResult | null>(null)
 
+  const parseRating = (val: string): number =>
+    parseFloat(val.replace(',', '.')) || 0
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const reviews = parseFloat(reviewsActuales) || 0
-    const rActual = parseFloat(ratingActual) || 0
-    const rObj = parseFloat(ratingObjetivo) || 0
+    const rActual = parseRating(ratingActual)
+    const rObj = parseRating(ratingObjetivo)
     const result = calcularReviews({ reviewsActuales: reviews, ratingActual: rActual, ratingObjetivo: rObj })
     setResultado(result)
   }
@@ -69,7 +72,7 @@ export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
             id="calc-objetivo"
             type="number"
             className="calc-input"
-            min={Math.round(((parseFloat(ratingActual) || 0) + 0.1) * 10) / 10}
+            min={Math.round((parseRating(ratingActual) + 0.1) * 10) / 10}
             max={4.9}
             step={0.1}
             value={ratingObjetivo}
