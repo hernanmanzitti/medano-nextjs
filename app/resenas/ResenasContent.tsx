@@ -524,6 +524,89 @@ export function ResenasContent() {
         </div>
       </section>
 
+      {/* NOTAS PREVIEW */}
+      <section id="resenas-notas">
+        <div className="container">
+
+          <div className="resenas-section-header reveal">
+            <div className="resenas-section-header-text">
+              <span className="section-label">Guias y estrategia</span>
+              <h2 className="section-heading">Aprende a gestionar<br />tu reputacion</h2>
+            </div>
+            <div className="resenas-section-counter" aria-hidden="true">N</div>
+          </div>
+
+          <div className="resenas-notas-grid">
+
+            <Link href="/notas/por-que-desaparecen-tus-resenas-de-google" className="resenas-nota-card reveal">
+              <div className="resenas-nota-card-top">
+                <span className="resenas-nota-tag">Google</span>
+                <span className="resenas-nota-time">7 min</span>
+              </div>
+              <h3 className="resenas-nota-title">
+                Por que desaparecen tus resenas de Google (y como recuperarlas)
+              </h3>
+              <p className="resenas-nota-desc">
+                El algoritmo antifraude de Google borro resenas legitimas de mas de 20 de nuestros clientes en enero 2026. Explicamos que paso y que hacer.
+              </p>
+              <div className="resenas-nota-footer">
+                <span className="resenas-nota-cta">
+                  Leer nota
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </Link>
+
+            <Link href="/notas/como-usar-whatsapp-para-conseguir-resenas-de-google" className="resenas-nota-card reveal">
+              <div className="resenas-nota-card-top">
+                <span className="resenas-nota-tag resenas-nota-tag--green">Herramientas</span>
+                <span className="resenas-nota-time">8 min</span>
+              </div>
+              <h3 className="resenas-nota-title">
+                Como usar WhatsApp para conseguir mas resenas de Google
+              </h3>
+              <p className="resenas-nota-desc">
+                WhatsApp tiene 98% de tasa de apertura. Guia practica con el mensaje exacto, el timing correcto y como automatizarlo con tu base de clientes.
+              </p>
+              <div className="resenas-nota-footer">
+                <span className="resenas-nota-cta">
+                  Leer nota
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </Link>
+
+            <Link href="/notas/como-responder-resenas-negativas-sin-arruinar-tu-reputacion" className="resenas-nota-card reveal">
+              <div className="resenas-nota-card-top">
+                <span className="resenas-nota-tag resenas-nota-tag--red">Resenas</span>
+                <span className="resenas-nota-time">9 min</span>
+              </div>
+              <h3 className="resenas-nota-title">
+                Como responder resenas negativas sin arruinar tu reputacion
+              </h3>
+              <p className="resenas-nota-desc">
+                Una mala respuesta hace mas dano que la resena original. Plantillas reales para cada tipo de situacion: quejas legitimas, ataques y resenas falsas.
+              </p>
+              <div className="resenas-nota-footer">
+                <span className="resenas-nota-cta">
+                  Leer nota
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </Link>
+
+          </div>
+
+          <div className="resenas-notas-footer reveal">
+            <Link href="/notas" className="resenas-notas-all-link">
+              Ver todas las notas
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="resenas-cta">
         <div className="container">
