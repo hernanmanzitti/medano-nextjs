@@ -10,6 +10,9 @@
 3. como-conseguir-mas-resenas-en-google.mdx
 4. como-mejorar-tu-rating-en-google.mdx
 5. como-eliminar-resenas-falsas-de-google.mdx
+6. resenas-falsas-ataques-coordinados-como-denunciarlos.mdx
+7. 50-plantillas-para-responder-resenas-negativas.mdx
+8. resenas-para-clinicas-como-responder-sin-violar-confidencialidad.mdx
 
 ---
 
@@ -42,43 +45,30 @@
     → Intención: "qué es tasa de respuesta reseñas", "response rate Google Business"
     → calculadoraVertical: "restaurantes"
 
-12. resenas-falsas-ataques-coordinados-como-denunciarlos.mdx 🔥
-    → Fuente: Della Ostia (ataque catalán), BestDent (reseñas de no-clientes)
-    → Intención: "reseñas falsas Google cómo eliminar", "ataque de reseñas negativas coordinado"
-    → nota: el ítem #5 publicado cubre eliminación individual — este cubre ataques masivos coordinados, es distinto
-
-13. 50-plantillas-para-responder-resenas-negativas.mdx 🔥
-    → Expansión del blog-02 con plantillas por vertical (restaurante, clínica, hotel, gimnasio, veterinaria)
-    → Fuente: casos reales de todos los grupos de WhatsApp
-    → calculadoraVertical: todos
-
 ### Bloque B — Roadmap original (prioridad media)
-14. resenas-para-clinicas-como-responder-sin-violar-confidencialidad.mdx
-    → calculadoraVertical: "clinicas"
-
-15. resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas.mdx
+12. resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas.mdx
     → calculadoraVertical: "gimnasios"
 
-16. resenas-negativas-en-veterinarias-como-responder.mdx
+13. resenas-negativas-en-veterinarias-como-responder.mdx
     → calculadoraVertical: "veterinarias"
 
-17. tu-restaurante-tiene-mala-nota-en-rappi-pedidosya-uber-eats.mdx
+14. tu-restaurante-tiene-mala-nota-en-rappi-pedidosya-uber-eats.mdx
     → Fuente extra: Caffe Negroni (Uber Eats con fechas desfasadas), Sushi 2x1 (dark kitchen)
     → calculadoraVertical: "restaurantes"
 
-18. cuanto-cuesta-gestionar-la-reputacion-online-en-argentina.mdx
+15. cuanto-cuesta-gestionar-la-reputacion-online-en-argentina.mdx
     → calculadoraVertical: todos
 
 ### Bloque C — Nuevas oportunidades detectadas en WhatsApp
-19. como-verificar-google-business-con-multiples-sucursales.mdx
+16. como-verificar-google-business-con-multiples-sucursales.mdx
     → Fuente: Spoon (30 sucursales), Sushi 2x1 (23 sucursales), AR Holdings (multi-país)
     → Intención: "verificar múltiples ubicaciones Google", "Google Business multi-sucursal"
 
-20. como-mostrar-tus-resenas-de-google-en-tu-sitio-web.mdx
+17. como-mostrar-tus-resenas-de-google-en-tu-sitio-web.mdx
     → Fuente: Assistravel (widget roto en Odoo, carrusel de reseñas)
     → Intención: "poner reseñas Google en mi página web", "widget reseñas sitio web"
 
-21. como-monitorear-las-resenas-de-tu-competencia.mdx
+18. como-monitorear-las-resenas-de-tu-competencia.mdx
     → Fuente: todos los grupos (configuración de competidores en onboarding)
     → Intención: "ver reseñas de competidores", "benchmark reseñas competencia Google"
 
