@@ -4,6 +4,7 @@ import ReadingProgress from './ReadingProgress'
 import MedanoCTA from '@/components/blog/MedanoCTA'
 import CalculadoraCTA from '@/components/blog/CalculadoraCTA'
 import RelatedPost from '@/components/blog/RelatedPost'
+import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb'
 import './page.css'
 
 const TITLE = 'NFC, QR o WhatsApp: cual es la mejor forma de pedir resenas'
@@ -73,6 +74,8 @@ export default function BlogNfcQrWhatsapp() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section id="blog-hero">
         <div className="blog-wrapper">
+          <BlogBreadcrumb title={TITLE} />
+
           <p className="blog-hero__eyebrow">
             <span className="blog-hero__eyebrow-dot" />
             Herramientas · Comparativa practica

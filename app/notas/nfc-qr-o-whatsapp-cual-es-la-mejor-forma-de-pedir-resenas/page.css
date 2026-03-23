@@ -13,7 +13,7 @@
 /* ── HERO ──────────────────────────────────────────────────── */
 #blog-hero {
   position: relative;
-  padding: var(--space-16) 0 var(--space-12);
+  padding: calc(var(--space-16) + 40px) 0 var(--space-12);
   overflow: hidden;
 }
 
@@ -470,7 +470,7 @@
   }
 
   #blog-hero {
-    padding: var(--space-10) 0 var(--space-8);
+    padding: calc(var(--space-10) + 40px) 0 var(--space-8);
   }
 
   .methods-compare {
