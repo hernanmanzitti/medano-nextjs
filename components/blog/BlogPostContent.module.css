@@ -20,6 +20,7 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   margin-bottom: var(--space-8);
+  overflow: hidden;
 }
 
 .breadcrumb a {
@@ -165,6 +166,15 @@
   display: block;
   object-fit: cover;
   aspect-ratio: 16 / 9;
+}
+
+.breadcrumb span:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Mobile */
