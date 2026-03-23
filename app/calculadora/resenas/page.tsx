@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
+import { NotasPreview } from "@/app/components/NotasPreview"
 import "./page.css"
 
 export const metadata: Metadata = {
@@ -60,6 +61,8 @@ export default function CalculadoraIndexPage() {
           </div>
         </div>
       </section>
+
+      <NotasPreview />
     </>
   )
 }

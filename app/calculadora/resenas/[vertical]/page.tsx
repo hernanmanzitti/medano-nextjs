@@ -3,6 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
+import { NotasPreview } from "@/app/components/NotasPreview"
 import "./page.css"
 
 type Props = {
@@ -76,6 +77,8 @@ export default async function VerticalIndexPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <NotasPreview />
     </>
   )
 }

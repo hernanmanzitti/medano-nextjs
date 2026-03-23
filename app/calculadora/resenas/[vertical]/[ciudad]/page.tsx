@@ -4,6 +4,7 @@ import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
 import { plataformas } from "@/data/plataformas"
 import { CalculadoraTool } from "./CalculadoraTool"
+import { NotasPreview } from "@/app/components/NotasPreview"
 import "./page.css"
 
 type Props = {
@@ -177,6 +178,7 @@ export default async function CalculadoraPage({ params }: Props) {
           </div>
         </div>
       </section>
+      <NotasPreview />
     </>
   )
 }
