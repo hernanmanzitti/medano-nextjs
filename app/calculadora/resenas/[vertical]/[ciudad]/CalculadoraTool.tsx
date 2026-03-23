@@ -10,16 +10,19 @@ type Props = {
 }
 
 export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
-  const [reviewsActuales, setReviewsActuales] = useState(defaultReviews)
-  const [ratingActual, setRatingActual] = useState(defaultRating)
+  const [reviewsActuales, setReviewsActuales] = useState(String(defaultReviews))
+  const [ratingActual, setRatingActual] = useState(String(defaultRating))
   const [ratingObjetivo, setRatingObjetivo] = useState(
-    Math.min(Math.round((defaultRating + 0.3) * 10) / 10, 4.9)
+    String(Math.min(Math.round((defaultRating + 0.3) * 10) / 10, 4.9))
   )
   const [resultado, setResultado] = useState<CalculadoraResult | null>(null)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const result = calcularReviews({ reviewsActuales, ratingActual, ratingObjetivo })
+    const reviews = parseFloat(reviewsActuales) || 0
+    const rActual = parseFloat(ratingActual) || 0
+    const rObj = parseFloat(ratingObjetivo) || 0
+    const result = calcularReviews({ reviewsActuales: reviews, ratingActual: rActual, ratingObjetivo: rObj })
     setResultado(result)
   }
 
@@ -36,7 +39,8 @@ export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
             className="calc-input"
             min={0}
             value={reviewsActuales}
-            onChange={(e) => setReviewsActuales(Number(e.target.value))}
+            onChange={(e) => setReviewsActuales(e.target.value)}
+            onFocus={(e) => e.target.select()}
           />
         </div>
 
@@ -52,7 +56,8 @@ export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
             max={4.9}
             step={0.1}
             value={ratingActual}
-            onChange={(e) => setRatingActual(Number(e.target.value))}
+            onChange={(e) => setRatingActual(e.target.value)}
+            onFocus={(e) => e.target.select()}
           />
         </div>
 
@@ -64,11 +69,12 @@ export function CalculadoraTool({ defaultReviews, defaultRating }: Props) {
             id="calc-objetivo"
             type="number"
             className="calc-input"
-            min={Math.round((ratingActual + 0.1) * 10) / 10}
+            min={Math.round(((parseFloat(ratingActual) || 0) + 0.1) * 10) / 10}
             max={4.9}
             step={0.1}
             value={ratingObjetivo}
-            onChange={(e) => setRatingObjetivo(Number(e.target.value))}
+            onChange={(e) => setRatingObjetivo(e.target.value)}
+            onFocus={(e) => e.target.select()}
           />
         </div>
       </div>
