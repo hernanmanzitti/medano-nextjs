@@ -16,31 +16,6 @@
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ── Shared Section Header ─────────────────────────── */
-.resenas-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: var(--space-12);
-  padding-bottom: var(--space-8);
-  border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
-}
-.resenas-section-counter {
-  font-family: var(--font-display);
-  font-size: 7rem;
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
-  color: var(--color-border-default);
-  letter-spacing: var(--tracking-tighter);
-  user-select: none;
-  transition: color var(--duration-slower) var(--ease-out),
-              transform var(--duration-slower) var(--ease-out);
-}
-
-.resenas-section-counter.is-active {
-  color: var(--color-brand-mid);
-}
-
 /* ════════════════════════════════════════════════════
    HERO  #resenas-hero
    ════════════════════════════════════════════════════ */
@@ -854,7 +829,6 @@
   #resenas-proceso .resenas-proceso-timeline { grid-template-columns: 1fr !important; }
   .resenas-testi-grid { grid-template-columns: 1fr; }
   .resenas-cta-inner { flex-direction: column; align-items: flex-start; gap: var(--space-8); }
-  .resenas-section-counter { font-size: 4rem; }
   .resenas-platforms-bar-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .resenas-testi-footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .resenas-calc-cta-inner { grid-template-columns: 1fr; gap: var(--space-10); }

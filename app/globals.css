@@ -309,6 +309,29 @@ body.menu-open {
   max-width: 52ch;
 }
 
+.resenas-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+}
+.resenas-section-counter {
+  font-family: var(--font-display);
+  font-size: 7rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-border-default);
+  letter-spacing: var(--tracking-tighter);
+  user-select: none;
+  transition: color var(--duration-slower) var(--ease-out),
+              transform var(--duration-slower) var(--ease-out);
+}
+.resenas-section-counter.is-active {
+  color: var(--color-brand-mid);
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -844,6 +867,8 @@ body.nav-open {
   .section-heading {
     font-size: var(--text-2xl);
   }
+
+  .resenas-section-counter { font-size: 4rem; }
 
   /* Nav mobile menu */
   .nav-links {
