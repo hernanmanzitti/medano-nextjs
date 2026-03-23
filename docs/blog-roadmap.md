@@ -1,5 +1,5 @@
 # Blog Médano — Roadmap de Notas
-> Última actualización: Marzo 2026
+> Última actualización: Mayo 2026
 > Las notas marcadas con 🔥 fueron priorizadas a partir del análisis de conversaciones reales con clientes en WhatsApp (15 grupos, marzo 2026).
 
 ---
@@ -13,6 +13,9 @@
 6. resenas-falsas-ataques-coordinados-como-denunciarlos.mdx
 7. 50-plantillas-para-responder-resenas-negativas.mdx
 8. resenas-para-clinicas-como-responder-sin-violar-confidencialidad.mdx
+9. como-monitorear-las-resenas-de-tu-competencia.mdx
+10. resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas.mdx
+11. como-mostrar-tus-resenas-de-google-en-tu-sitio-web.mdx
 
 ---
 
@@ -46,31 +49,20 @@
     → calculadoraVertical: "restaurantes"
 
 ### Bloque B — Roadmap original (prioridad media)
-12. resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas.mdx
-    → calculadoraVertical: "gimnasios"
-
-13. resenas-negativas-en-veterinarias-como-responder.mdx
+12. resenas-negativas-en-veterinarias-como-responder.mdx
     → calculadoraVertical: "veterinarias"
 
-14. tu-restaurante-tiene-mala-nota-en-rappi-pedidosya-uber-eats.mdx
+13. tu-restaurante-tiene-mala-nota-en-rappi-pedidosya-uber-eats.mdx
     → Fuente extra: Caffe Negroni (Uber Eats con fechas desfasadas), Sushi 2x1 (dark kitchen)
     → calculadoraVertical: "restaurantes"
 
-15. cuanto-cuesta-gestionar-la-reputacion-online-en-argentina.mdx
+14. cuanto-cuesta-gestionar-la-reputacion-online-en-argentina.mdx
     → calculadoraVertical: todos
 
 ### Bloque C — Nuevas oportunidades detectadas en WhatsApp
-16. como-verificar-google-business-con-multiples-sucursales.mdx
+15. como-verificar-google-business-con-multiples-sucursales.mdx
     → Fuente: Spoon (30 sucursales), Sushi 2x1 (23 sucursales), AR Holdings (multi-país)
     → Intención: "verificar múltiples ubicaciones Google", "Google Business multi-sucursal"
-
-17. como-mostrar-tus-resenas-de-google-en-tu-sitio-web.mdx
-    → Fuente: Assistravel (widget roto en Odoo, carrusel de reseñas)
-    → Intención: "poner reseñas Google en mi página web", "widget reseñas sitio web"
-
-18. como-monitorear-las-resenas-de-tu-competencia.mdx
-    → Fuente: todos los grupos (configuración de competidores en onboarding)
-    → Intención: "ver reseñas de competidores", "benchmark reseñas competencia Google"
 
 ---
 
