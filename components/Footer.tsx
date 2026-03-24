@@ -32,8 +32,8 @@ export function Footer() {
           <div className="footer-col">
             <h5>Servicios</h5>
             <ul>
-              <li><Link href="/#services">Paid Media</Link></li>
-              <li><Link href="/#resenas">Reseñas</Link></li>
+              <li><Link href="/publicidad-digital">Publicidad Digital</Link></li>
+              <li><Link href="/resenas">Reseñas</Link></li>
               <li><Link href="/#services">Community Management</Link></li>
               <li><Link href="/#services">Analytics &amp; Data</Link></li>
               <li><Link href="/#services">Diseño</Link></li>
@@ -44,9 +44,9 @@ export function Footer() {
             <h5>Empresa</h5>
             <ul>
               <li><Link href="/nosotros">Nosotros</Link></li>
-              {/*<li><Link href="/#projects">Proyectos</Link></li>*/}
               <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">DataTrackers</a></li>
               <li><Link href="/notas">Notas</Link></li>
+              <li><Link href="/glosario">Glosario de reputación</Link></li>
               <li><Link href="/#contact">Contacto</Link></li>
             </ul>
           </div>
@@ -64,6 +64,21 @@ export function Footer() {
               <li><Link href="/calculadora/resenas/hospitales">Hospitales</Link></li>
               <li><Link href="/calculadora/resenas/farmacias">Farmacias</Link></li>
               <li><Link href="/calculadora/resenas/supermercados">Supermercados</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h5>Por industria</h5>
+            <ul>
+              <li><Link href="/industria/restaurantes">Restaurantes</Link></li>
+              <li><Link href="/industria/hoteles">Hoteles</Link></li>
+              <li><Link href="/industria/clinicas">Clínicas</Link></li>
+              <li><Link href="/industria/gimnasios">Gimnasios</Link></li>
+              <li><Link href="/industria/inmobiliarias">Inmobiliarias</Link></li>
+              <li><Link href="/industria/veterinarias">Veterinarias</Link></li>
+              <li><Link href="/industria/hospitales">Hospitales</Link></li>
+              <li><Link href="/industria/farmacias">Farmacias</Link></li>
+              <li><Link href="/industria/supermercados">Supermercados</Link></li>
             </ul>
           </div>
 

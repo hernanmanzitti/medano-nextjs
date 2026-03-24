@@ -1,0 +1,24 @@
+# médano
+
+> Agencia de gestión de reseñas online y publicidad digital para empresas con múltiples sucursales en Argentina, Costa Rica y Panamá.
+
+## Qué hacemos
+
+- Gestión de reseñas en Google Maps, TripAdvisor, Facebook, UberEats, Booking.com y 20+ plataformas
+- Publicidad digital en Google Ads y Meta (Facebook/Instagram)
+- DataTrackers: software propio de monitoreo y gestión de reputación online
+
+## Para quién
+
+Empresas con 3 a 30 sucursales en Argentina y Latinoamérica: restaurantes, hoteles, clínicas, franquicias, concesionarias, academias.
+
+## Contacto
+
+- Sitio web: https://medano.co
+- Email: hola@medano.co
+- WhatsApp: https://wa.me/5491173616189
+- Software: https://app.datatrackers.co
+
+## Ubicación
+
+Buenos Aires, Argentina. Operamos en AR, CR y PA.

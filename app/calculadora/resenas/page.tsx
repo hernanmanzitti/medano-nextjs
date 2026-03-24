@@ -20,9 +20,22 @@ export const metadata: Metadata = {
   },
 }
 
+const calcSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://medano.co' },
+    { '@type': 'ListItem', position: 2, name: 'Calculadora de reseñas', item: 'https://medano.co/calculadora/resenas' },
+  ],
+}
+
 export default function CalculadoraIndexPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(calcSchema) }}
+      />
       {/* ── Hero ── */}
       <section id="calc-index-hero" className="calc-index-hero" aria-labelledby="calc-index-title">
         <div className="calc-index-grid-bg" aria-hidden="true" />

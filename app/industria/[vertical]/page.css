@@ -1,0 +1,143 @@
+.industria-hero {
+  padding: var(--section-padding-y) var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+.industria-hero-content { max-width: 720px; }
+.industria-eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+.industria-title {
+  font-family: var(--font-display);
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-leading);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+.industria-subtitle {
+  font-size: var(--type-body-lg-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+  max-width: 640px;
+}
+.industria-hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.industria-hero-stats {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+.industria-stat { display: flex; flex-direction: column; }
+.industria-stat-num {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+.industria-stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+.industria-section-title {
+  font-family: var(--font-display);
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-8);
+}
+.industria-beneficios,
+.industria-faq,
+.industria-calc-cta,
+.industria-contacto-cta {
+  padding: var(--section-padding-y) var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+.industria-beneficios-inner,
+.industria-faq-inner { max-width: 800px; }
+.industria-beneficios-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.industria-beneficio-item {
+  padding: var(--space-4) var(--space-6);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--type-body-size);
+  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+}
+.industria-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.industria-faq-item {
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+  padding-bottom: var(--space-6);
+}
+.industria-faq-pregunta {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+.industria-faq-respuesta {
+  font-size: var(--type-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.industria-cta-primary {
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+.industria-cta-primary:hover { background-color: var(--color-accent-hover); }
+.industria-cta-secondary {
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+.industria-cta-secondary:hover { background-color: var(--color-bg-subtle); }
+.industria-cta-grupo {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .industria-hero-stats { flex-direction: column; gap: var(--space-6); }
+  .industria-hero-actions { flex-direction: column; }
+  .industria-cta-grupo { flex-direction: column; }
+}
