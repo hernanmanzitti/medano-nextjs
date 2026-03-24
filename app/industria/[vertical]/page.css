@@ -1,143 +1,439 @@
-.industria-hero {
-  padding: var(--section-padding-y) var(--container-padding-x);
+/* ============================================================
+   INDUSTRIA — /app/industria/[vertical]/page.css
+   Médano Design System — Tokens: globals.css :root
+   Regla: zero hex fuera de :root, zero !important
+   ============================================================ */
+
+/* ── Nav clearance ────────────────────────────────────────── */
+/* El nav es fixed ~72px: space-4 (16px) × 2 padding + 28px logo + 12px extra */
+:root { --nav-height: 72px; }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+#industria-hero {
+  position: relative;
+  padding-top: calc(var(--nav-height) + var(--section-padding-y));
+  padding-bottom: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
   max-width: var(--container-max-width);
-  margin: 0 auto;
+  margin-inline: auto;
+  overflow: hidden;
 }
+
+/* Decoración de fondo */
+#industria-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 40%, var(--color-brand-royal-25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, var(--color-brand-navy-25) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: var(--z-below);
+}
+
+/* Línea separadora inferior */
+#industria-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--container-padding-x);
+  right: var(--container-padding-x);
+  height: var(--border-width-thin);
+  background: var(--color-border-subtle);
+}
+
 .industria-hero-content { max-width: 720px; }
+
 .industria-eyebrow {
-  display: inline-block;
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-wider);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-4);
+  color: var(--color-brand-mid);
+  margin-bottom: var(--space-6);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-subtle);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: fit-content;
 }
+
+.industria-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-brand-mid);
+  animation: heroDotPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
 .industria-title {
   font-family: var(--font-display);
-  font-size: var(--type-h1-size);
-  font-weight: var(--type-h1-weight);
-  line-height: var(--type-h1-leading);
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
   color: var(--color-text-primary);
   margin-bottom: var(--space-6);
 }
+
 .industria-subtitle {
   font-size: var(--type-body-lg-size);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-8);
-  max-width: 640px;
+  max-width: 60ch;
 }
+
 .industria-hero-actions {
   display: flex;
   gap: var(--space-4);
   flex-wrap: wrap;
 }
+
+/* ── Stats ────────────────────────────────────────────────── */
 .industria-hero-stats {
   display: flex;
   gap: var(--space-8);
   margin-top: var(--space-12);
+  padding-top: var(--space-10);
+  border-top: var(--border-width-thin) solid var(--color-border-subtle);
 }
-.industria-stat { display: flex; flex-direction: column; }
+
+.industria-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.industria-stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: var(--border-width-thick);
+  background: var(--color-brand-mid);
+  border-radius: var(--radius-full);
+}
+
 .industria-stat-num {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   line-height: 1;
+  letter-spacing: var(--tracking-tight);
 }
+
 .industria-stat-label {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  margin-top: var(--space-1);
+  line-height: var(--leading-normal);
+  max-width: 16ch;
 }
+
+/* ── Heading compartido ───────────────────────────────────── */
 .industria-section-title {
   font-family: var(--font-display);
-  font-size: var(--type-h2-size);
-  font-weight: var(--type-h2-weight);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
   color: var(--color-text-primary);
+  line-height: var(--leading-tight);
   margin-bottom: var(--space-8);
 }
-.industria-beneficios,
-.industria-faq,
-.industria-calc-cta,
-.industria-contacto-cta {
-  padding: var(--section-padding-y) var(--container-padding-x);
+
+/* ── BENEFICIOS ───────────────────────────────────────────── */
+#industria-beneficios {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
   max-width: var(--container-max-width);
-  margin: 0 auto;
+  margin-inline: auto;
 }
-.industria-beneficios-inner,
-.industria-faq-inner { max-width: 800px; }
+
+.industria-beneficios-inner { max-width: 800px; }
+
 .industria-beneficios-list {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  counter-reset: beneficio-counter;
 }
+
 .industria-beneficio-item {
-  padding: var(--space-4) var(--space-6);
-  border: var(--border-width-default) solid var(--color-border-default);
+  counter-increment: beneficio-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--color-bg-subtle);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-left: var(--border-width-heavy) solid var(--color-brand-mid);
   border-radius: var(--radius-md);
   font-size: var(--type-body-size);
   color: var(--color-text-primary);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-relaxed);
+  transition: var(--transition-default);
 }
+
+.industria-beneficio-item::before {
+  content: counter(beneficio-counter, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-mid);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2ch;
+  opacity: 0.7;
+  margin-top: 1px;
+}
+
+.industria-beneficio-item:hover {
+  background-color: var(--color-brand-royal-25);
+  border-color: var(--color-border-strong);
+  border-left-color: var(--color-brand-mid);
+  transform: translateX(var(--space-1));
+}
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+#industria-faq {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-xl);
+}
+
+.industria-faq-inner { max-width: 800px; }
+
 .industria-faq-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: 0;
 }
+
 .industria-faq-item {
-  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
-  padding-bottom: var(--space-6);
+  border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+  padding-block: var(--space-6);
 }
+
+.industria-faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 .industria-faq-pregunta {
+  font-family: var(--font-body);
   font-size: var(--type-body-lg-size);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin-bottom: var(--space-3);
+  line-height: var(--leading-snug);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
 }
+
+.industria-faq-pregunta::before {
+  content: 'P';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-brand-royal);
+  border: var(--border-width-default) solid var(--color-border-default);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-light);
+  margin-top: 1px;
+}
+
 .industria-faq-respuesta {
   font-size: var(--type-body-size);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
+  padding-left: calc(24px + var(--space-3));
 }
+
+/* ── CTA Calculadora ──────────────────────────────────────── */
+#industria-calc-cta {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+}
+
+#industria-calc-cta > .industria-section-title { margin-bottom: var(--space-4); }
+
+#industria-calc-cta > p {
+  font-size: var(--type-body-lg-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+
+/* ── CTA Contacto ─────────────────────────────────────────── */
+#industria-contacto-cta {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card con gradiente de marca */
+#industria-contacto-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-surface);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  z-index: var(--z-below);
+}
+
+/* Decoración radial */
+#industria-contacto-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 90% 50%, var(--color-brand-mid) 0%, transparent 60%);
+  opacity: 0.08;
+  border-radius: var(--radius-xl);
+  z-index: var(--z-below);
+  pointer-events: none;
+}
+
+#industria-contacto-cta > .industria-section-title { max-width: 640px; }
+
+#industria-contacto-cta > p {
+  font-size: var(--type-body-lg-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+  margin-bottom: 0;
+}
+
+/* ── Botones ──────────────────────────────────────────────── */
 .industria-cta-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   padding: var(--space-3) var(--space-8);
-  background-color: var(--color-accent);
-  color: var(--color-text-primary);
+  background-color: var(--color-text-primary);
+  color: var(--color-brand-navy);
   border-radius: var(--radius-md);
+  font-family: var(--font-ui);
   font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
   text-decoration: none;
-  transition: var(--transition-colors);
+  transition: var(--transition-colors), transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  white-space: nowrap;
 }
-.industria-cta-primary:hover { background-color: var(--color-accent-hover); }
+
+.industria-cta-primary:hover {
+  background-color: var(--color-brand-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
 .industria-cta-secondary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   padding: var(--space-3) var(--space-8);
-  border: var(--border-width-default) solid var(--color-border-strong);
+  border: var(--border-width-thick) solid var(--color-border-strong);
   color: var(--color-text-primary);
   border-radius: var(--radius-md);
+  font-family: var(--font-ui);
   font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
   text-decoration: none;
-  transition: var(--transition-colors);
+  transition: var(--transition-default);
+  white-space: nowrap;
 }
-.industria-cta-secondary:hover { background-color: var(--color-bg-subtle); }
+
+.industria-cta-secondary:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text-primary);
+}
+
 .industria-cta-grupo {
   display: flex;
   gap: var(--space-4);
   flex-wrap: wrap;
-  margin-top: var(--space-6);
+  margin-top: var(--space-8);
 }
 
+/* ── RESPONSIVE — Mobile (768px) ──────────────────────────── */
 @media (max-width: 768px) {
-  .industria-hero-stats { flex-direction: column; gap: var(--space-6); }
-  .industria-hero-actions { flex-direction: column; }
-  .industria-cta-grupo { flex-direction: column; }
+  #industria-hero {
+    padding-top: calc(var(--nav-height) + var(--section-padding-y));
+  }
+
+  .industria-title {
+    font-size: var(--text-3xl);
+  }
+
+  .industria-hero-stats {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .industria-hero-actions {
+    flex-direction: column;
+  }
+
+  .industria-cta-primary,
+  .industria-cta-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .industria-cta-grupo {
+    flex-direction: column;
+  }
+
+  .industria-beneficio-item:hover {
+    transform: none;
+  }
+
+  #industria-faq {
+    border-radius: var(--radius-lg);
+  }
+
+  #industria-contacto-cta::before {
+    border-radius: var(--radius-lg);
+  }
+
+  #industria-contacto-cta::after {
+    border-radius: var(--radius-lg);
+  }
 }
