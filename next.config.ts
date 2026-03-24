@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
         destination: '/calculadora/resenas',
         permanent: true,
       },
+      {
+        source: '/en-us/resenas',
+        destination: '/resenas',
+        permanent: true,
+      },
+      {
+        source: '/en-us/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
     ]
   },
 }

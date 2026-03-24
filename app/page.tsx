@@ -83,9 +83,7 @@ export default function HomePage() {
               Crecimiento Digital
             </div>
             <h1 className="hero-title animate-in">
-              Tu reputación
-              <em> vende.</em>
-              {' '}Nosotros la construimos.
+              Gestionamos la reputación online y la publicidad digital de tu empresa
             </h1>
             <p className="hero-subtitle animate-in">
               Gestionamos publicidad digital, reseñas y SEO para que más clientes

@@ -7,20 +7,32 @@ import { SkipLink } from '@/components/SkipLink'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://medano.co'),
   title: {
-    template: '%s | Médano',
-    default: 'Médano — Multiplicamos la facturación de marcas con estrategia y datos',
+    default: 'médano — Agencia de reseñas y publicidad digital',
+    template: '%s | médano',
   },
-  description: 'Potenciamos la facturación de tu marca con estrategias de Google Ads, Reputación Online y Paid Media.',
+  description:
+    'Agencia especializada en gestión de reseñas online y publicidad digital ' +
+    'para empresas con múltiples sucursales en Argentina y Latinoamérica.',
   icons: {
     icon: '/img/favicon-square.png',
     apple: '/img/favicon-square.png',
   },
   openGraph: {
+    siteName: 'médano',
     locale: 'es_AR',
     type: 'website',
-    siteName: 'Médano',
     images: ['/og-medano.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@medano_latam',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 }
 
@@ -60,6 +72,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main id="main-content">{children}</main>
         <Footer />
         <WaChip />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': ['Organization', 'LocalBusiness'],
+              name: 'médano',
+              legalName: 'medano SRL',
+              url: 'https://medano.co',
+              logo: 'https://medano.co/images/logomedanofinal.png',
+              description:
+                'Agencia especializada en gestión de reseñas online y publicidad digital ' +
+                'para empresas con múltiples sucursales en Argentina y Latinoamérica.',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Buenos Aires',
+                addressRegion: 'Buenos Aires',
+                addressCountry: 'AR',
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer service',
+                availableLanguage: 'Spanish',
+                url: 'https://medano.co/contacto',
+              },
+              sameAs: [
+                'https://www.instagram.com/medano.latam',
+                'https://www.linkedin.com/company/medano-latam',
+              ],
+              areaServed: ['AR', 'CR', 'PA'],
+              knowsAbout: [
+                'gestión de reseñas online',
+                'reputación digital',
+                'publicidad en Google Ads',
+                'publicidad en Meta',
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   )
