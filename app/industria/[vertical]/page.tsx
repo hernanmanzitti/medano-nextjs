@@ -89,7 +89,7 @@ export default async function IndustriaVerticalPage({ params }: Props) {
             {vertical.descripcion ?? vertical.context}
           </p>
           <div className="industria-hero-actions">
-            <Link href="/contacto" className="industria-cta-primary">
+            <Link href="/#contact" className="industria-cta-primary">
               Quiero mejorar mis reseñas
             </Link>
             <Link
@@ -171,7 +171,7 @@ export default async function IndustriaVerticalPage({ params }: Props) {
           crecimiento de reseñas para {vertical.labelPlural.toLowerCase()} con múltiples sucursales.
         </p>
         <div className="industria-cta-grupo">
-          <Link href="/contacto" className="industria-cta-primary">
+          <Link href="/#contact" className="industria-cta-primary">
             Quiero un diagnóstico gratuito
           </Link>
           <a

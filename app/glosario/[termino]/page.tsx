@@ -106,7 +106,7 @@ export default async function GlosarioTerminoPage({ params }: Props) {
           <h2 className="glosario-section-title">¿Necesitás gestionar la reputación online de tu empresa?</h2>
           <p>Médano ayuda a empresas con múltiples sucursales a mejorar sus reseñas en Google, TripAdvisor y 20+ plataformas.</p>
           <div className="glosario-cta-grupo">
-            <Link href="/contacto" className="glosario-cta-primary">Quiero un diagnóstico gratuito</Link>
+            <Link href="/#contact" className="glosario-cta-primary">Quiero un diagnóstico gratuito</Link>
             <Link href="/calculadora/resenas" className="glosario-cta-secondary">Calculadora de reseñas gratuita</Link>
           </div>
         </section>

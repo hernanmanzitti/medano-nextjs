@@ -1,0 +1,223 @@
+/* ============================================================
+   INDUSTRIA HUB — /app/industria/page.css
+   Médano Design System — Tokens: globals.css :root
+   Regla: zero hex fuera de :root, zero !important
+   ============================================================ */
+
+/* —— HERO ————————————————————————————————————————————————— */
+#industria-hub-hero {
+  position: relative;
+  padding-top: calc(72px + var(--section-padding-y));
+  padding-bottom: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+#industria-hub-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 40%, var(--color-brand-royal-25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, var(--color-brand-navy-25) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: var(--z-below);
+}
+
+#industria-hub-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--container-padding-x);
+  right: var(--container-padding-x);
+  height: var(--border-width-thin);
+  background: var(--color-border-subtle);
+}
+
+#industria-hub-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  max-width: 760px;
+}
+
+#industria-hub-hero h1::before {
+  content: 'Por industria';
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-brand-mid);
+  margin-bottom: var(--space-6);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-subtle);
+  width: fit-content;
+}
+
+#industria-hub-hero p {
+  font-size: var(--type-body-lg-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+}
+
+/* —— GRID DE INDUSTRIAS ——————————————————————————————————— */
+#industria-hub-grid {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+}
+
+#industria-hub-grid ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+#industria-hub-grid li a {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background-color: var(--color-bg-subtle);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-left: var(--border-width-heavy) solid var(--color-brand-mid);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition-default);
+  height: 100%;
+}
+
+#industria-hub-grid li a:hover {
+  background-color: var(--color-brand-royal-25);
+  border-color: var(--color-border-strong);
+  border-left-color: var(--color-brand-mid);
+  transform: translateX(var(--space-1));
+  box-shadow: var(--shadow-card);
+}
+
+#industria-hub-grid li a strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-primary);
+}
+
+#industria-hub-grid li a span {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* —— CTA —————————————————————————————————————————————————— */
+#industria-hub-cta {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--container-padding-x);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#industria-hub-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-surface);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  z-index: var(--z-below);
+}
+
+#industria-hub-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 90% 50%, var(--color-brand-mid) 0%, transparent 60%);
+  opacity: 0.08;
+  border-radius: var(--radius-xl);
+  z-index: var(--z-below);
+  pointer-events: none;
+}
+
+#industria-hub-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+  max-width: 640px;
+}
+
+#industria-hub-cta p {
+  font-size: var(--type-body-lg-size);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+
+#industria-hub-cta a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-8);
+  background-color: var(--color-text-primary);
+  color: var(--color-brand-navy);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition-colors),
+              transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+  white-space: nowrap;
+}
+
+#industria-hub-cta a:hover {
+  background-color: var(--color-brand-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* —— RESPONSIVE ——————————————————————————————————————————— */
+@media (max-width: 768px) {
+  #industria-hub-grid ul {
+    grid-template-columns: 1fr;
+  }
+
+  #industria-hub-grid li a:hover {
+    transform: none;
+  }
+
+  #industria-hub-cta a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #industria-hub-cta::before,
+  #industria-hub-cta::after {
+    border-radius: var(--radius-lg);
+  }
+}

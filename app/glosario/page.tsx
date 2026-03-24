@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { terminos } from "@/data/terminos"
+import "./page.css"
 
 export const metadata: Metadata = {
   title: "Glosario de reputación online",

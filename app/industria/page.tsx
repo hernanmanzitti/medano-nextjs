@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { verticales } from "@/data/verticales"
+import "./page.css"
 
 export const metadata: Metadata = {
   title: "Gestión de reseñas por industria",
@@ -58,7 +59,7 @@ export default function IndustriaHubPage() {
             Trabajamos con cualquier negocio que tenga presencia en plataformas
             de reseñas y quiera mejorar su reputación online.
           </p>
-          <Link href="/contacto">Hablar con un especialista</Link>
+          <Link href="/#contact">Hablar con un especialista</Link>
         </section>
       </main>
     </>
