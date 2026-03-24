@@ -974,6 +974,61 @@ body.nav-open {
     display: none;
   }
 
+  /* Scroll — fondo sólido y altura reducida en mobile */
+  #nav.scrolled {
+    background-color: var(--color-bg-base);
+    padding: var(--space-2) 0;
+  }
+
+  #nav.scrolled::before {
+    display: none;
+  }
+
+  /* Hamburguesa — barras con distinto ancho */
+  .nav-toggle .nav-toggle-bar:nth-child(1) {
+    width: 100%;
+  }
+  .nav-toggle .nav-toggle-bar:nth-child(2) {
+    width: 60%;
+    align-self: flex-end;
+  }
+  .nav-toggle .nav-toggle-bar:nth-child(3) {
+    width: 80%;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    width: 100%;
+    align-self: auto;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    width: 100%;
+  }
+
+  /* Link contacto — aspecto de botón en menú abierto */
+  .nav-links.is-open li:last-child a {
+    display: inline-block;
+    padding: var(--space-3) var(--space-8);
+    background-color: var(--color-brand-royal);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-full);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    transition: background-color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-links.is-open li:last-child a:hover {
+    background-color: var(--color-brand-mid);
+    border-color: var(--color-border-strong);
+  }
+
+  .nav-links.is-open li:last-child a::after {
+    display: none;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
