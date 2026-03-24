@@ -16,6 +16,9 @@ export function NavBar({ activePage }: { activePage?: string }) {
     toggle.setAttribute('aria-expanded', 'false')
     toggle.setAttribute('aria-label', 'Abrir menú de navegación')
     menu.classList.remove('is-open')
+    const scrollY = document.body.style.top
+    document.body.style.removeProperty('top')
+    window.scrollTo(0, parseInt(scrollY || '0') * -1)
     document.body.classList.remove('menu-open', 'nav-open')
     document.body.style.removeProperty('--scrollbar-width')
     toggle.focus()
@@ -30,6 +33,7 @@ export function NavBar({ activePage }: { activePage?: string }) {
     toggle.setAttribute('aria-expanded', 'true')
     toggle.setAttribute('aria-label', 'Cerrar menú de navegación')
     menu.classList.add('is-open')
+    document.body.style.setProperty('--scroll-y', window.scrollY + 'px')
     document.body.classList.add('menu-open', 'nav-open')
   }, [])
 

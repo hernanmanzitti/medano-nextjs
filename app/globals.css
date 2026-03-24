@@ -216,6 +216,9 @@ body {
 
 body.menu-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: calc(-1 * var(--scroll-y, 0px));
   padding-right: var(--scrollbar-width, 0px);
 }
 
