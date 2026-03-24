@@ -6,11 +6,18 @@ import { NotasPreview } from "@/app/components/NotasPreview"
 import "./page.css"
 
 export const metadata: Metadata = {
-  title: "Calculadora de Reseñas por Rubro y Ciudad",
+  title: "Calculadora de Reseñas Google y TripAdvisor por Rubro | Médano",
   description:
-    "Calculá cuántas reseñas de 5 estrellas necesita tu negocio para subir de rating en Google. Gratis, por rubro y ciudad.",
+    "Calculá cuántas reseñas de 5 estrellas necesitás para subir tu rating en Google y TripAdvisor. Gratis, por rubro y ciudad.",
   alternates: {
     canonical: "/calculadora/resenas",
+  },
+  openGraph: {
+    title: "Calculadora de Reseñas Google y TripAdvisor | Médano",
+    description: "Calculá cuántas reseñas necesitás para subir tu rating. Gratis, por rubro y ciudad.",
+    url: "https://medano.co/calculadora/resenas",
+    siteName: "Médano",
+    type: "website",
   },
 }
 
@@ -22,11 +29,10 @@ export default function CalculadoraIndexPage() {
         <div className="calc-index-grid-bg" aria-hidden="true" />
         <div className="calc-index-hero-content">
           <h1 id="calc-index-title" className="calc-index-title">
-            Calculadora de Reseñas por Rubro y Ciudad
+            ¿Cuántas reseñas necesitás para subir tu rating?
           </h1>
           <p className="calc-index-subtitle">
-            Elegí tu rubro y ciudad para calcular cuántas reseñas de 5 estrellas necesitás para
-            alcanzar el rating que querés.
+            Calculadora gratuita para Google y TripAdvisor — por rubro y ciudad.
           </p>
         </div>
       </section>

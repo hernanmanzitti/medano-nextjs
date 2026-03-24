@@ -36,11 +36,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!vertical || !ciudad) return {}
 
+  const title = `Calculadora de Reseñas para ${vertical.labelPlural} en ${ciudad.label} | Google y TripAdvisor`
+  const description = `¿Cuántas reseñas de 5 estrellas necesita tu ${vertical.label} en ${ciudad.label} para subir de rating en Google y TripAdvisor? Calculalo gratis.`
+  const url = `https://medano.co/calculadora/resenas/${vertical.slug}/${ciudad.slug}`
+
   return {
-    title: `Calculadora de Reseñas para ${vertical.labelPlural} en ${ciudad.label}`,
-    description: `¿Cuántas reseñas necesita tu ${vertical.label} en ${ciudad.label} para subir de rating? Calculalo gratis.`,
+    title,
+    description,
     alternates: {
       canonical: `/calculadora/resenas/${vertical.slug}/${ciudad.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Médano",
+      type: "website",
     },
   }
 }
@@ -52,8 +63,42 @@ export default async function CalculadoraPage({ params }: Props) {
 
   if (!vertical || !ciudad) notFound()
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: `Calculadora de Reseñas para ${vertical.labelPlural} en ${ciudad.label}`,
+    description: `Calculá cuántas reseñas necesita tu ${vertical.label} en ${ciudad.label} para subir de rating en Google y TripAdvisor.`,
+    url: `https://medano.co/calculadora/resenas/${vertical.slug}/${ciudad.slug}`,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "ARS",
+    },
+  }
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://medano.co" },
+      { "@type": "ListItem", position: 2, name: "Calculadora de Reseñas", item: "https://medano.co/calculadora/resenas" },
+      { "@type": "ListItem", position: 3, name: vertical.labelPlural, item: `https://medano.co/calculadora/resenas/${vertical.slug}` },
+      { "@type": "ListItem", position: 4, name: ciudad.label, item: `https://medano.co/calculadora/resenas/${vertical.slug}/${ciudad.slug}` },
+    ],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* ── Hero ── */}
       <section id="calc-hero" className="calc-hero" aria-labelledby="calc-hero-title">
         <div className="calc-hero-grid" aria-hidden="true" />
