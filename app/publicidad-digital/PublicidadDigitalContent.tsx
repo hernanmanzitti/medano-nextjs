@@ -132,7 +132,7 @@ export function PublicidadDigitalContent() {
 
             <div className="pd-metric-card reveal reveal-delay-3" role="listitem">
               <span className="pd-metric-value" aria-label="Más 15 mercados">+15 países</span>
-              <p className="pd-metric-label">con campañas activas<br />múltiples países</p>
+              <p className="pd-metric-label">con campañas activas
             </div>
             <div className="pd-metric-card reveal reveal-delay-4" role="listitem">
               <span className="pd-metric-value" aria-label="24 horas">+10 fuentes</span>
