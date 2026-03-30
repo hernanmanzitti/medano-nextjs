@@ -618,8 +618,8 @@ body.nav-open {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: var(--space-2);
   background: none;
   border: none;
@@ -646,6 +646,7 @@ body.nav-open {
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
   opacity: 0;
 }
+
 
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
