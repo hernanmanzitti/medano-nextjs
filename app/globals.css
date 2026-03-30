@@ -1,4 +1,3 @@
-@import "tailwindcss";
 
 /* ============================================================
    MÉDANO — globals.css
@@ -395,12 +394,16 @@ body.menu-open {
   left: 0;
   right: 0;
   z-index: var(--z-fixed);
+  background-color: transparent;
   padding: var(--space-4) 0;
-  background-color: var(--color-brand-navy);
-  transition: box-shadow var(--duration-slow) var(--ease-in-out);
+  transition: background-color var(--duration-slow) var(--ease-in-out),
+              backdrop-filter var(--duration-slow) var(--ease-in-out),
+              box-shadow var(--duration-slow) var(--ease-in-out),
+              padding var(--duration-slow) var(--ease-in-out);
 }
 
 #nav.scrolled {
+  background: var(--color-bg-base);
   box-shadow: var(--shadow-md);
 }
 
@@ -863,6 +866,15 @@ body.nav-open {
   }
 
   .resenas-section-counter { font-size: 4rem; }
+
+  /* ── Nav mobile: toggle izquierda / logo derecha ───────── */
+  #nav .container {
+  }
+
+  /* ── Nav mobile: padding reducido en scroll 0 ───────────── */
+  #nav:not(.scrolled) {
+    padding: var(--space-2) 0;
+  }
 
   /* Nav mobile menu */
   .nav-links {
