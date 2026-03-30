@@ -33,7 +33,7 @@
 /                                   → app/page.tsx + app/styles/medano-home.css
 /resenas                            → app/resenas/ (ResenasContent.tsx)
 /publicidad-digital                 → app/publicidad-digital/ (PublicidadDigitalContent.tsx)
-/nosotros                           → app/nosotros/ (NO está en nav — mantener sin linkear)
+/nosotros                           → app/nosotros/ (visible en nav)
 /calculadora/resenas                → app/calculadora/resenas/page.tsx
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
@@ -48,7 +48,7 @@
 ```
 
 > ⚠️ La ruta de publicidad digital es `/publicidad-digital`, NO `/paid-media`.  
-> ⚠️ `/nosotros` existe pero está desvinculada del nav intencionalmente — no agregar al navbar.  
+> ⚠️ `/nosotros` está visible en el nav.  
 > ⚠️ El CTA de contacto en todo el sitio apunta a `/#contact` (sección embebida en homepage), NO a `/contacto`.
 
 ---
@@ -268,7 +268,7 @@ Los datos de SEO programático viven en:
 ### Prohibiciones absolutas
 - ❌ Valores hex en CSS → siempre `var(--token)`
 - ❌ `!important` → restructurar el selector
-- ❌ Agregar `/nosotros` al navbar (desvinculada intencionalmente)
+- ❌ Remover `/nosotros` del navbar
 - ❌ Linkear a `/contacto` → usar `/#contact`
 - ❌ Asumir nombres de rutas → hacer `grep` primero
 - ❌ Clases compartidas en `page.css` locales → van en `globals.css`
@@ -493,9 +493,10 @@ npx tsc --noEmit
 |------|-----------|--------|
 | Spam protection en formulario de contacto (honeypot o reCAPTCHA) | Media | Pendiente |
 | Migración datatrackers-v2.html a Next.js | Alta | Diseño aprobado, pendiente dev |
-| `/nosotros` — linkear al nav | Baja | Bloqueado (decisión de negocio) |
+| ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
+| ✅ Página 404 personalizada (`app/not-found.tsx` + `app/not-found.css`) | Alta | Completado 2026-03-30 |
 
 ---
 
