@@ -34,6 +34,7 @@
 /resenas                            → app/resenas/ (ResenasContent.tsx)
 /publicidad-digital                 → app/publicidad-digital/ (PublicidadDigitalContent.tsx)
 /nosotros                           → app/nosotros/ (visible en nav)
+/whatsapp-resenas                   → app/whatsapp-resenas/page.tsx + page.css + components/WaPhoneMockup.tsx
 /calculadora/resenas                → app/calculadora/resenas/page.tsx
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
@@ -47,9 +48,11 @@
 /api/contacto                       → app/api/contacto/route.ts (Resend)
 ```
 
-> ⚠️ La ruta de publicidad digital es `/publicidad-digital`, NO `/paid-media`.  
-> ⚠️ `/nosotros` está visible en el nav.  
+> ⚠️ La ruta de publicidad digital es `/publicidad-digital`, NO `/paid-media`.
+> ⚠️ `/nosotros` está visible en el nav.
 > ⚠️ El CTA de contacto en todo el sitio apunta a `/#contact` (sección embebida en homepage), NO a `/contacto`.
+> ⚠️ `/whatsapp-resenas` tiene `robots: noindex` — es una landing interna, NO indexable.
+> ⚠️ El único CTA que apunta a `/resenas` en esa página es "Ver servicio de reseñas". Todos los demás a `/#contact`.
 
 ---
 
@@ -72,6 +75,7 @@
 | `app/styles/resenas.css` | Página `/resenas` |
 | `app/styles/publicidad-digital.css` | Página `/publicidad-digital` |
 | `app/styles/nosotros.css` | Página `/nosotros` |
+| `app/whatsapp-resenas/page.css` | Página `/whatsapp-resenas` (incluye tokens WA propios en `:root`) |
 | `app/[ruta]/page.css` | Estilos locales de cada ruta (importados en el `page.tsx` correspondiente) |
 | `app/components/notas-preview.css` | Estilos del componente `NotasPreview` |
 | `app/notas/notas.module.css` | CSS Module del índice de notas |
@@ -181,6 +185,9 @@ Los scripts de schema van directamente en JSX via `dangerouslySetInnerHTML`, **n
   dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
 />
 ```
+
+### WaPhoneMockup — Patrón de animación por fases
+El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases: `idle → sent → typing → received → read → pause → exit`) con `key={convIdx}` en el wrapper para forzar remount completo al cambiar conversación. **No usar** `animating` boolean simple — el remount es lo que dispara las animaciones CSS. Cada conversación tiene `phoneBg` y `headerBg` como inline styles (no tokens, porque son colores temáticos del mockup, no de la marca).
 
 ### Blog — Posts MDX
 - Los posts con componentes interactivos (ReadingProgress, etc.) tienen su propia carpeta estática en `app/notas/[nombre-completo]/`
@@ -497,6 +504,9 @@ npx tsc --noEmit
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
 | ✅ Página 404 personalizada (`app/not-found.tsx` + `app/not-found.css`) | Alta | Completado 2026-03-30 |
+| ✅ `/whatsapp-resenas` landing page con mockup animado, pricing y comparativa | Alta | Completado 2026-03-30 |
+| ✅ Eliminación completa de Tailwind CSS | Alta | Completado 2026-03-30 |
+| `/whatsapp-resenas` — agregar al sitemap cuando sea pública | Media | Pendiente (actualmente noindex) |
 
 ---
 
@@ -533,5 +543,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Generado: Marzo 2026*  
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-03-30*
 *Repo: hernanmanzitti/medano-nextjs*
