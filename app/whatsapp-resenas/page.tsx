@@ -169,7 +169,7 @@ export default function WhatsappResenasPage() {
                 <div className="wa-plan-header">
                   <span className="wa-plan-name">Starter</span>
                   <div className="wa-plan-price">
-                    <span className="wa-plan-amount">$49</span>
+                    <span className="wa-plan-amount">$13</span>
                     <span className="wa-plan-period">/mes</span>
                   </div>
                   <p className="wa-plan-desc">Para negocios que están arrancando con WhatsApp.</p>
@@ -190,7 +190,7 @@ export default function WhatsappResenasPage() {
                 <div className="wa-plan-header">
                   <span className="wa-plan-name">Growth</span>
                   <div className="wa-plan-price">
-                    <span className="wa-plan-amount">$89</span>
+                    <span className="wa-plan-amount">$22</span>
                     <span className="wa-plan-period">/mes</span>
                   </div>
                   <p className="wa-plan-desc">Para negocios con flujo constante de clientes.</p>
@@ -210,7 +210,7 @@ export default function WhatsappResenasPage() {
                 <div className="wa-plan-header">
                   <span className="wa-plan-name">Pro</span>
                   <div className="wa-plan-price">
-                    <span className="wa-plan-amount">$149</span>
+                    <span className="wa-plan-amount">$48</span>
                     <span className="wa-plan-period">/mes</span>
                   </div>
                   <p className="wa-plan-desc">Para cadenas y negocios de alto volumen.</p>
