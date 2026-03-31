@@ -159,7 +159,7 @@ export default function WhatsappResenasPage() {
               <span className="section-label">Planes</span>
               <h2 className="section-heading">Simple. Sin sorpresas.</h2>
               <p className="section-subheading">
-                El fee de WhatsApp Business ($25/mes por número) está incluido en todos los planes. Solo pagás el plan y los mensajes que usás.
+                Elegí el volumen que necesitás. Si crecés, subís de plan automáticamente.
               </p>
             </header>
 
@@ -175,13 +175,12 @@ export default function WhatsappResenasPage() {
                   <p className="wa-plan-desc">Para negocios que están arrancando con WhatsApp.</p>
                 </div>
                 <ul className="wa-plan-features">
-                  <li><span className="wa-plan-check">✓</span> 200 mensajes incluidos</li>
-                  <li><span className="wa-plan-check">✓</span> 1 número de WhatsApp Business</li>
+                  <li><span className="wa-plan-check">✓</span> 100 mensajes incluidos</li>
                   <li><span className="wa-plan-check">✓</span> Multi-sucursal ilimitada</li>
                   <li><span className="wa-plan-check">✓</span> Dashboard de métricas</li>
                   <li><span className="wa-plan-check">✓</span> Historial de envíos</li>
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
-                  <li className="wa-plan-overage"><span className="wa-plan-check">+</span> $0.12 por mensaje extra</li>
+                  <li className="wa-plan-overage"><span className="wa-plan-check">→</span> Si superás el límite, pasás al plan Growth</li>
                 </ul>
                 <a href="/#contact" className="btn-outline wa-btn-ghost wa-plan-cta">Empezar</a>
               </div>
@@ -197,13 +196,12 @@ export default function WhatsappResenasPage() {
                   <p className="wa-plan-desc">Para negocios con flujo constante de clientes.</p>
                 </div>
                 <ul className="wa-plan-features">
-                  <li><span className="wa-plan-check">✓</span> 500 mensajes incluidos</li>
-                  <li><span className="wa-plan-check">✓</span> 1 número de WhatsApp Business</li>
+                  <li><span className="wa-plan-check">✓</span> 200 mensajes incluidos</li>
                   <li><span className="wa-plan-check">✓</span> Multi-sucursal ilimitada</li>
                   <li><span className="wa-plan-check">✓</span> Dashboard de métricas</li>
                   <li><span className="wa-plan-check">✓</span> Historial de envíos</li>
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
-                  <li className="wa-plan-overage"><span className="wa-plan-check">+</span> $0.10 por mensaje extra</li>
+                  <li className="wa-plan-overage"><span className="wa-plan-check">→</span> Si superás el límite, pasás al plan Pro</li>
                 </ul>
                 <a href="/#contact" className="btn-primary wa-plan-cta">Empezar</a>
               </div>
@@ -218,13 +216,12 @@ export default function WhatsappResenasPage() {
                   <p className="wa-plan-desc">Para cadenas y negocios de alto volumen.</p>
                 </div>
                 <ul className="wa-plan-features">
-                  <li><span className="wa-plan-check">✓</span> 1,000 mensajes incluidos</li>
-                  <li><span className="wa-plan-check">✓</span> 1 número de WhatsApp Business</li>
+                  <li><span className="wa-plan-check">✓</span> 500 mensajes incluidos</li>
                   <li><span className="wa-plan-check">✓</span> Multi-sucursal ilimitada</li>
                   <li><span className="wa-plan-check">✓</span> Dashboard de métricas</li>
                   <li><span className="wa-plan-check">✓</span> Historial de envíos</li>
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
-                  <li className="wa-plan-overage"><span className="wa-plan-check">+</span> $0.09 por mensaje extra</li>
+                  <li className="wa-plan-overage"><span className="wa-plan-check">+</span> $0.12 por mensaje extra</li>
                 </ul>
                 <a href="/#contact" className="btn-outline wa-btn-ghost wa-plan-cta">Empezar</a>
               </div>
