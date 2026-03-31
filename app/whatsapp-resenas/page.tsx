@@ -18,6 +18,8 @@ export default function WhatsappResenasPage() {
 
         {/* ── HERO ─────────────────────────────── */}
         <section id="wa-hero">
+          <div className="wp-hero-bg" aria-hidden="true"></div>
+          <div className="wp-hero-grid" aria-hidden="true"></div>
           <div className="container">
             <div className="wa-hero-grid">
 
@@ -102,7 +104,7 @@ export default function WhatsappResenasPage() {
         </section>
 
         {/* ── COMO FUNCIONA ────────────────────── */}
-        <section id="wa-como-funciona">
+        <section id="wp-proceso">
           <div className="container">
             <header className="wa-section-header">
               <span className="section-label">El proceso</span>
@@ -112,33 +114,44 @@ export default function WhatsappResenasPage() {
               </p>
             </header>
 
-            <div className="wa-steps-grid">
-              <div className="wa-step-card">
-                <span className="wa-step-num">01</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <div className="wp-pasos-grid">
+
+              {/* PASO 01 */}
+              <div className="wp-paso-card">
+                <span className="wp-paso-num">01</span>
+                <div className="wp-paso-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
                 </div>
-                <h3>Cargás el contacto</h3>
-                <p>Nombre y teléfono. Sin CSV, sin Excel. Un cliente por vez, en segundos, desde la app.</p>
+                <h3 className="wp-paso-name">Cargás el contacto</h3>
+                <p className="wp-paso-desc">Nombre y teléfono. Sin CSV, sin Excel. Un cliente por vez, en segundos, desde la app.</p>
               </div>
 
-              <div className="wa-step-card">
-                <span className="wa-step-num">02</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              {/* PASO 02 */}
+              <div className="wp-paso-card">
+                <span className="wp-paso-num">02</span>
+                <div className="wp-paso-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
                 </div>
-                <h3>Elegís la sucursal</h3>
-                <p>Seleccionás desde qué sede fue el cliente. El link de reseña correcto se asigna automáticamente.</p>
+                <h3 className="wp-paso-name">Elegís la sucursal</h3>
+                <p className="wp-paso-desc">Seleccionás desde qué sede fue el cliente. El link de reseña correcto se asigna automáticamente.</p>
               </div>
 
-              <div className="wa-step-card">
-                <span className="wa-step-num">03</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              {/* PASO 03 */}
+              <div className="wp-paso-card">
+                <span className="wp-paso-num">03</span>
+                <div className="wp-paso-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
                 </div>
-                <h3>Enviás y listo</h3>
-                <p>El mensaje sale por WhatsApp oficial. Ves en tiempo real si fue entregado, leído, y si el cliente respondió.</p>
+                <h3 className="wp-paso-name">Enviás y listo</h3>
+                <p className="wp-paso-desc">El mensaje sale por WhatsApp oficial. Ves en tiempo real si fue entregado, leído, y si el cliente respondió.</p>
               </div>
+
             </div>
           </div>
         </section>
@@ -237,7 +250,7 @@ export default function WhatsappResenasPage() {
                 <span className="section-label">Por qué WhatsApp</span>
                 <h2 className="section-heading">Oficial. Seguro.<br />Sin riesgo de ban.</h2>
                 <p className="section-subheading">
-                  Muchas empresas usan su WhatsApp personal para pedir reseñas. Eso puede generar bloqueos automáticos de Meta. Nuestra solución usa la API oficial de WhatsApp Business.
+                  Muchas empresas usan su WhatsApp Business para pedir reseñas. Eso puede generar bloqueos automáticos de Meta. Nuestra solución usa la API oficial de WhatsApp Business.
                 </p>
 
                 <ul className="wa-feature-list">
@@ -281,11 +294,11 @@ export default function WhatsappResenasPage() {
               </div>
 
               <div className="wa-features-right">
-                <p className="wa-comparison-label">WhatsApp personal vs Médano WhatsApp</p>
+                <p className="wa-comparison-label">WhatsApp Business vs API WhatsApp Médano</p>
 
                 <div className="wa-comparison-card">
                   <div className="wa-comparison-header">
-                    <span className="wa-comparison-name">WhatsApp personal</span>
+                    <span className="wa-comparison-name">WhatsApp Business</span>
                   </div>
                   {[
                     ['Riesgo de ban por Meta', false, 'Alto riesgo'],
@@ -310,7 +323,7 @@ export default function WhatsappResenasPage() {
                 <div className="wa-comparison-card wa-comparison-card--featured">
                   <div className="wa-comparison-header">
                     <span className="wa-comparison-name">
-                      Médano WhatsApp
+                      API WhatsApp Médano
                       <span className="wa-badge-new">Nuevo</span>
                     </span>
                   </div>
