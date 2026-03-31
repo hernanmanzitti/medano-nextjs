@@ -505,6 +505,7 @@ npx tsc --noEmit
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
 | ✅ Página 404 personalizada (`app/not-found.tsx` + `app/not-found.css`) | Alta | Completado 2026-03-30 |
 | ✅ `/whatsapp-resenas` landing page con mockup animado, pricing y comparativa | Alta | Completado 2026-03-30 |
+| ✅ Precios `/whatsapp-resenas`: Starter $13 / Growth $22 / Pro $48 — USD/mes + IVA | Alta | Completado 2026-03-31 |
 | ✅ Eliminación completa de Tailwind CSS | Alta | Completado 2026-03-30 |
 | `/whatsapp-resenas` — agregar al sitemap cuando sea pública | Media | Pendiente (actualmente noindex) |
 
@@ -543,5 +544,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-03-30*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-03-31*
 *Repo: hernanmanzitti/medano-nextjs*
