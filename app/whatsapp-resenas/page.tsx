@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { NavBar } from '@/components/NavBar'
 import { WaPhoneMockup } from '@/components/WaPhoneMockup'
 import './page.css'
 
@@ -12,9 +11,6 @@ export const metadata: Metadata = {
 export default function WhatsappResenasPage() {
   return (
     <>
-      <NavBar activePage="resenas" />
-
-      <main id="whatsapp-resenas-main">
 
         {/* ── HERO ─────────────────────────────── */}
         <section id="wa-hero">
@@ -373,8 +369,6 @@ export default function WhatsappResenasPage() {
             </div>
           </div>
         </section>
-
-      </main>
 
     </>
   )
