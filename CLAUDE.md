@@ -202,6 +202,7 @@ El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client componen
 - Mantiene estado `selectedVertical` y `selectedPais`
 - Renderiza la calculadora (`CalculadoraTool`) con `key={selectedVertical}` para forzar remount y actualizar defaults cuando cambia el rubro
 - Implementa el nav 3 pasos: rubro → país → ciudad; pasos 2 y 3 usan `key` para disparar animación CSS `calcHubStepIn` en cada cambio
+- Scroll automático: al seleccionar rubro → `scrollIntoView` al paso 02 (país); al seleccionar país → `scrollIntoView` al paso 03 (ciudades). Implementado con `useRef` + `useEffect`. Las divs destino tienen `scroll-margin-top: calc(72px + var(--space-4))` para compensar navbar fija.
 - El `page.tsx` del hub incluye también un índice server-rendered de todos los links (SEO backbone)
 
 ### WaPhoneMockup — Patrón de animación por fases
@@ -532,6 +533,7 @@ npx tsc --noEmit
 | Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` (7 verticales faltan) | Alta | Pendiente |
 | Plantillas para pedir reseñas por canal `/plantillas/pedir-resenas/[canal]` | Media | Pendiente |
 | ✅ Rediseño UX hub calculadora: nav 3 pasos + calculadora conectada al rubro (CalculadoraHub.tsx) | Alta | Completado 2026-04-13 |
+| ✅ Scroll automático en hub calculadora: rubro → país → ciudad con `useRef` + `useEffect` | Baja | Completado 2026-04-13 |
 | ✅ Página 404 personalizada (`app/not-found.tsx` + `app/not-found.css`) | Alta | Completado 2026-03-30 |
 | ✅ `/whatsapp-resenas` landing page con mockup animado, pricing y comparativa | Alta | Completado 2026-03-30 |
 | ✅ Precios `/whatsapp-resenas`: Starter $13 / Growth $22 / Pro $48 — USD/mes + IVA | Alta | Completado 2026-03-31 |
@@ -588,11 +590,11 @@ Intent raíz: "quiero más reseñas en Google"
 - `que-es-el-response-rate-y-por-que-google-te-penaliza-si-ignoras-las-resenas`
 
 ### Gaps identificados (oportunidades de contenido)
-- Guías "cómo conseguir reseñas" por vertical: solo existen gimnasios y clínicas — faltan 7
-- Plantillas para *pedir* (no responder) reseñas por canal (WhatsApp, email, QR)
-- FAQ programático por vertical con FAQPage schema — datos ya en `verticales.ts` (`faqItems`)
+- Guías "cómo conseguir reseñas" por vertical: solo existen gimnasios y clínicas — faltan 7 (`/guia/conseguir-resenas/[vertical]`)
+- Plantillas para *pedir* (no responder) reseñas por canal (WhatsApp, email, QR) — `/plantillas/pedir-resenas/[canal]`
+- ✅ FAQ programático por vertical con FAQPage schema — implementado 2026-04-13
 - Benchmark/estadísticas por rubro — usar `avgRating` y `avgReviews` de `verticales.ts`
-- Posts pendientes CLAUDE.md: veterinarias, Rappi, costos reputación, multisucursales
+- Posts pendientes: veterinarias, Rappi, costos reputación, multisucursales
 
 ---
 
@@ -629,5 +631,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno + scroll automático hub)*
 *Repo: hernanmanzitti/medano-nextjs*
