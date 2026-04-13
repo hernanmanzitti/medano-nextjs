@@ -589,12 +589,31 @@ Intent raíz: "quiero más reseñas en Google"
 - `por-que-desaparecen-tus-resenas-de-google`
 - `que-es-el-response-rate-y-por-que-google-te-penaliza-si-ignoras-las-resenas`
 
-### Gaps identificados (oportunidades de contenido)
-- Guías "cómo conseguir reseñas" por vertical: solo existen gimnasios y clínicas — faltan 7 (`/guia/conseguir-resenas/[vertical]`)
-- Plantillas para *pedir* (no responder) reseñas por canal (WhatsApp, email, QR) — `/plantillas/pedir-resenas/[canal]`
-- ✅ FAQ programático por vertical con FAQPage schema — implementado 2026-04-13
-- Benchmark/estadísticas por rubro — usar `avgRating` y `avgReviews` de `verticales.ts`
-- Posts pendientes: veterinarias, Rappi, costos reputación, multisucursales
+### Gaps identificados — Orden de impacto SEO (próximas sesiones)
+
+**① SIGUIENTE → `/guia/conseguir-resenas/[vertical]`** — 9 URLs programáticas
+- Intent transaccional directo: "cómo conseguir reseñas para restaurantes / clínicas / etc."
+- Sin competencia programática fuerte en LATAM
+- Patrón idéntico a calculadora: `generateStaticParams` + `generateMetadata` + datos ya en `verticales.ts`
+- Cada guía linkeará a la calculadora del vertical → cierra el ciclo de linking interno
+- Prioridad: **ALTA** — arrancar por aquí en la próxima sesión
+
+**② Blog: 4 posts pendientes** — long-tail con intent claro
+- `resenas-negativas-veterinarias`
+- `restaurante-mala-nota-rappi`
+- `cuanto-cuesta-reputacion-argentina`
+- `verificar-multiples-sucursales`
+- Prioridad: **MEDIA** — batch de 3 por sesión
+
+**③ `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
+- Intent de alta conversión (quien lo busca ya quiere pedir reseñas)
+- El post `como-usar-whatsapp-para-conseguir-resenas-de-google` ya existe → estas páginas serían el destino natural
+- Prioridad: **MEDIA**
+
+**④ Enrichment páginas calculadora ciudad** — contenido único por ciudad
+- Las ~336 páginas hoy tienen contenido genérico; 1-2 párrafos de contexto local subirían rankings de páginas ya indexadas
+- Mayor esfuerzo, menor ROI inmediato
+- Prioridad: **BAJA** (dejar para cuando ① y ② estén completos)
 
 ---
 
@@ -631,5 +650,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno + scroll automático hub)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno + scroll automático + roadmap SEO priorizado)*
 *Repo: hernanmanzitti/medano-nextjs*
