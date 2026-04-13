@@ -108,7 +108,7 @@ export default async function CalculadoraPage({ params }: Props) {
             Calculadora Gratuita
           </span>
           <h1 id="calc-hero-title" className="calc-hero-title">
-            ¿Cuántas reseñas necesita tu {vertical.label} en {ciudad.label}?
+            ¿Cuántas reseñas en Google necesita tu {vertical.label} en {ciudad.label}?
           </h1>
           <p className="calc-hero-subtitle">{vertical.context}</p>
         </div>

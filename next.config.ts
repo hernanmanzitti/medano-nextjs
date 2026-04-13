@@ -29,6 +29,36 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/paid-media',
+        destination: '/publicidad-digital',
+        permanent: true,
+      },
+      {
+        source: '/contacto',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/en-us/contacto',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/resenas-y-seo',
+        destination: '/resenas',
+        permanent: true,
+      },
+      {
+        source: '/notas-de-interes',
+        destination: '/notas',
+        permanent: true,
+      },
+      {
+        source: '/insights',
+        destination: '/notas',
+        permanent: true,
+      },
+      {
         source: '/en-us/:path*',
         destination: '/:path*',
         permanent: true,

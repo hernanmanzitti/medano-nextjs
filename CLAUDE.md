@@ -220,6 +220,12 @@ Al agregar una nueva ruta pública, verificar si debe incluirse en `sitemap.ts`.
 /en-us/paid-media                        → /publicidad-digital    (301)
 /en-us/resenas                           → /resenas               (301)
 /notas/:slug/                            → /notas/:slug           (301, trailing slash)
+/paid-media                              → /publicidad-digital    (301)
+/contacto                                → /                      (301)
+/en-us/contacto                          → /                      (301)
+/resenas-y-seo                           → /resenas               (301)
+/notas-de-interes                        → /notas                 (301)
+/insights                                → /notas                 (301)
 /en-us/:path*                            → /:path*                (301, catch-all)
 ```
 `trailingSlash: false` está configurado globalmente.
@@ -508,6 +514,7 @@ npx tsc --noEmit
 | ✅ Precios `/whatsapp-resenas`: Starter $13 / Growth $22 / Pro $48 — USD/mes + IVA | Alta | Completado 2026-03-31 |
 | ✅ Eliminación completa de Tailwind CSS | Alta | Completado 2026-03-30 |
 | `/whatsapp-resenas` — agregar al sitemap cuando sea pública | Media | Pendiente (actualmente noindex) |
+| ✅ SEO calculadora: "Google y TripAdvisor" en title + H1 de hub, verticales (~9) y ciudades (~336) | Alta | Completado 2026-04-13 |
 
 ---
 
@@ -544,5 +551,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-03-31*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13*
 *Repo: hernanmanzitti/medano-nextjs*

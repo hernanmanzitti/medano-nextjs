@@ -6,10 +6,10 @@ import { NotasPreview } from "@/app/components/NotasPreview"
 import "./page.css"
 
 export const metadata: Metadata = {
-  title: "Calculadora de reseñas — ¿Cuántas necesitás?",
+  title: "Calculadora de reseñas Google y TripAdvisor — ¿Cuántas necesitás?",
   description:
-    "Calculá cuántas reseñas positivas necesita tu negocio para superar a la competencia. " +
-    "Herramienta gratuita por vertical e industria en toda Argentina, Costa Rica y Panamá.",
+    "Calculá cuántas reseñas positivas necesita tu negocio en Google y TripAdvisor para superar a la competencia. " +
+    "Herramienta gratuita por rubro y ciudad en Argentina, Costa Rica y Panamá.",
   alternates: {
     canonical: "/calculadora/resenas",
   },
@@ -41,10 +41,10 @@ export default function CalculadoraIndexPage() {
         <div className="calc-index-grid-bg" aria-hidden="true" />
         <div className="calc-index-hero-content">
           <h1 id="calc-index-title" className="calc-index-title">
-            ¿Cuántas reseñas necesitás para subir tu rating?
+            Calculadora de reseñas Google y TripAdvisor
           </h1>
           <p className="calc-index-subtitle">
-            Calculadora gratuita para Google y TripAdvisor — por rubro y ciudad.
+            ¿Cuántas necesitás para subir tu rating? Gratis — por rubro y ciudad.
           </p>
         </div>
       </section>

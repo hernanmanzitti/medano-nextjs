@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!vertical) return {}
 
   return {
-    title: `Calculadora de Reseñas para ${vertical.labelPlural}`,
-    description: `Calculá cuántas reseñas necesita tu ${vertical.label} en tu ciudad para subir de rating. Gratis.`,
+    title: `Calculadora de reseñas Google para ${vertical.labelPlural} — ¿Cuántas necesitás?`,
+    description: `Calculá cuántas reseñas necesita tu ${vertical.label} en Google y TripAdvisor para subir de rating. Herramienta gratuita por ciudad.`,
     alternates: {
       canonical: `/calculadora/resenas/${vertical.slug}`,
     },
@@ -46,7 +46,7 @@ export default async function VerticalIndexPage({ params }: Props) {
             Calculadora Gratuita
           </span>
           <h1 id="calc-vertical-title" className="calc-vertical-title">
-            Calculadora de Reseñas para {vertical.labelPlural}
+            Calculadora de reseñas Google para {vertical.labelPlural}
           </h1>
           <p className="calc-vertical-subtitle">{vertical.context}</p>
         </div>
