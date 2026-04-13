@@ -35,7 +35,7 @@
 /publicidad-digital                 → app/publicidad-digital/ (PublicidadDigitalContent.tsx)
 /nosotros                           → app/nosotros/ (visible en nav)
 /whatsapp-resenas                   → app/whatsapp-resenas/page.tsx + page.css + components/WaPhoneMockup.tsx
-/calculadora/resenas                → app/calculadora/resenas/page.tsx
+/calculadora/resenas                → app/calculadora/resenas/page.tsx  (+CalculadoraHub.tsx)
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
 /industria                          → app/industria/page.tsx
@@ -185,6 +185,13 @@ Los scripts de schema van directamente en JSX via `dangerouslySetInnerHTML`, **n
   dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
 />
 ```
+
+### CalculadoraHub — Patrón de nav interactivo con calculadora conectada
+El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client component que:
+- Mantiene estado `selectedVertical` y `selectedPais`
+- Renderiza la calculadora (`CalculadoraTool`) con `key={selectedVertical}` para forzar remount y actualizar defaults cuando cambia el rubro
+- Implementa el nav 3 pasos: rubro → país → ciudad; pasos 2 y 3 usan `key` para disparar animación CSS `calcHubStepIn` en cada cambio
+- El `page.tsx` del hub incluye también un índice server-rendered de todos los links (SEO backbone)
 
 ### WaPhoneMockup — Patrón de animación por fases
 El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases: `idle → sent → typing → received → read → pause → exit`) con `key={convIdx}` en el wrapper para forzar remount completo al cambiar conversación. **No usar** `animating` boolean simple — el remount es lo que dispara las animaciones CSS. Cada conversación tiene `phoneBg` y `headerBg` como inline styles (no tokens, porque son colores temáticos del mockup, no de la marca).
@@ -509,6 +516,10 @@ npx tsc --noEmit
 | ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
+| FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Pendiente |
+| Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` (7 verticales faltan) | Alta | Pendiente |
+| Plantillas para pedir reseñas por canal `/plantillas/pedir-resenas/[canal]` | Media | Pendiente |
+| ✅ Rediseño UX hub calculadora: nav 3 pasos + calculadora conectada al rubro (CalculadoraHub.tsx) | Alta | Completado 2026-04-13 |
 | ✅ Página 404 personalizada (`app/not-found.tsx` + `app/not-found.css`) | Alta | Completado 2026-03-30 |
 | ✅ `/whatsapp-resenas` landing page con mockup animado, pricing y comparativa | Alta | Completado 2026-03-30 |
 | ✅ Precios `/whatsapp-resenas`: Starter $13 / Growth $22 / Pro $48 — USD/mes + IVA | Alta | Completado 2026-03-31 |
@@ -519,7 +530,61 @@ npx tsc --noEmit
 
 ---
 
-## 13. DATATRACKERS — PRÓXIMO PROYECTO
+## 13. ESTRATEGIA SEO — ÁRBOL DE INTENTS
+
+El sitio ataca el intent "gestión de reseñas" a través de estas capas:
+
+```
+Intent raíz: "quiero más reseñas en Google"
+│
+├── Diagnóstico     → /calculadora/resenas/[vertical]/[ciudad]  ← YA IMPLEMENTADO (~336 URLs)
+│
+├── Cómo hacerlo    → /guia/conseguir-resenas/[vertical]        ← PENDIENTE (9 URLs)
+│                  → /plantillas/pedir-resenas/[canal]          ← PENDIENTE
+│                  → Blog: "cuándo pedir reseña por vertical"
+│
+├── Problemas       → /notas/como-responder-resenas-negativas-* ← YA IMPLEMENTADO
+│                  → /notas/por-que-desaparecen-*               ← YA IMPLEMENTADO
+│
+├── Plataforma      → /notas/como-verificar-*                   ← YA IMPLEMENTADO
+│                  → FAQ por vertical con FAQPage schema         ← PENDIENTE (9 URLs)
+│
+└── Impacto         → Blog: estadísticas, benchmark por rubro   ← PENDIENTE
+```
+
+### Inventario de /notas (17 posts — 2026-04-13)
+
+**MDX dinámicos** (`content/notas/`):
+- `como-responder-resenas` — responder reseñas negativas (2024-05-14)
+- `como-conseguir-mas-resenas-en-google` — guía práctica (2024-07-15)
+- `todo-lo-que-las-marcas-necesitan-saber-sobre-los-google-local-guides` — Local Guides (2024-06-27)
+- `como-mejorar-tu-rating-en-google` — mejorar rating (2024-08-20)
+- `como-eliminar-resenas-falsas-de-google` — eliminar falsas (2025-03-10)
+- `resenas-falsas-ataques-coordinados-como-denunciarlos` — ataques coordinados (2026-04-10)
+- `50-plantillas-para-responder-resenas-negativas` — plantillas multi-vertical (2026-04-17)
+- `resenas-para-clinicas-como-responder-sin-violar-confidencialidad` — clínicas (2026-04-24)
+- `como-monitorear-las-resenas-de-tu-competencia` — monitoreo competencia (2026-05-01)
+- `resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas` — gimnasios (2026-05-08)
+- `como-mostrar-tus-resenas-de-google-en-tu-sitio-web` — mostrar reseñas (2026-05-15)
+
+**Páginas estáticas** (`app/notas/[nombre]/`):
+- `como-responder-resenas-negativas-sin-arruinar-tu-reputacion`
+- `como-usar-whatsapp-para-conseguir-resenas-de-google`
+- `como-verificar-tu-negocio-en-google-business-2026`
+- `nfc-qr-o-whatsapp-cual-es-la-mejor-forma-de-pedir-resenas`
+- `por-que-desaparecen-tus-resenas-de-google`
+- `que-es-el-response-rate-y-por-que-google-te-penaliza-si-ignoras-las-resenas`
+
+### Gaps identificados (oportunidades de contenido)
+- Guías "cómo conseguir reseñas" por vertical: solo existen gimnasios y clínicas — faltan 7
+- Plantillas para *pedir* (no responder) reseñas por canal (WhatsApp, email, QR)
+- FAQ programático por vertical con FAQPage schema — datos ya en `verticales.ts` (`faqItems`)
+- Benchmark/estadísticas por rubro — usar `avgRating` y `avgReviews` de `verticales.ts`
+- Posts pendientes CLAUDE.md: veterinarias, Rappi, costos reputación, multisucursales
+
+---
+
+## 14. DATATRACKERS — PRÓXIMO PROYECTO
 
 - **Referencia visual:** `datatrackers-v2.html` — HTML standalone, no tocar
 - **Identidad:** Dark SaaS — deep navy + turquoise (`--color-accent-dt`), `Barlow Condensed` / `DM Sans`
@@ -552,5 +617,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + estrategia SEO)*
 *Repo: hernanmanzitti/medano-nextjs*
