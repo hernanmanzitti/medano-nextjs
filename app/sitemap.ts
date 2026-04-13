@@ -75,6 +75,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
+  // ── Hub guías (/guia/conseguir-resenas) ───────────────────────
+  rutas.push({
+    url: `${BASE_URL}/guia/conseguir-resenas`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  })
+
+  // ── Guías por vertical (/guia/conseguir-resenas/[vertical]) ───
+  verticales.forEach((vertical) => {
+    rutas.push({
+      url: `${BASE_URL}/guia/conseguir-resenas/${vertical.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  })
+
   // ── Índice del blog (/notas) ────────────────────────────────
   rutas.push({
     url: `${BASE_URL}/notas`,

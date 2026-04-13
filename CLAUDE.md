@@ -38,6 +38,8 @@
 /calculadora/resenas                → app/calculadora/resenas/page.tsx  (+CalculadoraHub.tsx)
 /faq/resenas                        → app/faq/resenas/page.tsx
 /faq/resenas/[vertical]             → app/faq/resenas/[vertical]/page.tsx  (FAQPage schema)
+/guia/conseguir-resenas             → app/guia/conseguir-resenas/page.tsx  (hub estático)
+/guia/conseguir-resenas/[vertical]  → app/guia/conseguir-resenas/[vertical]/page.tsx  (HowTo + FAQPage schema)
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
 /industria                          → app/industria/page.tsx
@@ -530,7 +532,7 @@ npx tsc --noEmit
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
 | ✅ FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Completado 2026-04-13 |
 | ✅ Linking interno FAQ: footer (columna Empresa) + callout en ~336 páginas calculadora ciudad | Alta | Completado 2026-04-13 |
-| Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` (7 verticales faltan) | Alta | Pendiente |
+| ✅ Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` — 9 URLs + hub + sitemap + footer | Alta | Completado 2026-04-13 |
 | Plantillas para pedir reseñas por canal `/plantillas/pedir-resenas/[canal]` | Media | Pendiente |
 | ✅ Rediseño UX hub calculadora: nav 3 pasos + calculadora conectada al rubro (CalculadoraHub.tsx) | Alta | Completado 2026-04-13 |
 | ✅ Scroll automático en hub calculadora: rubro → país → ciudad con `useRef` + `useEffect` | Baja | Completado 2026-04-13 |
@@ -553,7 +555,7 @@ Intent raíz: "quiero más reseñas en Google"
 │
 ├── Diagnóstico     → /calculadora/resenas/[vertical]/[ciudad]  ← YA IMPLEMENTADO (~336 URLs)
 │
-├── Cómo hacerlo    → /guia/conseguir-resenas/[vertical]        ← PENDIENTE (9 URLs)
+├── Cómo hacerlo    → /guia/conseguir-resenas/[vertical]        ← YA IMPLEMENTADO (9 URLs + hub)
 │                  → /plantillas/pedir-resenas/[canal]          ← PENDIENTE
 │                  → Blog: "cuándo pedir reseña por vertical"
 │
@@ -561,7 +563,7 @@ Intent raíz: "quiero más reseñas en Google"
 │                  → /notas/por-que-desaparecen-*               ← YA IMPLEMENTADO
 │
 ├── Plataforma      → /notas/como-verificar-*                   ← YA IMPLEMENTADO
-│                  → FAQ por vertical con FAQPage schema         ← PENDIENTE (9 URLs)
+│                  → FAQ por vertical con FAQPage schema         ← YA IMPLEMENTADO (9 URLs)
 │
 └── Impacto         → Blog: estadísticas, benchmark por rubro   ← PENDIENTE
 ```
@@ -591,19 +593,16 @@ Intent raíz: "quiero más reseñas en Google"
 
 ### Gaps identificados — Orden de impacto SEO (próximas sesiones)
 
-**① SIGUIENTE → `/guia/conseguir-resenas/[vertical]`** — 9 URLs programáticas
-- Intent transaccional directo: "cómo conseguir reseñas para restaurantes / clínicas / etc."
-- Sin competencia programática fuerte en LATAM
-- Patrón idéntico a calculadora: `generateStaticParams` + `generateMetadata` + datos ya en `verticales.ts`
-- Cada guía linkeará a la calculadora del vertical → cierra el ciclo de linking interno
-- Prioridad: **ALTA** — arrancar por aquí en la próxima sesión
+**✅ ① COMPLETADO — `/guia/conseguir-resenas/[vertical]`** — 9 URLs + hub (2026-04-13)
+- HowTo + FAQPage schema, linking a calculadora por vertical
+- Hub `/guia/conseguir-resenas` como índice + link en footer columna Empresa
 
-**② Blog: 4 posts pendientes** — long-tail con intent claro
+**① SIGUIENTE → Blog: 4 posts pendientes** — long-tail con intent claro
 - `resenas-negativas-veterinarias`
 - `restaurante-mala-nota-rappi`
 - `cuanto-cuesta-reputacion-argentina`
 - `verificar-multiples-sucursales`
-- Prioridad: **MEDIA** — batch de 3 por sesión
+- Prioridad: **ALTA** — batch de 3 por sesión
 
 **③ `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
 - Intent de alta conversión (quien lo busca ya quiere pedir reseñas)

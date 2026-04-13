@@ -49,6 +49,7 @@ export function Footer() {
               <li><Link href="/notas">Notas</Link></li>
               <li><Link href="/glosario">Glosario de reputación</Link></li>
               <li><Link href="/faq/resenas">FAQ Reseñas</Link></li>
+              <li><Link href="/guia/conseguir-resenas">Guías por rubro</Link></li>
               <li><Link href="/#contact">Contacto</Link></li>
             </ul>
           </div>
