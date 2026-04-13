@@ -3,6 +3,7 @@ import Link from "next/link"
 import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
 import { NotasPreview } from "@/app/components/NotasPreview"
+import { CalculadoraHub } from "./CalculadoraHub"
 import "./page.css"
 
 export const metadata: Metadata = {
@@ -49,11 +50,14 @@ export default function CalculadoraIndexPage() {
         </div>
       </section>
 
-      {/* ── Grid de verticales ── */}
+      {/* ── Hub interactivo: calculadora + nav 3 pasos ── */}
+      <CalculadoraHub verticales={verticales} ciudades={ciudades} />
+
+      {/* ── Índice SEO: todas las combinaciones rubro × ciudad (server-rendered) ── */}
       <section id="calc-index-body" className="calc-index-body" aria-labelledby="calc-index-body-title">
         <div className="calc-index-body-inner">
-          <h2 id="calc-index-body-title" className="sr-only">
-            Rubros disponibles
+          <h2 id="calc-index-body-title" className="calc-index-body-title">
+            Calculadora de reseñas Google por rubro y ciudad
           </h2>
           <div className="calc-index-verticals" role="list">
             {verticales.map((v) => (
