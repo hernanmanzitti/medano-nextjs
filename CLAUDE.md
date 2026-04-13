@@ -650,5 +650,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno + scroll automático + roadmap SEO priorizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (guías programáticas /guia/conseguir-resenas + 3 posts blog + roadmap SEO actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
