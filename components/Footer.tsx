@@ -33,7 +33,7 @@ export function Footer() {
             <h5>Servicios</h5>
             <ul>
               <li><Link href="/publicidad-digital">Publicidad Digital</Link></li>
-              <li><Link href="/resenas">Reseñas</Link></li>
+              <li><Link href="/resenas">Gestión de Reseñas</Link></li>
               <li><Link href="/whatsapp-resenas">Reseñas Google por WhatsApp</Link></li>
               <li><Link href="/#services">Community Management</Link></li>
               <li><Link href="/#services">Analytics &amp; Data</Link></li>
