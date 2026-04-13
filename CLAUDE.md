@@ -36,6 +36,8 @@
 /nosotros                           → app/nosotros/ (visible en nav)
 /whatsapp-resenas                   → app/whatsapp-resenas/page.tsx + page.css + components/WaPhoneMockup.tsx
 /calculadora/resenas                → app/calculadora/resenas/page.tsx  (+CalculadoraHub.tsx)
+/faq/resenas                        → app/faq/resenas/page.tsx
+/faq/resenas/[vertical]             → app/faq/resenas/[vertical]/page.tsx  (FAQPage schema)
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
 /industria                          → app/industria/page.tsx
@@ -516,7 +518,7 @@ npx tsc --noEmit
 | ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
-| FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Pendiente |
+| ✅ FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Completado 2026-04-13 |
 | Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` (7 verticales faltan) | Alta | Pendiente |
 | Plantillas para pedir reseñas por canal `/plantillas/pedir-resenas/[canal]` | Media | Pendiente |
 | ✅ Rediseño UX hub calculadora: nav 3 pasos + calculadora conectada al rubro (CalculadoraHub.tsx) | Alta | Completado 2026-04-13 |
@@ -617,5 +619,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + estrategia SEO)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + estrategia SEO)*
 *Repo: hernanmanzitti/medano-nextjs*
