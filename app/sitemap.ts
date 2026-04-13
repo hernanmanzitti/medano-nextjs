@@ -55,6 +55,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // ── FAQ hub (/faq/resenas) ─────────────────────────────────
+  rutas.push({
+    url: `${BASE_URL}/faq/resenas`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  })
+
+  // ── FAQ por vertical (/faq/resenas/[vertical]) ─────────────
+  verticales.forEach((vertical) => {
+    if (vertical.faqItems && vertical.faqItems.length > 0) {
+      rutas.push({
+        url: `${BASE_URL}/faq/resenas/${vertical.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      })
+    }
+  })
+
   // ── Índice del blog (/notas) ────────────────────────────────
   rutas.push({
     url: `${BASE_URL}/notas`,
