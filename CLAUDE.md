@@ -529,7 +529,8 @@ npx tsc --noEmit
 | Migración datatrackers-v2.html a Next.js | Alta | Diseño aprobado, pendiente dev |
 | ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
-| Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
+| ✅ Posts de blog: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina | Alta | Completado 2026-04-13 |
+| Post de blog pendiente: verificar-multiples-sucursales | Alta | Pendiente |
 | ✅ FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Completado 2026-04-13 |
 | ✅ Linking interno FAQ: footer (columna Empresa) + callout en ~336 páginas calculadora ciudad | Alta | Completado 2026-04-13 |
 | ✅ Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` — 9 URLs + hub + sitemap + footer | Alta | Completado 2026-04-13 |
@@ -597,12 +598,12 @@ Intent raíz: "quiero más reseñas en Google"
 - HowTo + FAQPage schema, linking a calculadora por vertical
 - Hub `/guia/conseguir-resenas` como índice + link en footer columna Empresa
 
-**① SIGUIENTE → Blog: 4 posts pendientes** — long-tail con intent claro
-- `resenas-negativas-veterinarias`
-- `restaurante-mala-nota-rappi`
-- `cuanto-cuesta-reputacion-argentina`
+**① SIGUIENTE → Blog: 1 post pendiente** — long-tail con intent claro
 - `verificar-multiples-sucursales`
-- Prioridad: **ALTA** — batch de 3 por sesión
+- ✅ `resenas-negativas-veterinarias` — Completado 2026-04-13
+- ✅ `restaurante-mala-nota-rappi` — Completado 2026-04-13
+- ✅ `cuanto-cuesta-reputacion-argentina` — Completado 2026-04-13
+- Prioridad: **ALTA**
 
 **③ `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
 - Intent de alta conversión (quien lo busca ya quiere pedir reseñas)
