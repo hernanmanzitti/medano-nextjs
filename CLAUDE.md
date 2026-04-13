@@ -554,22 +554,25 @@ El sitio ataca el intent "gestión de reseñas" a través de estas capas:
 ```
 Intent raíz: "quiero más reseñas en Google"
 │
-├── Diagnóstico     → /calculadora/resenas/[vertical]/[ciudad]  ← YA IMPLEMENTADO (~336 URLs)
+├── Diagnóstico     → /calculadora/resenas/[vertical]/[ciudad]  ← ✅ IMPLEMENTADO (~336 URLs)
 │
-├── Cómo hacerlo    → /guia/conseguir-resenas/[vertical]        ← YA IMPLEMENTADO (9 URLs + hub)
+├── Cómo hacerlo    → /guia/conseguir-resenas/[vertical]        ← ✅ IMPLEMENTADO (9 URLs + hub)
 │                  → /plantillas/pedir-resenas/[canal]          ← PENDIENTE
 │                  → Blog: "cuándo pedir reseña por vertical"
 │
-├── Problemas       → /notas/como-responder-resenas-negativas-* ← YA IMPLEMENTADO
-│                  → /notas/por-que-desaparecen-*               ← YA IMPLEMENTADO
+├── Problemas       → /notas/como-responder-resenas-negativas-* ← ✅ IMPLEMENTADO
+│                  → /notas/por-que-desaparecen-*               ← ✅ IMPLEMENTADO
+│                  → /notas/resenas-negativas-veterinarias      ← ✅ IMPLEMENTADO
+│                  → /notas/restaurante-mala-nota-rappi         ← ✅ IMPLEMENTADO
 │
-├── Plataforma      → /notas/como-verificar-*                   ← YA IMPLEMENTADO
-│                  → FAQ por vertical con FAQPage schema         ← YA IMPLEMENTADO (9 URLs)
+├── Plataforma      → /notas/como-verificar-*                   ← ✅ IMPLEMENTADO
+│                  → FAQ por vertical con FAQPage schema         ← ✅ IMPLEMENTADO (9 URLs)
 │
-└── Impacto         → Blog: estadísticas, benchmark por rubro   ← PENDIENTE
+└── Impacto         → /notas/cuanto-cuesta-reputacion-argentina ← ✅ IMPLEMENTADO
+                   → Blog: benchmark por rubro                  ← PENDIENTE
 ```
 
-### Inventario de /notas (17 posts — 2026-04-13)
+### Inventario de /notas (20 posts — 2026-04-13)
 
 **MDX dinámicos** (`content/notas/`):
 - `como-responder-resenas` — responder reseñas negativas (2024-05-14)
@@ -583,6 +586,9 @@ Intent raíz: "quiero más reseñas en Google"
 - `como-monitorear-las-resenas-de-tu-competencia` — monitoreo competencia (2026-05-01)
 - `resenas-para-gimnasios-como-pasar-de-3-a-4-5-estrellas` — gimnasios (2026-05-08)
 - `como-mostrar-tus-resenas-de-google-en-tu-sitio-web` — mostrar reseñas (2026-05-15)
+- `resenas-negativas-veterinarias` — responder reseñas sensibles en vets (2026-05-22)
+- `restaurante-mala-nota-rappi` — gestión de reputación en delivery (2026-05-29)
+- `cuanto-cuesta-reputacion-argentina` — impacto económico del rating (2026-06-05)
 
 **Páginas estáticas** (`app/notas/[nombre]/`):
 - `como-responder-resenas-negativas-sin-arruinar-tu-reputacion`
@@ -592,28 +598,27 @@ Intent raíz: "quiero más reseñas en Google"
 - `por-que-desaparecen-tus-resenas-de-google`
 - `que-es-el-response-rate-y-por-que-google-te-penaliza-si-ignoras-las-resenas`
 
-### Gaps identificados — Orden de impacto SEO (próximas sesiones)
+### Plan SEO — Próximas sesiones (orden de prioridad)
 
-**✅ ① COMPLETADO — `/guia/conseguir-resenas/[vertical]`** — 9 URLs + hub (2026-04-13)
-- HowTo + FAQPage schema, linking a calculadora por vertical
-- Hub `/guia/conseguir-resenas` como índice + link en footer columna Empresa
+**① SIGUIENTE — `verificar-multiples-sucursales`** (1 post MDX pendiente)
+- Cubre el intent "cómo verificar varias sucursales en Google Business"
+- Long-tail sin competencia fuerte + directo al perfil de cliente de Médano (3–30 locales)
+- Imágenes disponibles: `/img/1.png` está libre (usá la que quede disponible)
 
-**① SIGUIENTE → Blog: 1 post pendiente** — long-tail con intent claro
-- `verificar-multiples-sucursales`
-- ✅ `resenas-negativas-veterinarias` — Completado 2026-04-13
-- ✅ `restaurante-mala-nota-rappi` — Completado 2026-04-13
-- ✅ `cuanto-cuesta-reputacion-argentina` — Completado 2026-04-13
-- Prioridad: **ALTA**
+**② `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
+- 4 URLs programáticas, patrón idéntico a `/guia/conseguir-resenas/[vertical]`
+- Intent de alta conversión: quien lo busca ya quiere pedir reseñas
+- Datos necesarios: crear `data/canales.ts` con slug, label, descripcion, plantillas
+- El post `como-usar-whatsapp-para-conseguir-resenas-de-google` ya existe → linking natural
 
-**③ `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
-- Intent de alta conversión (quien lo busca ya quiere pedir reseñas)
-- El post `como-usar-whatsapp-para-conseguir-resenas-de-google` ya existe → estas páginas serían el destino natural
-- Prioridad: **MEDIA**
+**③ Blog: benchmark por rubro** — estadísticas de reputación por industria
+- Ej: "Cuántas reseñas tienen los mejores restaurantes de CABA"
+- Complementa el árbol de impacto + feeds el intent de comparación competitiva
 
 **④ Enrichment páginas calculadora ciudad** — contenido único por ciudad
-- Las ~336 páginas hoy tienen contenido genérico; 1-2 párrafos de contexto local subirían rankings de páginas ya indexadas
+- Las ~336 páginas tienen contenido genérico; 1-2 párrafos de contexto local
 - Mayor esfuerzo, menor ROI inmediato
-- Prioridad: **BAJA** (dejar para cuando ① y ② estén completos)
+- Dejar para después de ① y ②
 
 ---
 
