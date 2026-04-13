@@ -48,6 +48,7 @@ export function Footer() {
               <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">DataTrackers</a></li>
               <li><Link href="/notas">Notas</Link></li>
               <li><Link href="/glosario">Glosario de reputación</Link></li>
+              <li><Link href="/faq/resenas">FAQ Reseñas</Link></li>
               <li><Link href="/#contact">Contacto</Link></li>
             </ul>
           </div>

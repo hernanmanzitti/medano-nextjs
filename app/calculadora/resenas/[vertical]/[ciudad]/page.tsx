@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 import { verticales } from "@/data/verticales"
 import { ciudades } from "@/data/ciudades"
@@ -126,6 +127,20 @@ export default async function CalculadoraPage({ params }: Props) {
           />
         </div>
       </section>
+
+      {/* ── FAQ link ── */}
+      {vertical.faqItems && vertical.faqItems.length > 0 && (
+        <div className="calc-faq-ref">
+          <div className="calc-faq-ref-inner">
+            <Link href={`/faq/resenas/${vertical.slug}`} className="calc-faq-ref-link">
+              <span className="calc-faq-ref-label">
+                Preguntas frecuentes sobre reseñas para {vertical.labelPlural}
+              </span>
+              <span className="calc-faq-ref-arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* ── Contexto ── */}
       <section id="calc-contexto" className="calc-contexto" aria-labelledby="calc-contexto-title">
