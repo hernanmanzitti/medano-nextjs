@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { CalculadoraTool } from "@/app/calculadora/resenas/[vertical]/[ciudad]/CalculadoraTool"
 import type { Vertical } from "@/data/verticales"
@@ -22,6 +22,21 @@ type Props = {
 export function CalculadoraHub({ verticales, ciudades }: Props) {
   const [selectedVertical, setSelectedVertical] = useState<string | null>(null)
   const [selectedPais, setSelectedPais] = useState<PaisSlug | null>(null)
+
+  const paisRef = useRef<HTMLDivElement>(null)
+  const ciudadesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (selectedVertical && paisRef.current) {
+      paisRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }, [selectedVertical])
+
+  useEffect(() => {
+    if (selectedPais && ciudadesRef.current) {
+      ciudadesRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }, [selectedPais])
 
   const vertical = verticales.find((v) => v.slug === selectedVertical)
 
@@ -101,6 +116,7 @@ export function CalculadoraHub({ verticales, ciudades }: Props) {
           {/* ── Paso 2: País ── */}
           {selectedVertical && (
             <div
+              ref={paisRef}
               className="calc-hub-step calc-hub-step--in"
               key={`pais-${selectedVertical}`}
             >
@@ -127,6 +143,7 @@ export function CalculadoraHub({ verticales, ciudades }: Props) {
           {/* ── Paso 3: Ciudades ── */}
           {selectedVertical && selectedPais && ciudadesFiltradas.length > 0 && (
             <div
+              ref={ciudadesRef}
               className="calc-hub-step calc-hub-step--in"
               key={`ciudades-${selectedVertical}-${selectedPais}`}
             >

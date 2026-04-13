@@ -341,6 +341,7 @@
 
 .calc-hub-step--in {
   animation: calcHubStepIn 0.35s var(--ease-out) both;
+  scroll-margin-top: calc(72px + var(--space-4));
 }
 
 @keyframes calcHubStepIn {
