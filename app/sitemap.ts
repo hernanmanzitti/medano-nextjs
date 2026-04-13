@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/publicidad-digital', priority: 0.9,  changeFrequency: 'monthly' },
     { url: '/nosotros',           priority: 0.7,  changeFrequency: 'yearly'  },
     { url: '/calculadora/resenas',priority: 0.8,  changeFrequency: 'monthly' },
+    { url: '/whatsapp-resenas',   priority: 0.8,  changeFrequency: 'monthly' },
   ] as const
 
   estaticas.forEach(({ url, priority, changeFrequency }) => {

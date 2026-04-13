@@ -112,6 +112,9 @@ export function NavBar({ activePage }: { activePage?: string }) {
               <li role="menuitem">
                 <Link href="/resenas" aria-current={activePage === 'resenas' ? 'page' : undefined}>Reseñas</Link>
               </li>
+              <li role="menuitem">
+                <Link href="/whatsapp-resenas" aria-current={activePage === 'whatsapp-resenas' ? 'page' : undefined}>Reseñas Google por WhatsApp</Link>
+              </li>
               {/*<li role="menuitem">
                 <Link href="/#seo">SEO y Posicionamiento</Link>
               </li>*/}

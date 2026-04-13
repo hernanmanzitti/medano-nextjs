@@ -3,9 +3,18 @@ import { WaPhoneMockup } from '@/components/WaPhoneMockup'
 import './page.css'
 
 export const metadata: Metadata = {
-  title: 'Reseñas por WhatsApp — Médano',
-  description: 'Pedí reseñas a tus clientes por WhatsApp Business API oficial. Sin riesgo de ban, con métricas de entrega en tiempo real, y para todas tus sucursales.',
-  robots: { index: false, follow: false },
+  title: 'Pedí reseñas de Google por WhatsApp — Médano',
+  description: 'Conseguí más reseñas en Google pidiendo por WhatsApp Business API oficial. Sin riesgo de ban, métricas en tiempo real y multi-sucursal. Aprobado por Meta.',
+  alternates: {
+    canonical: '/whatsapp-resenas',
+  },
+  openGraph: {
+    title: 'Pedí reseñas de Google por WhatsApp — Médano',
+    description: 'Conseguí más reseñas en Google pidiendo por WhatsApp Business API oficial. Sin riesgo de ban, métricas en tiempo real y multi-sucursal.',
+    url: 'https://medano.co/whatsapp-resenas',
+    siteName: 'Médano',
+    type: 'website',
+  },
 }
 
 export default function WhatsappResenasPage() {

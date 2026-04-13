@@ -513,7 +513,7 @@ npx tsc --noEmit
 | ✅ `/whatsapp-resenas` landing page con mockup animado, pricing y comparativa | Alta | Completado 2026-03-30 |
 | ✅ Precios `/whatsapp-resenas`: Starter $13 / Growth $22 / Pro $48 — USD/mes + IVA | Alta | Completado 2026-03-31 |
 | ✅ Eliminación completa de Tailwind CSS | Alta | Completado 2026-03-30 |
-| `/whatsapp-resenas` — agregar al sitemap cuando sea pública | Media | Pendiente (actualmente noindex) |
+| ✅ `/whatsapp-resenas` — indexable, en navbar y footer, SEO con keywords Google+WhatsApp | Media | Completado 2026-04-13 |
 | ✅ SEO calculadora: "Google y TripAdvisor" en title + H1 de hub, verticales (~9) y ciudades (~336) | Alta | Completado 2026-04-13 |
 
 ---
