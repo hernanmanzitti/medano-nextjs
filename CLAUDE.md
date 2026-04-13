@@ -188,6 +188,15 @@ Los scripts de schema van directamente en JSX via `dangerouslySetInnerHTML`, **n
 />
 ```
 
+### FAQ programático — Patrón de linking interno
+Las páginas `/faq/resenas/[vertical]` reciben linking desde:
+1. Footer (columna "Empresa", junto al Glosario) — presente en todas las páginas del sitio
+2. Callout `.calc-faq-ref` en cada página `/calculadora/resenas/[vertical]/[ciudad]` — ~336 links entrantes
+3. Sección "Otros rubros" dentro de cada FAQ (cross-linking entre las 9 páginas)
+4. Hub `/faq/resenas` linkea a las 9 páginas de vertical
+
+Si se agregan nuevas páginas FAQ (por canal u otro criterio), seguir el mismo patrón de linking.
+
 ### CalculadoraHub — Patrón de nav interactivo con calculadora conectada
 El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client component que:
 - Mantiene estado `selectedVertical` y `selectedPais`
@@ -519,6 +528,7 @@ npx tsc --noEmit
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | Posts de blog pendientes: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina, verificar-multiples-sucursales | Media | En roadmap |
 | ✅ FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Completado 2026-04-13 |
+| ✅ Linking interno FAQ: footer (columna Empresa) + callout en ~336 páginas calculadora ciudad | Alta | Completado 2026-04-13 |
 | Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` (7 verticales faltan) | Alta | Pendiente |
 | Plantillas para pedir reseñas por canal `/plantillas/pedir-resenas/[canal]` | Media | Pendiente |
 | ✅ Rediseño UX hub calculadora: nav 3 pasos + calculadora conectada al rubro (CalculadoraHub.tsx) | Alta | Completado 2026-04-13 |
@@ -619,5 +629,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + estrategia SEO)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (hub calculadora + FAQ programático + linking interno)*
 *Repo: hernanmanzitti/medano-nextjs*
