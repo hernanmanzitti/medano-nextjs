@@ -546,6 +546,12 @@ npx tsc --noEmit
 | ✅ `/whatsapp-resenas` — indexable, en navbar y footer, SEO con keywords Google+WhatsApp | Media | Completado 2026-04-13 |
 | ✅ Navbar/Footer: "Reseñas" → "Gestión de Reseñas" (más abarcativo para SaaS) | Baja | Completado 2026-04-13 |
 | ✅ SEO calculadora: "Google y TripAdvisor" en title + H1 de hub, verticales (~9) y ciudades (~336) | Alta | Completado 2026-04-13 |
+| ✅ Hub `/herramientas` — landing SEO + grid de 6 cards (2 LIVE, 4 SOON), sitemap + §3 CLAUDE.md | Alta | Completado 2026-04-17 |
+| ✅ Cards clickeables del hub `/herramientas` (stretched link via `::after` + focus-visible accesible) | Media | Completado 2026-04-17 |
+| ✅ Generador de QR `/herramientas/qr-resenas` — client tool con preview live, descarga PNG/SVG, SoftwareApplication schema + 4 FAQs | Alta | Completado 2026-04-17 |
+| Plantillas de respuesta `/herramientas/plantillas-respuesta` — convertir card 04 del hub (SOON → LIVE) | Alta | Pendiente |
+| FAQ del hub `/herramientas` + JSON-LD (ItemList + FAQPage schema) | Media | Pendiente |
+| Decidir si linkear `/herramientas` desde navbar — condicional a tener ≥3 tools LIVE | Media | Pendiente |
 
 ---
 
