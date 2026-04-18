@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/nosotros',           priority: 0.7,  changeFrequency: 'yearly'  },
     { url: '/calculadora/resenas',priority: 0.8,  changeFrequency: 'monthly' },
     { url: '/herramientas',       priority: 0.8,  changeFrequency: 'monthly' },
+    { url: '/herramientas/qr-resenas', priority: 0.7,  changeFrequency: 'monthly' },
     { url: '/whatsapp-resenas',   priority: 0.8,  changeFrequency: 'monthly' },
   ] as const
 

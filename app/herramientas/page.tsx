@@ -36,11 +36,11 @@ const tools: Tool[] = [
   },
   {
     index: "02",
-    status: "soon",
+    status: "live",
     title: "Generador de QR para reseñas",
     desc: "Un código QR imprimible que lleva a tus clientes directo al formulario de Google Reviews.",
-    href: "/#contact",
-    cta: "Avisame cuando esté listo",
+    href: "/herramientas/qr-resenas",
+    cta: "Generar QR",
   },
   {
     index: "03",

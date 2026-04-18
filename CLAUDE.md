@@ -41,6 +41,7 @@
 /guia/conseguir-resenas             → app/guia/conseguir-resenas/page.tsx  (hub estático)
 /guia/conseguir-resenas/[vertical]  → app/guia/conseguir-resenas/[vertical]/page.tsx  (HowTo + FAQPage schema)
 /herramientas                       → app/herramientas/page.tsx  (hub de tools gratuitas, 6 cards)
+/herramientas/qr-resenas            → app/herramientas/qr-resenas/page.tsx  (generador QR, client tool + SoftwareApplication schema)
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
 /industria                          → app/industria/page.tsx
