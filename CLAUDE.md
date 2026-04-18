@@ -40,6 +40,7 @@
 /faq/resenas/[vertical]             → app/faq/resenas/[vertical]/page.tsx  (FAQPage schema)
 /guia/conseguir-resenas             → app/guia/conseguir-resenas/page.tsx  (hub estático)
 /guia/conseguir-resenas/[vertical]  → app/guia/conseguir-resenas/[vertical]/page.tsx  (HowTo + FAQPage schema)
+/herramientas                       → app/herramientas/page.tsx  (hub de tools gratuitas, 6 cards)
 /calculadora/resenas/[vertical]     → app/calculadora/resenas/[vertical]/page.tsx
 /calculadora/resenas/[vertical]/[ciudad] → app/calculadora/resenas/[vertical]/[ciudad]/page.tsx
 /industria                          → app/industria/page.tsx
@@ -228,7 +229,7 @@ Posts pendientes:
 
 ### Sitemap (`app/sitemap.ts`)
 Generado programáticamente. Incluye:
-- Páginas estáticas (homepage, resenas, publicidad-digital, nosotros, calculadora hub)
+- Páginas estáticas (homepage, resenas, publicidad-digital, nosotros, calculadora hub, herramientas)
 - Índices por vertical: `/calculadora/resenas/[vertical]`
 - Páginas calculadora: `/calculadora/resenas/[vertical]/[ciudad]` — filtradas por `ciudad.tipo` y `ciudad.verticalesTouristicos`
 - Blog: `/notas` + cada post via `getAllPosts()`
