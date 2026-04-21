@@ -552,6 +552,10 @@ npx tsc --noEmit
 | Plantillas de respuesta `/herramientas/plantillas-respuesta` — convertir card 04 del hub (SOON → LIVE) | Alta | Pendiente |
 | FAQ del hub `/herramientas` + JSON-LD (ItemList + FAQPage schema) | Media | Pendiente |
 | Decidir si linkear `/herramientas` desde navbar — condicional a tener ≥3 tools LIVE | Media | Pendiente |
+| `/herramientas` NO está linkeado desde el footer — evaluar agregarlo cuando haya más tools LIVE | Media | Pendiente |
+| Revisar visualmente diseños de sesión 2026-04-17 (`/herramientas` hub + `/herramientas/qr-resenas`) — no están del todo revisados | Alta | Pendiente |
+| JSON-LD `Article` schema en posts MDX dinámicos (`content/notas/`) | Alta | Pendiente |
+| JSON-LD `Article` schema en páginas estáticas (`app/notas/[nombre]/`) | Alta | Pendiente |
 
 ---
 
@@ -578,6 +582,38 @@ Intent raíz: "quiero más reseñas en Google"
 │
 └── Impacto         → /notas/cuanto-cuesta-reputacion-argentina ← ✅ IMPLEMENTADO
                    → Blog: benchmark por rubro                  ← PENDIENTE
+```
+
+### Google Discover — Requisitos técnicos confirmados (2026-04)
+
+El parser interno de Discover lee en este orden de prioridad:
+
+1. **JSON-LD primero**: busca `headline`, `author` y `publisher` en structured data. Si lo encuentra, ignora og:tags.
+2. **OG tags como fallback**: solo se usan si JSON-LD está ausente o incompleto.
+3. **Dos meta tags que matan la elegibilidad al instante**: `notranslate` y `nopagereadaloud`. Si están presentes, el sistema lanza una excepción y deja de procesar la página. Verificar que ningún plugin los inyecte.
+4. **Imágenes**: mínimo 1200px de ancho para ser elegible como hero card en Discover.
+5. **Filtro de dominio**: si un usuario toca "no mostrar este publisher", se bloquea todo el dominio antes del ranking. Un artículo de baja calidad puede suprimir todo el sitio.
+
+**Acción requerida para medano.co**: implementar `Article` schema (JSON-LD) en todos los posts de `/notas`, tanto MDX dinámicos como páginas estáticas. El campo mínimo viable es `headline`, `author` y `publisher`. Verificar que no haya `notranslate` en el `<html>` del sitio.
+
+Estructura canónica a usar:
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{título del post}}",
+  "author": {
+    "@type": "Person",
+    "name": "Hernán Manzitti"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Médano",
+    "url": "https://medano.co"
+  },
+  "datePublished": "{{fecha ISO del frontmatter}}",
+  "image": "{{imagen OG del post si existe}}"
+}
 ```
 
 ### Inventario de /notas (20 posts — 2026-04-13)
@@ -663,5 +699,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-13 (guías programáticas /guia/conseguir-resenas + 3 posts blog + roadmap SEO actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-21 (JSON-LD Article schema en /notas + requisitos Google Discover documentados)*
 *Repo: hernanmanzitti/medano-nextjs*
