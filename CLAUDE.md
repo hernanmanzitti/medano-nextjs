@@ -534,7 +534,7 @@ npx tsc --noEmit
 | ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
 | ✅ Posts de blog: resenas-negativas-veterinarias, restaurante-mala-nota-rappi, cuanto-cuesta-reputacion-argentina | Alta | Completado 2026-04-13 |
-| Post de blog pendiente: verificar-multiples-sucursales | Alta | Pendiente |
+| ✅ Post de blog: verificar-multiples-sucursales — guía para cadenas (3–30 locales), métodos individual y bulk, Business Profile Manager | Alta | Completado 2026-04-30 |
 | ✅ FAQ programático `/faq/resenas/[vertical]` con FAQPage schema (9 URLs, datos en verticales.ts) | Alta | Completado 2026-04-13 |
 | ✅ Linking interno FAQ: footer (columna Empresa) + callout en ~336 páginas calculadora ciudad | Alta | Completado 2026-04-13 |
 | ✅ Guías "conseguir reseñas" por vertical `/guia/conseguir-resenas/[vertical]` — 9 URLs + hub + sitemap + footer | Alta | Completado 2026-04-13 |
@@ -646,10 +646,7 @@ Estructura canónica a usar:
 
 ### Plan SEO — Próximas sesiones (orden de prioridad)
 
-**① SIGUIENTE — `verificar-multiples-sucursales`** (1 post MDX pendiente)
-- Cubre el intent "cómo verificar varias sucursales en Google Business"
-- Long-tail sin competencia fuerte + directo al perfil de cliente de Médano (3–30 locales)
-- Imágenes disponibles: `/img/1.png` está libre (usá la que quede disponible)
+**① ✅ `verificar-multiples-sucursales`** — Completado 2026-04-30. Cubre métodos individual (hasta 9) y bulk (10+), Business Profile Manager, errores comunes y asignación de managers por sucursal.
 
 **② `/plantillas/pedir-resenas/[canal]`** — WhatsApp, email, QR, NFC
 - 4 URLs programáticas, patrón idéntico a `/guia/conseguir-resenas/[vertical]`
@@ -730,5 +727,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-30 (Article JSON-LD desplegado en /notas + auditoría de imágenes Discover: 8/9 OK, 2.png TOO SMALL)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-30 (post verificar-multiples-sucursales publicado + auditoría heroImage Discover)*
 *Repo: hernanmanzitti/medano-nextjs*
