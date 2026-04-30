@@ -528,6 +528,8 @@ npx tsc --noEmit
 | Item | Prioridad | Estado |
 |------|-----------|--------|
 | Spam protection en formulario de contacto (honeypot o reCAPTCHA) | Media | Pendiente |
+| Reemplazar `public/img/2.png` por imagen ≥1200px (actualmente 642×364) — usada en `restaurante-mala-nota-rappi`, no califica para Discover hero card | Media | Pendiente |
+| Agregar `heroImage` (≥1200px) a las 6 páginas estáticas de `/notas` para habilitar Discover hero card — oportunidad de tráfico orgánico | Alta | Pendiente |
 | Migración datatrackers-v2.html a Next.js | Alta | Diseño aprobado, pendiente dev |
 | ✅ `/nosotros` — visible en nav | Baja | Completado |
 | Enrichment de páginas calculadora ciudad (contenido único) | Alta | Pendiente |
@@ -664,6 +666,35 @@ Estructura canónica a usar:
 - Mayor esfuerzo, menor ROI inmediato
 - Dejar para después de ① y ②
 
+### Auditoría de imágenes heroImage (2026-04-30)
+
+Resultado del audit de los 9 archivos en `public/img/` usados como `heroImage`:
+
+| Archivo | Tipo real | Dimensiones | Discover (≥1200px) | Post |
+|---------|-----------|-------------|---------------------|------|
+| 1.png | WebP | 1218×812 | ✅ OK | resenas-negativas-veterinarias |
+| 2.png | PNG | 642×364 | ❌ TOO SMALL | restaurante-mala-nota-rappi |
+| 3.png | PNG | 1920×1198 | ✅ OK | cuanto-cuesta-reputacion-argentina |
+| 4.png | PNG | 2752×1536 | ✅ OK | resenas-falsas-ataques-coordinados |
+| 5.png | PNG | 2816×1536 | ✅ OK | 50-plantillas-para-responder-resenas-negativas |
+| 6.png | PNG | 2752×1536 | ✅ OK | resenas-para-clinicas |
+| 7.png | JPEG | 1600×893 | ✅ OK | como-monitorear-las-resenas-de-tu-competencia |
+| 8.png | JPEG | 1600×893 | ✅ OK | resenas-para-gimnasios |
+| 9.png | JPEG | 1600×893 | ✅ OK | como-mostrar-tus-resenas-de-google-en-tu-sitio-web |
+
+> ⚠️ `7/8/9.png` son **JPEG** con extensión `.png` (no rompe nada, conviene renombrar a `.jpg` cuando se toquen). `1.png` es **WebP** con extensión `.png` (mismo caso).
+
+**Acciones derivadas:**
+1. Reemplazar `2.png` con versión ≥1200px de ancho
+2. Conseguir imágenes para las 6 páginas estáticas (no tienen `heroImage`):
+   - `como-responder-resenas-negativas-sin-arruinar-tu-reputacion`
+   - `como-usar-whatsapp-para-conseguir-resenas-de-google`
+   - `como-verificar-tu-negocio-en-google-business-2026`
+   - `nfc-qr-o-whatsapp-cual-es-la-mejor-forma-de-pedir-resenas`
+   - `por-que-desaparecen-tus-resenas-de-google`
+   - `que-es-el-response-rate-y-por-que-google-te-penaliza-si-ignoras-las-resenas`
+3. (Opcional) Renombrar `1.png → 1.webp` y `7-9.png → 7-9.jpg` para coherencia de extensiones
+
 ---
 
 ## 14. DATATRACKERS — PRÓXIMO PROYECTO
@@ -699,5 +730,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-29 (JSON-LD Article schema implementado vía componente compartido `<ArticleJsonLd>` con Person Hernán Manzitti + Organization Médano)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-30 (Article JSON-LD desplegado en /notas + auditoría de imágenes Discover: 8/9 OK, 2.png TOO SMALL)*
 *Repo: hernanmanzitti/medano-nextjs*
