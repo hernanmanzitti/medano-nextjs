@@ -5,6 +5,7 @@ import MedanoCTA from '@/components/blog/MedanoCTA'
 import CalculadoraCTA from '@/components/blog/CalculadoraCTA'
 import RelatedPost from '@/components/blog/RelatedPost'
 import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb'
+import ArticleJsonLd from '@/app/components/ArticleJsonLd'
 import './page.css'
 
 const TITLE = 'Por que Google borra tus resenas (y como recuperarlas)'
@@ -38,18 +39,6 @@ export const metadata: Metadata = {
 export default function BlogDesaparecenResenas() {
   const related = getPostBySlug('como-responder-resenas-negativas-sin-arruinar-tu-reputacion')
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: TITLE,
-    description: DESCRIPTION,
-    datePublished: PUBLISHED,
-    dateModified: UPDATED,
-    author: { '@type': 'Organization', name: 'Medano', url: 'https://www.medano.co' },
-    publisher: { '@type': 'Organization', name: 'Medano', url: 'https://www.medano.co' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': URL },
-  }
-
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -62,9 +51,12 @@ export default function BlogDesaparecenResenas() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ArticleJsonLd
+        title={TITLE}
+        description={DESCRIPTION}
+        url={URL}
+        publishedAt={PUBLISHED}
+        updatedAt={UPDATED}
       />
       <script
         type="application/ld+json"

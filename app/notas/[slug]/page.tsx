@@ -5,6 +5,7 @@ import BlogPostContent from '@/components/blog/BlogPostContent'
 import RelatedPost from '@/components/blog/RelatedPost'
 import MedanoCTA from '@/components/blog/MedanoCTA'
 import CalculadoraCTA from '@/components/blog/CalculadoraCTA'
+import ArticleJsonLd from '@/app/components/ArticleJsonLd'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -49,29 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const related = getRelatedPost(slug, post.relatedSlug)
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt ?? post.publishedAt,
-    author: {
-      '@type': 'Organization',
-      name: 'Medano',
-      url: 'https://www.medano.co',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Medano',
-      url: 'https://www.medano.co',
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://www.medano.co/notas/${slug}`,
-    },
-  }
+  const url = `https://www.medano.co/notas/${slug}`
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -79,15 +58,19 @@ export default async function BlogPostPage({ params }: Props) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.medano.co' },
       { '@type': 'ListItem', position: 2, name: 'Notas', item: 'https://www.medano.co/notas' },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.medano.co/notas/${slug}` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: url },
     ],
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ArticleJsonLd
+        title={post.title}
+        description={post.description}
+        url={url}
+        publishedAt={post.publishedAt}
+        updatedAt={post.updatedAt}
+        image={post.heroImage}
       />
       <script
         type="application/ld+json"

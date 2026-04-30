@@ -5,6 +5,7 @@ import MedanoCTA from '@/components/blog/MedanoCTA'
 import CalculadoraCTA from '@/components/blog/CalculadoraCTA'
 import RelatedPost from '@/components/blog/RelatedPost'
 import BlogBreadcrumb from '@/components/blog/BlogBreadcrumb'
+import ArticleJsonLd from '@/app/components/ArticleJsonLd'
 import './page.css'
 
 const TITLE = 'NFC, QR o WhatsApp: cual es la mejor forma de pedir resenas'
@@ -36,18 +37,6 @@ export const metadata: Metadata = {
 export default function BlogNfcQrWhatsapp() {
   const related = getPostBySlug('como-conseguir-mas-resenas-en-google')
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: TITLE,
-    description: DESCRIPTION,
-    datePublished: PUBLISHED,
-    dateModified: PUBLISHED,
-    author: { '@type': 'Organization', name: 'Medano', url: 'https://www.medano.co' },
-    publisher: { '@type': 'Organization', name: 'Medano', url: 'https://www.medano.co' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': URL },
-  }
-
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -60,9 +49,11 @@ export default function BlogNfcQrWhatsapp() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ArticleJsonLd
+        title={TITLE}
+        description={DESCRIPTION}
+        url={URL}
+        publishedAt={PUBLISHED}
       />
       <script
         type="application/ld+json"

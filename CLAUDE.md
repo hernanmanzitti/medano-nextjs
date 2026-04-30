@@ -554,8 +554,8 @@ npx tsc --noEmit
 | Decidir si linkear `/herramientas` desde navbar — condicional a tener ≥3 tools LIVE | Media | Pendiente |
 | `/herramientas` NO está linkeado desde el footer — evaluar agregarlo cuando haya más tools LIVE | Media | Pendiente |
 | Revisar visualmente diseños de sesión 2026-04-17 (`/herramientas` hub + `/herramientas/qr-resenas`) — no están del todo revisados | Alta | Pendiente |
-| JSON-LD `Article` schema en posts MDX dinámicos (`content/notas/`) | Alta | Pendiente |
-| JSON-LD `Article` schema en páginas estáticas (`app/notas/[nombre]/`) | Alta | Pendiente |
+| ✅ JSON-LD `Article` schema en posts MDX dinámicos (`content/notas/`) — vía `<ArticleJsonLd>` en `app/components/ArticleJsonLd.tsx`, con Person `Hernán Manzitti` + Organization `Médano` + image absoluta desde `heroImage` | Alta | Completado 2026-04-29 |
+| ✅ JSON-LD `Article` schema en páginas estáticas (`app/notas/[nombre]/`) — los 6 posts dedicados usan el mismo `<ArticleJsonLd>` compartido | Alta | Completado 2026-04-29 |
 
 ---
 
@@ -594,7 +594,7 @@ El parser interno de Discover lee en este orden de prioridad:
 4. **Imágenes**: mínimo 1200px de ancho para ser elegible como hero card en Discover.
 5. **Filtro de dominio**: si un usuario toca "no mostrar este publisher", se bloquea todo el dominio antes del ranking. Un artículo de baja calidad puede suprimir todo el sitio.
 
-**Acción requerida para medano.co**: implementar `Article` schema (JSON-LD) en todos los posts de `/notas`, tanto MDX dinámicos como páginas estáticas. El campo mínimo viable es `headline`, `author` y `publisher`. Verificar que no haya `notranslate` en el `<html>` del sitio.
+**Implementación actual (2026-04-29)**: el `Article` schema vive en el componente compartido `app/components/ArticleJsonLd.tsx`. Lo usan tanto la ruta dinámica MDX (`app/notas/[slug]/page.tsx`) como las 6 páginas estáticas. Emite `headline`, `author` (Person `Hernán Manzitti`), `publisher` (Organization `Médano` con logo), `datePublished`, `dateModified`, `mainEntityOfPage` y, cuando hay `heroImage` en el frontmatter MDX, la `image` absolutizada a `https://medano.co/...`. El `<html lang="es">` del layout no incluye `notranslate` ni `nopagereadaloud` ✅.
 
 Estructura canónica a usar:
 ```json
@@ -699,5 +699,5 @@ grep -rn "#[0-9a-fA-F]\{3,6\}" app/styles/ app/globals.css
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-21 (JSON-LD Article schema en /notas + requisitos Google Discover documentados)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-04-29 (JSON-LD Article schema implementado vía componente compartido `<ArticleJsonLd>` con Person Hernán Manzitti + Organization Médano)*
 *Repo: hernanmanzitti/medano-nextjs*
