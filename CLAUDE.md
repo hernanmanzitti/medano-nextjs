@@ -219,10 +219,7 @@ El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases:
 - Al finalizar un batch, actualizar `docs/blog-roadmap.md`
 
 Posts pendientes:
-- `resenas-negativas-veterinarias`
-- `restaurante-mala-nota-rappi`
-- `cuanto-cuesta-reputacion-argentina`
-- `verificar-multiples-sucursales`
+- *(todos completados — ver §13 Plan SEO para próximos temas)*
 
 ---
 
@@ -618,7 +615,7 @@ Estructura canónica a usar:
 }
 ```
 
-### Inventario de /notas (20 posts — 2026-04-13)
+### Inventario de /notas (21 posts — 2026-04-30)
 
 **MDX dinámicos** (`content/notas/`):
 - `como-responder-resenas` — responder reseñas negativas (2024-05-14)
@@ -635,6 +632,7 @@ Estructura canónica a usar:
 - `resenas-negativas-veterinarias` — responder reseñas sensibles en vets (2026-05-22)
 - `restaurante-mala-nota-rappi` — gestión de reputación en delivery (2026-05-29)
 - `cuanto-cuesta-reputacion-argentina` — impacto económico del rating (2026-06-05)
+- `verificar-multiples-sucursales` — verificación individual y masiva para cadenas (2026-06-12)
 
 **Páginas estáticas** (`app/notas/[nombre]/`):
 - `como-responder-resenas-negativas-sin-arruinar-tu-reputacion`
