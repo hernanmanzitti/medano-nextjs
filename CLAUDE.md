@@ -114,13 +114,32 @@ padding-top: calc(72px + var(--section-padding-y));
 ### Scroll lock en iOS Safari
 `overflow: hidden` en body solo no funciona. Usar la técnica:
 ```css
-/* en JS: document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`) */
+/* en JS: document.body.style.setProperty('--scroll-y', `${window.scrollY}px`) — se lee del
+   MISMO elemento (body) donde se setea; --scroll-y se guarda POSITIVO (window.scrollY),
+   la CSS hace el -1 */
 body.menu-open {
   position: fixed;
   top: calc(-1 * var(--scroll-y));
   width: 100%;
 }
 ```
+
+Al restaurar el scroll en JS: `window.scrollTo(0, parseInt(scrollY, 10) || 0)` **sin** negar
+el valor — `--scroll-y` ya está guardado positivo, la negación vive en el `calc()` de la CSS.
+Restaurar con `* -1` en JS clampea a 0 y deja la página "trabada arriba".
+
+### Menú mobile — hit-testing y cierre al tocar link (bug fix 2026-07)
+1. **Panel cerrado con solo `opacity:0` + `visibility:hidden` no alcanza.** `visibility` está en
+   la lista de `transition`, así que el navegador no lo pasa a `hidden` hasta que termina toda
+   la transición (~250ms) — durante ese margen el panel sigue siendo hit-testable mientras se
+   desvanece, y un tap puede activar un link invisible detrás. Agregar `pointer-events: none`
+   explícito al estado cerrado (no forma parte de la `transition`, corta el hit-test al instante
+   que se remueve la clase `is-open`) y `pointer-events: auto` en `.is-open`.
+2. **`closeMenu` no debe forzar `window.scrollTo` cuando el cierre viene de un click en un link**
+   del menú (o pelea con el scroll-into-view del anchor `#contact`/`scroll-margin-top`, o con el
+   routing de `next/link`). Solución: `closeMenu(options?: { restoreScroll?: boolean })` —
+   default `true` para el botón toggle y Escape (ahí sí hay que restaurar scroll + devolver foco
+   al toggle), pero el listener de clicks en links del menú llama `closeMenu({ restoreScroll: false })`.
 
 ---
 

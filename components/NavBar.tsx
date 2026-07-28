@@ -9,19 +9,22 @@ export function NavBar({ activePage }: { activePage?: string }) {
   const toggleRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLUListElement>(null)
 
-  const closeMenu = useCallback(() => {
+  const closeMenu = useCallback((options?: { restoreScroll?: boolean }) => {
     const toggle = toggleRef.current
     const menu = menuRef.current
     if (!toggle || !menu) return
+    const restoreScroll = options?.restoreScroll ?? true
     toggle.setAttribute('aria-expanded', 'false')
     toggle.setAttribute('aria-label', 'Abrir menú de navegación')
     menu.classList.remove('is-open')
-    const scrollY = document.body.style.top
-    document.body.style.removeProperty('top')
-    window.scrollTo(0, parseInt(scrollY || '0') * -1)
+    const scrollY = document.body.style.getPropertyValue('--scroll-y')
+    document.body.style.removeProperty('--scroll-y')
     document.body.classList.remove('menu-open', 'nav-open')
     document.body.style.removeProperty('--scrollbar-width')
-    toggle.focus()
+    if (restoreScroll) {
+      window.scrollTo(0, parseInt(scrollY, 10) || 0)
+      toggle.focus()
+    }
   }, [])
 
   const openMenu = useCallback(() => {
@@ -67,8 +70,9 @@ export function NavBar({ activePage }: { activePage?: string }) {
     if (!menu) return
 
     const links = menu.querySelectorAll('a')
-    links.forEach(link => link.addEventListener('click', closeMenu))
-    return () => links.forEach(link => link.removeEventListener('click', closeMenu))
+    const handleLinkClick = () => closeMenu({ restoreScroll: false })
+    links.forEach(link => link.addEventListener('click', handleLinkClick))
+    return () => links.forEach(link => link.removeEventListener('click', handleLinkClick))
   }, [closeMenu])
 
   useEffect(() => {

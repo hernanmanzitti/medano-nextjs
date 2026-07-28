@@ -890,6 +890,7 @@ body.nav-open {
     padding: var(--space-20) var(--space-6);
     visibility: hidden;
     opacity: 0;
+    pointer-events: none;
     transform: translateY(-8px);
     transition: opacity var(--duration-normal) var(--ease-out),
                 transform var(--duration-normal) var(--ease-out),
@@ -899,6 +900,7 @@ body.nav-open {
   .nav-links.is-open {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
     transform: translateY(0);
   }
 
