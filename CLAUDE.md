@@ -141,6 +141,17 @@ Restaurar con `* -1` en JS clampea a 0 y deja la página "trabada arriba".
    default `true` para el botón toggle y Escape (ahí sí hay que restaurar scroll + devolver foco
    al toggle), pero el listener de clicks en links del menú llama `closeMenu({ restoreScroll: false })`.
 
+### WaChip flotante — solapamiento con contenido interactivo en mobile (bug fix 2026-07)
+El WaChip global (`components/WaChip.tsx`, montado en `app/layout.tsx`, `position:fixed`
+bottom-right, `z-index: var(--z-fixed)` = 300) puede solaparse con inputs/CTAs que caen en la
+esquina inferior-derecha del viewport en mobile — especialmente cuando un `.form-row` de 2
+columnas colapsa a 1 columna y el 2do campo queda en esa franja. El tap aterriza en el `<a>`
+del chip (abre wa.me) en vez de en el elemento debajo. Fix: reservar `padding-bottom` extra en
+la sección afectada (mobile) para que esa franja quede sobre espacio vacío, no sobre contenido
+interactivo. **NO ocultar el chip ni tocar su `z-index`** — es deliberadamente alto para flotar
+sobre todo el contenido. Footprint de referencia del chip en mobile: padding + ícono/texto ≈ 45px
++ `bottom: var(--space-4)` (16px) ≈ 61px total desde el borde inferior del viewport.
+
 ---
 
 ## 5. DESIGN TOKENS — Referencia Rápida

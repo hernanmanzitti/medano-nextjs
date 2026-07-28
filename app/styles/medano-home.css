@@ -654,6 +654,11 @@
     grid-template-columns: 1fr;
   }
 
+  /* Despeja el WaChip fijo (bottom-right, ~61px de footprint) para que no se solape con el form */
+  #contact {
+    padding-bottom: calc(var(--space-16) + var(--space-8));
+  }
+
   .projects-header {
     flex-direction: column;
     align-items: flex-start;
