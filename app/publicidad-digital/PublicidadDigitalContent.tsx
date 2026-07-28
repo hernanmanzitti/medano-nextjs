@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from 'react'
-import Link from 'next/link'
 
 export function PublicidadDigitalContent() {
   const observerRef = useRef<IntersectionObserver | null>(null)
@@ -96,13 +95,6 @@ export function PublicidadDigitalContent() {
             <p className="pd-hero-sub animate-in">
               Diseñamos y ejecutamos campañas de publicidad digital orientadas a resultados reales: más conversiones, mejor costo por adquisición y escala sostenida.
             </p>
-
-            <div className="pd-hero-actions animate-in">
-              <Link href="/#contact" className="btn-primary">
-                Empezar ahora
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-            </div>
 
           </div>
         </div>
@@ -382,25 +374,6 @@ export function PublicidadDigitalContent() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section id="pd-cta" aria-label="Llamado a la acción">
-        <div className="container">
-          <div className="pd-cta-content">
-            <span className="pd-cta-label">¿Listo para crecer?</span>
-            <h2 className="pd-cta-title">
-              Empezá a adquirir<br />clientes con propósito.
-            </h2>
-            <p className="pd-cta-sub">
-              Hablemos sobre tu negocio, tus objetivos y qué canales tienen más potencial para vos.
-            </p>
-            <div className="pd-cta-actions">
-              <Link href="/#contact" className="btn-outline">
-                Completar formulario
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   )
 }

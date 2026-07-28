@@ -43,19 +43,6 @@ export default function WhatsappResenasPage() {
                   Pedí reseñas a tus clientes por el canal que más usan. Con un mensaje oficial aprobado por Meta, métricas de entrega en tiempo real, y sin riesgo de que bloqueen tu número.
                 </p>
 
-                <div className="wa-hero-actions animate-in">
-                  <a href="/#contact" className="btn-primary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                    </svg>
-                    Activar en mi cuenta
-                  </a>
-                  <a href="/resenas" className="btn-outline wa-btn-ghost">
-                    Ver servicio de reseñas
-                  </a>
-                </div>
-
                 <div className="wa-hero-trust animate-in">
                   <span className="wa-trust-dot" />
                   API oficial de WhatsApp Business · Aprobado por Meta
@@ -191,7 +178,6 @@ export default function WhatsappResenasPage() {
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
                   <li className="wa-plan-overage"><span className="wa-plan-check">→</span> Si superás el límite, pasás al plan Growth</li>
                 </ul>
-                <a href="/#contact" className="btn-outline wa-btn-ghost wa-plan-cta">Empezar</a>
               </div>
 
               <div className="wa-plan-card wa-plan-card--featured">
@@ -212,7 +198,6 @@ export default function WhatsappResenasPage() {
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
                   <li className="wa-plan-overage"><span className="wa-plan-check">→</span> Si superás el límite, pasás al plan Pro</li>
                 </ul>
-                <a href="/#contact" className="btn-primary wa-plan-cta">Empezar</a>
               </div>
 
               <div className="wa-plan-card">
@@ -232,7 +217,6 @@ export default function WhatsappResenasPage() {
                   <li><span className="wa-plan-check">✓</span> Soporte prioritario</li>
                   <li className="wa-plan-overage"><span className="wa-plan-check">+</span> $0.12 por mensaje extra</li>
                 </ul>
-                <a href="/#contact" className="btn-outline wa-btn-ghost wa-plan-cta">Empezar</a>
               </div>
 
             </div>
@@ -350,28 +334,6 @@ export default function WhatsappResenasPage() {
                 </div>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        {/* ── CTA ──────────────────────────────── */}
-        <section id="wa-cta">
-          <div className="container">
-            <div className="wa-cta-card">
-              <span className="section-label" style={{ justifyContent: 'center' }}>Empezá hoy</span>
-              <h2 className="section-heading">¿Listo para más reseñas<br />por WhatsApp?</h2>
-              <p className="section-subheading" style={{ marginInline: 'auto', textAlign: 'center' }}>
-                Ya tenés el canal más poderoso para pedirlas. Solo falta activar el feature en tu cuenta de Médano.
-              </p>
-              <div className="wa-cta-actions">
-                <a href="/#contact" className="btn-primary">
-                  Activar WhatsApp en mi cuenta
-                </a>
-                <a href="/resenas" className="btn-outline wa-btn-ghost">
-                  Ver servicio de reseñas
-                </a>
-              </div>
-              <p className="wa-cta-note">Disponible para clientes de Médano. Requiere cuenta de WhatsApp Business.</p>
             </div>
           </div>
         </section>
