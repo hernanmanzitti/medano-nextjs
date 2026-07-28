@@ -396,10 +396,19 @@ body.menu-open {
   z-index: var(--z-fixed);
   background-color: transparent;
   padding: var(--space-4) 0;
+  pointer-events: none;
   transition: background-color var(--duration-slow) var(--ease-in-out),
               backdrop-filter var(--duration-slow) var(--ease-in-out),
               box-shadow var(--duration-slow) var(--ease-in-out),
               padding var(--duration-slow) var(--ease-in-out);
+}
+
+/* Reactivar SOLO los hijos interactivos reales — el área vacía del nav no debe capturar taps */
+.nav-logo,
+.nav-links,
+.nav-toggle,
+.nav-cta {
+  pointer-events: auto;
 }
 
 #nav.scrolled {

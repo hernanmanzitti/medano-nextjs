@@ -152,6 +152,29 @@ interactivo. **NO ocultar el chip ni tocar su `z-index`** — es deliberadamente
 sobre todo el contenido. Footprint de referencia del chip en mobile: padding + ícono/texto ≈ 45px
 + `bottom: var(--space-4)` (16px) ≈ 61px total desde el borde inferior del viewport.
 
+### `#nav` fijo capturaba taps en su franja vacía (bug fix 2026-07)
+`#nav` (`position:fixed`, full-width, `top:0`, `z-index: var(--z-fixed)`, background transparente
+hasta `.scrolled`) no tenía `pointer-events: none` — **una caja transparente igual captura taps**
+(pointer-events no depende de opacity/background-color). Como el nav es fijo, esa franja de
+~60-90px ocupa siempre el tope del viewport sin importar el scroll; si un input (u otro elemento
+interactivo) de la página quedaba posicionado bajo esa franja — sobre todo con el teclado virtual
+abierto reacomodando el viewport visual —, el tap iba al `<nav>` en vez de al elemento. Aplica a
+**toda página con navbar fija**, no solo a `#contact`.
+
+Fix: `pointer-events: none` en `#nav` + `pointer-events: auto` solo en sus hijos interactivos
+reales (`.nav-logo`, `.nav-links`, `.nav-toggle`, `.nav-cta`) — el `pointer-events:none` de un
+padre no bloquea a un hijo con `pointer-events:auto` explícito, así que el área "vacía" del nav
+deja de capturar taps sin romper nada clickeable.
+
+⚠️ **Cuidado con el selector de reactivación**: usar `#nav .nav-links { pointer-events: auto }`
+(con el ID como ancestro) sube la especificidad a (1,1,0), que **le gana** a
+`.nav-links.is-open { pointer-events: auto }` del fix del menú mobile (0,2,0) — reactivaría el
+panel del hamburguesa aunque esté cerrado, reintroduciendo el bug de hit-testing ya resuelto. La
+reactivación tiene que ir **sin prefijo de ID** (`.nav-links` a secas, especificidad 0,1,0, igual
+que la regla mobile existente) y en la posición "desktop base" del cascade (antes del
+`@media max-width:768px`), para que la regla mobile posterior (mismo peso, pero declarada después)
+siga ganando por orden de cascada — el mismo patrón de §4 (desktop antes que mobile).
+
 ---
 
 ## 5. DESIGN TOKENS — Referencia Rápida
