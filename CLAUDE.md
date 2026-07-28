@@ -60,7 +60,7 @@
 > ⚠️ `/nosotros` está visible en el nav.
 > ⚠️ El CTA de contacto en todo el sitio apunta a `/#contact` (sección embebida en homepage), NO a `/contacto`.
 > ⚠️ `/whatsapp-resenas` tiene `robots: noindex` — es una landing interna, NO indexable.
-> ⚠️ El único CTA que apunta a `/resenas` en esa página es "Ver servicio de reseñas". Todos los demás a `/#contact`.
+> ⚠️ `/whatsapp-resenas` **no tiene ningún link interno a `/resenas`** — se removieron ambas instancias de "Ver servicio de reseñas" (hero + sección de cierre) en la limpieza de CTAs de 2026-07. Es intencional, no un olvido.
 
 ---
 
@@ -692,6 +692,8 @@ npx tsc --noEmit
 | Reemplazar `public/img/2.png` por imagen ≥1200px (actualmente 642×364) — usada en `restaurante-mala-nota-rappi`, no califica para Discover hero card | Media | Pendiente |
 | Agregar `heroImage` (≥1200px) a las 6 páginas estáticas de `/notas` — **se ejecuta como parte de la AEO ola 1** | Alta | Pendiente |
 | Renombrar `1.png → 1.webp` y `7-9.png → 7-9.jpg` para coherencia de extensiones | Baja | Pendiente |
+| ✅ Remover CTAs "Empezar ahora" (home/publicidad-digital/resenas/whatsapp-resenas) + secciones de cierre `#pd-cta` y `#wa-cta` completas | Media | Completado 2026-07 (PR #1) |
+| Limpieza CSS huérfano tras remover CTAs/secciones: `.pd-hero-actions`, `.wa-hero-actions`, `#wa-cta`/`.wa-cta-card`/`.wa-cta-actions`/`.wa-cta-note`, `#pd-cta`/`.pd-cta-content`/`.pd-cta-label`/`.pd-cta-title`/`.pd-cta-sub`/`.pd-cta-actions` — sin ningún elemento en el JSX que las use | Baja | Pendiente |
 
 ---
 
