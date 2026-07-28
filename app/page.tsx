@@ -89,12 +89,6 @@ export default function HomePage() {
               Gestionamos publicidad digital, reseñas y SEO para que más clientes
               te encuentren, te elijan y vuelvan a elegirte.
             </p>
-            <div className="hero-actions animate-in">
-              <a href="#contact" className="btn-primary">
-                Empezar ahora
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
             <div className="hero-metrics" role="list" aria-label="Métricas destacadas">
               <div role="listitem">
                 <p className="hero-metric-value">+50</p>

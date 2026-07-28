@@ -111,13 +111,6 @@ export function ResenasContent() {
               Rankeá primero en Google, TripAdvisor, Apple Maps y más.
             </p>
 
-            <div className="resenas-hero-actions">
-              <Link href="/#contact" className="btn-primary">
-                Empezar ahora
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-            </div>
-
             <div className="resenas-kpi-strip" role="list" aria-label="Resultados clave">
               <div className="resenas-kpi-card" role="listitem">
                 <p className="resenas-kpi-number">10x</p>
@@ -540,9 +533,6 @@ export function ResenasContent() {
               </p>
             </div>
             <div className="resenas-cta-actions">
-              <Link href="/#contact" className="btn-outline">
-                Completar formulario
-              </Link>
               <a href="https://datatrackers.co/" className="btn-primary" target="_blank" rel="noopener">
                 Conocer DataTrackers
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
