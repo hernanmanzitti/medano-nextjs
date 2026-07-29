@@ -188,6 +188,18 @@
   /* Opacidades */
   --opacity-disabled: 0.4;
   --opacity-hover:    0.85;
+
+  /* ── PLANOS DE PROFUNDIDAD — sistema de superficies (dark theme) ── */
+  /* v1 — EN USO */
+  --surface-raised:        color-mix(in srgb, var(--color-brand-navy) 78%, var(--color-brand-royal));
+  --surface-raised-hover:  color-mix(in srgb, var(--color-brand-navy) 66%, var(--color-brand-royal));
+  --divider-hairline:      color-mix(in srgb, var(--color-brand-mid) 45%, transparent);
+  --color-text-body:       #dfe1f2;   /* lectura larga, +contraste que brand-light */
+
+  /* v2 — DEFINIDO, no aplicar todavía (bandas hundidas) */
+  --color-brand-navy-deep: #001741;
+  --surface-recessed:      var(--color-brand-navy-deep);
+  --surface-base:          var(--color-brand-navy);
 }
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -386,6 +398,26 @@ body.menu-open {
   background-color: var(--color-text-primary);
   color: var(--color-brand-navy);
 }
+
+/* Elevación reutilizable — módulos/cards sobre cualquier plano (v1) */
+.surface-card {
+  background-color: var(--surface-raised);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-default);
+}
+.surface-card:hover {
+  background-color: var(--surface-raised-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* Hairline divisor entre secciones (v1) */
+.section-divider { border-top: var(--border-width-thin) solid var(--divider-hairline); }
+
+/* v2 — bandas hundidas, no aplicar todavía */
+[data-surface="base"]     { background-color: var(--surface-base); }
+[data-surface="recessed"] { background-color: var(--surface-recessed); }
 
 /* ── NAV ──────────────────────────────────────────────────── */
 #nav {

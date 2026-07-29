@@ -108,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* CLIENTS */}
-      <section id="clients" aria-labelledby="clients-heading">
+      <section id="clients" className="section-divider" aria-labelledby="clients-heading">
         <div className="container">
           <div className="clients-header">
             <div className="clients-header-left">
@@ -121,7 +121,7 @@ export default function HomePage() {
                 construimos crecimiento en todas las industrias.
               </p>
             </div>
-            <div className="clients-stats-block">
+            <div className="clients-stats-block surface-card">
               <div className="clients-stat">
                 <p className="clients-stat-value">+50</p>
                 <p className="clients-stat-label">Marcas activas</p>
@@ -140,49 +140,49 @@ export default function HomePage() {
           </div>
 
           <div className="clients-grid" role="list" aria-label="Clientes destacados">
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_kansas.png" alt="Kansas" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_medicus.png" alt="Medicus" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_ar_holdings.png" alt="AR Holdings" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_petrotandil.png" alt="Petrotandil" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_pf.png" alt="PF Changs" className="client-logo-img client-logo-img--wide" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_boreal.png" alt="Boreal Salud" className="client-logo-img client-logo-img--wide" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_hb.png" alt="Británico" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_la_delfina.png" alt="La Delfina" className="client-logo-img client-logo-img--wide" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_faro.png" alt="Grupo Faro Verde" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_jr.png" alt="johnny rockets" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_otamendi.png" alt="Sanatorio Otamendi" className="client-logo-img client-logo-img--wide" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_assistravel.png" alt="Assistravel" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_outback.png" alt="Outback" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_unicomer.png" alt="Grupo Unicomer" className="client-logo-img" />
             </div>
-            <div className="client-logo-item" role="listitem">
+            <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_nexus.png" alt="Nexus Sport" className="client-logo-img" />
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" aria-labelledby="services-heading">
+      <section id="services" className="section-divider" aria-labelledby="services-heading">
         <div className="container">
           <div className="services-header">
             <div>
@@ -224,7 +224,7 @@ export default function HomePage() {
 
           <div className="services-grid" role="list">
             <Link href="/publicidad-digital" className="service-card-link">
-              <article className="service-card animate-in" role="listitem">
+              <article className="service-card surface-card animate-in" role="listitem">
                 <span className="service-number" aria-hidden="true">01</span>
                 <div className="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
@@ -234,7 +234,7 @@ export default function HomePage() {
               </article>
             </Link>
             <Link href="/resenas" className="service-card-link">
-              <article className="service-card animate-in" role="listitem">
+              <article className="service-card surface-card animate-in" role="listitem">
                 <span className="service-number" aria-hidden="true">02</span>
                 <div className="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -243,7 +243,7 @@ export default function HomePage() {
                 <p>Google, TripAdvisor, Meta, UberEats y más plataformas.</p>
               </article>
             </Link>
-            <article className="service-card animate-in" role="listitem">
+            <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">03</span>
               <div className="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -251,7 +251,7 @@ export default function HomePage() {
               <h3>Analytics &amp; Data</h3>
               <p>Dashboards en tiempo real, atribución multicanal y reporting ejecutivo para decisiones basadas en datos reales.</p>
             </article>
-            <article className="service-card animate-in" role="listitem">
+            <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">04</span>
               <div className="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -259,7 +259,7 @@ export default function HomePage() {
               <h3>SEO &amp; Posicionamiento</h3>
               <p>Estrategia orgánica y optimización técnica para convertir buscadores en fuentes de rentabilidad sostenible.</p>
             </article>
-            <article className="service-card animate-in" role="listitem">
+            <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">05</span>
               <div className="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -324,7 +324,7 @@ export default function HomePage() {
       </section>*/}
 
       {/* ABOUT */}
-      <section id="about" aria-labelledby="about-heading">
+      <section id="about" className="section-divider" aria-labelledby="about-heading">
         <div className="container">
           <div className="about-grid">
             <div className="about-visual">
@@ -384,7 +384,7 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" aria-labelledby="contact-heading">
+      <section id="contact" className="section-divider" aria-labelledby="contact-heading">
         <div className="contact-bg" aria-hidden="true"></div>
         <div className="contact-bg-dots" aria-hidden="true"></div>
         <div className="container">
