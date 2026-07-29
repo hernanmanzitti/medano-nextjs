@@ -175,6 +175,29 @@ que la regla mobile existente) y en la posición "desktop base" del cascade (ant
 `@media max-width:768px`), para que la regla mobile posterior (mismo peso, pero declarada después)
 siga ganando por orden de cascada — el mismo patrón de §4 (desktop antes que mobile).
 
+### Sistema de superficies — planos de profundidad (2026-07)
+Fix de contraste entre secciones del homepage (mobile-first). Tokens nuevos en `:root` de `globals.css`:
+
+```css
+/* v1 — EN USO */
+--surface-raised        /* fondo elevado para cards sobre cualquier plano */
+--surface-raised-hover  /* hover de surface-raised */
+--divider-hairline      /* color del hairline entre secciones */
+--color-text-body       /* #dfe1f2 — más contraste que --color-text-secondary para lectura larga */
+
+/* v2 — DEFINIDO, NO aplicado todavía (bandas hundidas) */
+--color-brand-navy-deep
+--surface-recessed
+--surface-base
+```
+
+Clases utilitarias compartidas (`globals.css`, junto a `.btn-outline`):
+- `.surface-card` — eleva cualquier módulo/card (`background-color: var(--surface-raised)` + borde + radius + shadow + hover). Aplicada en el home a `.client-logo-item`, `.clients-stats-block` y `.service-card`.
+- `.section-divider` — hairline `border-top` para separar secciones. Va en el `<section>`, en todas menos la primera de la página (en el home: `#clients`, `#services`, `#about`, `#contact`; **no** en `#hero`).
+- `[data-surface="base"]` / `[data-surface="recessed"]` — v2, bandas hundidas, **no usar todavía** (falta decisión de diseño sobre dónde aplicarlas).
+
+⚠️ La grilla de logos de clientes (`.clients-grid` / `.client-logo-item` en `medano-home.css`) dejó de separar celdas con `border-right`/`border-bottom` internos — ahora cada celda es una `.surface-card` independiente y la separación es por `gap` (`var(--grid-gap)` desktop, `var(--grid-gap-sm)` en el `@media 768px` existente, declarado después del base).
+
 ---
 
 ## 5. DESIGN TOKENS — Referencia Rápida
@@ -195,6 +218,9 @@ El archivo fuente de verdad es `design-tokens.md`. Tokens más usados:
 --color-text-secondary   → subtítulos (--color-brand-light)
 --color-accent           → CTAs principales
 --color-border-default   → bordes generales
+--color-text-body        → texto de lectura larga (#dfe1f2), +contraste que --color-text-secondary
+--surface-raised         → fondo de cards elevadas sobre cualquier plano (ver §4 Sistema de superficies)
+--divider-hairline       → color del hairline de `.section-divider`
 
 /* Tipografía */
 --font-display:  'Barlow Condensed'   /* Títulos */
@@ -717,6 +743,8 @@ npx tsc --noEmit
 | Renombrar `1.png → 1.webp` y `7-9.png → 7-9.jpg` para coherencia de extensiones | Baja | Pendiente |
 | ✅ Remover CTAs "Empezar ahora" (home/publicidad-digital/resenas/whatsapp-resenas) + secciones de cierre `#pd-cta` y `#wa-cta` completas | Media | Completado 2026-07 (PR #1) |
 | Limpieza CSS huérfano tras remover CTAs/secciones: `.pd-hero-actions`, `.wa-hero-actions`, `#wa-cta`/`.wa-cta-card`/`.wa-cta-actions`/`.wa-cta-note`, `#pd-cta`/`.pd-cta-content`/`.pd-cta-label`/`.pd-cta-title`/`.pd-cta-sub`/`.pd-cta-actions` — sin ningún elemento en el JSX que las use | Baja | Pendiente |
+| ✅ Fix contraste entre secciones homepage (mobile-first, v1): tokens `--surface-raised`/`--divider-hairline`/`--color-text-body` + clases `.surface-card` (logos, stats, servicios) y `.section-divider` (todas las secciones menos `#hero`); grilla de logos pasó de bordes internos a `gap` | Alta | Completado 2026-07-29, deployado a producción |
+| **v2 pendiente**: aplicar bandas hundidas (`--surface-recessed`/`--surface-base`, `[data-surface]`) — tokens ya definidos en §4/§5, falta decidir en qué secciones del home aplicarlas | Media | Pendiente |
 
 ---
 
@@ -1014,5 +1042,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-05-11 (estrategia AEO integrada: portabilidad cross-engine, reglas editoriales universales, checklist H, plan SEO reordenado AEO-first, bug §14 duplicada arreglado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-29 (sistema de superficies v1: `.surface-card`/`.section-divider`/`--surface-raised`/`--divider-hairline`/`--color-text-body` en §4/§5; grilla de logos de clientes pasó de bordes internos a gap; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
