@@ -5,53 +5,8 @@
    ============================================================ */
 
 /* ── 1. HERO ────────────────────────────────────────────────── */
-
-#nosotros-hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  padding-block: calc(var(--space-20) + 4rem) var(--space-20);
-  overflow: hidden;
-  background-color: var(--color-brand-navy);
-}
-
-.nosotros-hero-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-brand);
-  opacity: 0.9;
-}
-
-.nosotros-hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
-
-#nosotros-hero::after {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  max-width: 720px;
-  max-height: 720px;
-  background: radial-gradient(circle, var(--color-brand-royal-50) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.nosotros-hero-inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: var(--space-12);
-}
+/* El bloque de #nosotros-hero (hero rotatorio del equipo) vive al final
+   del archivo — ver sección "#nosotros-hero — Hero spotlight rotatorio". */
 
 .nosotros-page-nav {
   display: flex;
@@ -88,22 +43,6 @@
 
 .nosotros-pn-item:hover .nosotros-pn-arrow {
   transform: translateX(3px);
-}
-
-.nosotros-hero-heading {
-  display: grid;
-  gap: var(--space-6);
-  max-width: 760px;
-}
-
-.nosotros-hero-subtitle {
-  font-family: var(--font-body);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-light);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text-secondary);
-  max-width: 520px;
-  margin: 0;
 }
 
 /* ── 2. QUIÉNES SOMOS ────────────────────────────────────────── */
@@ -762,11 +701,6 @@
 }
 
 @media (max-width: 768px) {
-  #nosotros-hero {
-    padding-block-start: calc(var(--space-16) + 4rem);
-    min-height: 80svh;
-  }
-
   .nosotros-page-nav {
     gap: var(--space-2);
   }
@@ -851,4 +785,187 @@
     flex-direction: column;
     gap: var(--space-5);
   }
+}
+
+/* ==========================================================================
+   #nosotros-hero — Hero spotlight rotatorio del equipo (crossfade)
+   --nh-rotate debe coincidir con ROTATE_MS del componente
+   ========================================================================== */
+#nosotros-hero{
+  --nh-rotate: 3500ms;
+  --nh-cross: 800ms;
+
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-brand);
+  color: var(--color-text-primary);
+  padding: calc(72px + var(--section-padding-y)) var(--container-padding-x) var(--section-padding-y);
+}
+#nosotros-hero *{ box-sizing: border-box; }
+
+#nosotros-hero::before{
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(58% 50% at 80% 28%,
+    color-mix(in srgb, var(--color-brand-mid) 28%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+#nosotros-hero .nh-container{
+  position: relative;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+/* Copy */
+#nosotros-hero .nh-eyebrow{
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm); font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-brand-light);
+}
+#nosotros-hero .nh-title{
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-display); font-weight: var(--font-weight-bold);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 1.05; letter-spacing: var(--tracking-tight);
+  max-width: 16ch;
+}
+#nosotros-hero .nh-lead{
+  margin: 0; max-width: 48ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+#nosotros-hero .nh-copy .nosotros-page-nav{
+  margin-top: var(--space-8);
+}
+
+/* Stage / frame */
+#nosotros-hero .nh-stage{ width: 100%; max-width: 420px; margin-inline: auto; }
+#nosotros-hero .nh-frame{
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  box-shadow: var(--shadow-xl);
+  background: var(--color-brand-navy);
+}
+
+/* Paneles (crossfade) */
+#nosotros-hero .nh-panel{
+  position: absolute; inset: 0; margin: 0;
+  opacity: 0;
+  transition: opacity var(--nh-cross) var(--ease-brand);
+}
+#nosotros-hero .nh-panel.is-active{ opacity: 1; }
+
+#nosotros-hero .nh-photo{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 20%;
+  transform: scale(1.001);
+}
+#nosotros-hero .nh-panel.is-active .nh-photo{
+  animation: nhZoom var(--nh-rotate) linear both;
+}
+
+/* Meta sobre la foto */
+#nosotros-hero .nh-meta{
+  position: absolute; inset: auto 0 0 0;
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: linear-gradient(to top,
+    var(--color-brand-navy) 0%,
+    color-mix(in srgb, var(--color-brand-navy) 55%, transparent) 42%,
+    transparent 76%);
+}
+#nosotros-hero .nh-name{
+  font-family: var(--font-display); font-weight: var(--font-weight-bold);
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.1;
+}
+#nosotros-hero .nh-role{ font-size: var(--text-sm); color: var(--color-brand-light); }
+#nosotros-hero .nh-linkedin{
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  margin-top: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm); font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary); text-decoration: none;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-brand-light) 6%, transparent);
+  transition: var(--transition-colors);
+}
+#nosotros-hero .nh-linkedin:hover{
+  background: color-mix(in srgb, var(--color-brand-light) 16%, transparent);
+  border-color: var(--color-brand-mid);
+}
+
+/* Progreso */
+#nosotros-hero .nh-progress{
+  height: 2px; margin-top: var(--space-4);
+  background: color-mix(in srgb, var(--color-brand-light) 18%, transparent);
+  border-radius: var(--radius-full); overflow: hidden;
+}
+#nosotros-hero .nh-progress-bar{
+  display: block; height: 100%; width: 0;
+  background: var(--color-brand-light);
+  animation: nhProgress var(--nh-rotate) linear both;
+}
+
+/* Controles */
+#nosotros-hero .nh-controls{
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--space-3);
+}
+#nosotros-hero .nh-dots{ display: flex; gap: var(--space-2); }
+#nosotros-hero .nh-dot{
+  width: 9px; height: 9px; padding: 0;
+  border: none; border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-brand-light) 32%, transparent);
+  cursor: pointer;
+  transition: width var(--nh-cross) var(--ease-brand), background var(--nh-cross) var(--ease-brand);
+}
+#nosotros-hero .nh-dot.is-active{ width: 26px; background: var(--color-brand-light); }
+#nosotros-hero .nh-hint{
+  font-size: var(--text-xs);
+  color: color-mix(in srgb, var(--color-brand-light) 55%, transparent);
+}
+
+/* SR-only */
+#nosotros-hero .nh-live{
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Focus visible */
+#nosotros-hero .nh-dot:focus-visible,
+#nosotros-hero .nh-linkedin:focus-visible{
+  outline: var(--border-width-thick) solid var(--color-brand-light);
+  outline-offset: 3px;
+}
+
+/* Keyframes */
+@keyframes nhProgress{ from{ width: 0; } to{ width: 100%; } }
+@keyframes nhZoom{ from{ transform: scale(1.001); } to{ transform: scale(1.06); } }
+
+/* Mobile — DESPUÉS del base (regla de cascade §4) */
+@media (max-width: 768px){
+  #nosotros-hero{ padding: calc(72px + var(--section-padding-y-sm)) var(--container-padding-x-sm) var(--section-padding-y-sm); }
+  #nosotros-hero .nh-container{ grid-template-columns: 1fr; gap: var(--space-8); }
+  #nosotros-hero .nh-stage{ max-width: 340px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  #nosotros-hero .nh-panel{ transition: opacity 180ms linear; }
+  #nosotros-hero .nh-panel.is-active .nh-photo{ animation: none; }
+  #nosotros-hero .nh-progress{ display: none; }
 }

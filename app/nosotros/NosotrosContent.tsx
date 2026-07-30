@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import '../styles/nosotros.css'
+import NosotrosHero from './NosotrosHero'
 
 export function NosotrosContent() {
   const observerRef = useRef<IntersectionObserver | null>(null)
@@ -51,42 +52,7 @@ export function NosotrosContent() {
       />
 
       {/* HERO */}
-      <section id="nosotros-hero" aria-label="Presentación del equipo">
-        <div className="nosotros-hero-bg" aria-hidden="true"></div>
-        <div className="nosotros-hero-grid" aria-hidden="true"></div>
-        <div className="container">
-          <div className="nosotros-hero-inner">
-            <div className="nosotros-hero-heading">
-              <div className="hero-eyebrow-shared animate-in">
-                <span className="hero-dot" aria-hidden="true"></span>
-                Empresa
-              </div>
-              <h1 className="hero-title-shared animate-in">
-                <em>El equipo</em> que construye tu reputación.
-              </h1>
-              <p className="nosotros-hero-subtitle animate-in">
-                Somos socios estratégicos de largo plazo, no solo proveedores.
-                Impacto medible, decisiones basadas en datos.
-              </p>
-            </div>
-
-            <nav className="nosotros-page-nav" aria-label="Secciones de la página">
-              <a href="#quienes-somos" className="nosotros-pn-item">
-                <span>Quiénes somos</span>
-                <span className="nosotros-pn-arrow" aria-hidden="true">→</span>
-              </a>
-              <a href="#nuestro-camino" className="nosotros-pn-item">
-                <span>Nuestro camino</span>
-                <span className="nosotros-pn-arrow" aria-hidden="true">→</span>
-              </a>
-              <a href="#el-equipo" className="nosotros-pn-item">
-                <span>El equipo</span>
-                <span className="nosotros-pn-arrow" aria-hidden="true">→</span>
-              </a>
-            </nav>
-          </div>
-        </div>
-      </section>
+      <NosotrosHero />
 
       {/* QUIENES SOMOS */}
       <section id="quienes-somos" aria-labelledby="quienes-somos-title">
