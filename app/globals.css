@@ -49,6 +49,7 @@
   --gradient-text:           linear-gradient(90deg, #ffffff 0%, var(--color-brand-light) 100%);
 
   /* Tints */
+  --color-brand-navy-90:     rgba(0, 36, 107, 0.90);
   --color-brand-navy-75:     rgba(0, 36, 107, 0.75);
   --color-brand-navy-50:     rgba(0, 36, 107, 0.50);
   --color-brand-navy-25:     rgba(0, 36, 107, 0.25);
@@ -419,122 +420,37 @@ body.menu-open {
 [data-surface="base"]     { background-color: var(--surface-base); }
 [data-surface="recessed"] { background-color: var(--surface-recessed); }
 
-/* ============================================================
-   #closing-banner — banda de imagen full-bleed antes del footer
-   Compartida por: home, /resenas, /publicidad-digital,
-   /whatsapp-resenas, /nosotros. Imagen por página vía --closing-bg.
-   Tokens tipográficos --type-* del brief original no existen en este
-   proyecto (solo design-tokens.md, que tampoco existe) — mapeados a
-   los tokens reales que ya usan patrones equivalentes (hero-eyebrow,
-   hero-subtitle, btn-primary).
-   ============================================================ */
-#closing-banner {
+/* .section-photo-bg — foto full-bleed + velo navy sobre una <section>
+   EXISTENTE (la última antes del footer). Funde en el footer con el
+   fade a --color-bg-base. La imagen se pasa por --closing-bg inline.
+   Especificidad section.section-photo-bg = (0,1,1), a propósito para
+   ganarle a un fondo de página de una sola clase. Si la sección ya
+   define background en un selector de ID (#seccion { background: ... }),
+   esa regla de ID (1,0,0) sigue ganando pase lo que pase — hay que
+   remover esa propiedad puntual en el page.css correspondiente. */
+section.section-photo-bg {
   position: relative;
   isolation: isolate;
-  display: grid;
-  align-content: end;
-  min-height: clamp(28rem, 60vh, 40rem);
-  padding-block: var(--space-24) var(--space-16);
-  padding-inline: var(--container-padding-x);
   background-image:
     linear-gradient(to bottom,
-      var(--color-brand-navy-25) 0%,
-      var(--color-brand-navy-50) 45%,
-      var(--color-brand-navy-75) 72%,
+      var(--color-brand-navy-50) 0%,
+      var(--color-brand-navy-75) 55%,
       var(--color-bg-base) 100%),
-    var(--closing-bg, var(--gradient-brand));
+    var(--closing-bg, none);
   background-size: cover;
-  background-position: center 30%;
+  background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
-}
-#closing-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-below);
-  background: linear-gradient(105deg,
-    var(--color-brand-navy-75) 0%,
-    var(--color-brand-navy-25) 42%,
-    transparent 68%);
-}
-#closing-banner .closing-inner {
-  width: min(100%, var(--container-max-width));
-  margin-inline: auto;
-  max-width: 46rem;
-}
-#closing-banner .closing-overline {
-  display: inline-block;
-  margin-bottom: var(--space-4);
-  font-family: var(--font-ui);
-  font-size: var(--text-xs);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
-#closing-banner .closing-title {
-  margin: 0 0 var(--space-5);
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
-  font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text-primary);
-  text-wrap: balance;
-}
-#closing-banner .closing-sub {
-  margin: 0 0 var(--space-8);
-  max-width: 34rem;
-  font-family: var(--font-body);
-  font-size: var(--text-md);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text-body);
-}
-#closing-banner .closing-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-md);
-  background-color: var(--color-text-primary);
-  color: var(--color-text-inverse);
-  font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-decoration: none;
-  transition: var(--transition-transform), var(--transition-colors);
-}
-#closing-banner .closing-cta:hover {
-  transform: translateY(-2px);
-  background-color: var(--color-brand-light);
-}
-#closing-banner .closing-cta:focus-visible {
-  outline: var(--border-width-thick) solid var(--color-text-primary);
-  outline-offset: var(--space-1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  #closing-banner .closing-inner > * { animation: closingRise var(--duration-slower) var(--ease-brand) both; }
-  #closing-banner .closing-overline { animation-delay: 40ms; }
-  #closing-banner .closing-title { animation-delay: 120ms; }
-  #closing-banner .closing-sub { animation-delay: 200ms; }
-  #closing-banner .closing-cta { animation-delay: 280ms; }
-}
-@keyframes closingRise {
-  from { opacity: 0; transform: translateY(var(--space-4)); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-  #closing-banner {
-    min-height: clamp(24rem, 72vh, 34rem);
-    padding-block: var(--space-20) var(--space-12);
-    background-position: center 35%;
-  }
-  #closing-banner .closing-title { font-size: clamp(var(--text-3xl), 9vw, var(--text-5xl)); }
-  #closing-banner .closing-cta { width: 100%; justify-content: center; }
+/* Velo reforzado para secciones con UI densa (formularios).
+   La foto queda como textura sutil; el contenido manda. */
+section.section-photo-bg.section-photo-bg--veiled {
+  background-image:
+    linear-gradient(to bottom,
+      var(--color-brand-navy-75) 0%,
+      var(--color-brand-navy-90) 50%,
+      var(--color-bg-base) 100%),
+    var(--closing-bg, none);
 }
 
 /* ── NAV ──────────────────────────────────────────────────── */

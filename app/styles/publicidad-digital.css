@@ -464,7 +464,6 @@
 /* ── Partners ──────────────────────────────────────────────── */
 #pd-partners {
   padding: var(--section-padding-y) 0;
-  background: var(--color-bg-base);
 }
 
 .pd-partners-header {

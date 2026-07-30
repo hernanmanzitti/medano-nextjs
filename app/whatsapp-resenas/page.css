@@ -503,7 +503,6 @@
 /* ── FEATURES ──────────────────────────────────── */
 #wa-features {
   padding-block: var(--section-padding-y);
-  background-color: var(--color-bg-subtle);
   border-top: var(--border-width-default) solid var(--color-border-subtle);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }

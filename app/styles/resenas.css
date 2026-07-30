@@ -452,7 +452,6 @@
    ════════════════════════════════════════════════════ */
 #resenas-cta {
   padding: var(--space-20) 0;
-  background: var(--gradient-brand);
   position: relative; overflow: hidden;
 }
 #resenas-cta::before {

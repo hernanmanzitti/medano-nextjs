@@ -3,6 +3,7 @@
 import { useRef, FormEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import RotatingHeadline from '@/app/components/RotatingHeadline'
 import './styles/medano-home.css'
 
 export default function HomePage() {
@@ -82,8 +83,10 @@ export default function HomePage() {
               <span className="hero-dot" aria-hidden="true"></span>
               Crecimiento Digital
             </div>
-            <h1 className="hero-title animate-in">
-              Gestionamos la reputación online y la publicidad digital de tu empresa
+            <h1 className="hero-title hero-title--stacked animate-in">
+              <span className="hero-line">Gestionamos</span>
+              <RotatingHeadline />
+              <span className="hero-line">de tu empresa</span>
             </h1>
             <p className="hero-subtitle animate-in">
               Gestionamos publicidad digital, reseñas y SEO para que más clientes
@@ -384,7 +387,12 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="section-divider" aria-labelledby="contact-heading">
+      <section
+        id="contact"
+        className="section-divider section-photo-bg section-photo-bg--veiled"
+        aria-labelledby="contact-heading"
+        style={{ '--closing-bg': "url('/img/closing-home.jpg')" } as React.CSSProperties}
+      >
         <div className="contact-bg" aria-hidden="true"></div>
         <div className="contact-bg-dots" aria-hidden="true"></div>
         <div className="container">
@@ -395,7 +403,7 @@ export default function HomePage() {
               Contanos sobre tu marca.
             </p>
 
-            <form id="contact-form" className="contact-form" noValidate onSubmit={handleSubmit}>
+            <form id="contact-form" className="contact-form surface-card" noValidate onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre <span className="sr-only">(requerido)</span></label>
@@ -426,19 +434,6 @@ export default function HomePage() {
               </button>
             </form>
           </div>
-        </div>
-      </section>
-
-      {/* Banda de cierre — imagen full-bleed antes del footer */}
-      <section
-        id="closing-banner"
-        style={{ '--closing-bg': "url('/img/closing-home.jpg')" } as React.CSSProperties}
-      >
-        <div className="closing-inner">
-          <span className="closing-overline">Agencia de crecimiento digital</span>
-          <h2 className="closing-title">Hacemos crecer negocios con muchas sucursales</h2>
-          <p className="closing-sub">Reseñas, publicidad y datos que convierten cada local en una máquina de captar clientes.</p>
-          <a className="closing-cta" href="/#contact">Comprobá cómo <span aria-hidden="true">→</span></a>
         </div>
       </section>
     </>
