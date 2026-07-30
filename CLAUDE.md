@@ -198,17 +198,25 @@ Clases utilitarias compartidas (`globals.css`, junto a `.btn-outline`):
 
 ⚠️ La grilla de logos de clientes (`.clients-grid` / `.client-logo-item` en `medano-home.css`) dejó de separar celdas con `border-right`/`border-bottom` internos — ahora cada celda es una `.surface-card` independiente y la separación es por `gap` (`var(--grid-gap)` desktop, `var(--grid-gap-sm)` en el `@media 768px` existente, declarado después del base).
 
-### `#closing-banner` — banda de cierre full-bleed antes del footer (2026-07-30)
-Clase/ID compartido (`globals.css`, junto a `.surface-card`/`.section-divider`) usado como
-**último bloque** de 5 páginas, justo antes de `<Footer/>` (que es global, montado en
-`app/layout.tsx`): home, `/resenas`, `/publicidad-digital`, `/whatsapp-resenas`, `/nosotros`.
-Patrón visual estilo "foto que se funde en el footer" (overlay `--color-brand-navy-25/50/75` →
-`--color-bg-base` sobre la imagen).
+### `.section-photo-bg` — foto full-bleed sobre la última sección existente antes del footer (2026-07-30)
+Clase modificadora (`globals.css`, junto a `.surface-card`/`.section-divider`) que se aplica a
+la **última `<section>` que YA existe** antes de `<Footer/>` (global, montado en `app/layout.tsx`)
+en 5 páginas — **NO crea una sección nueva**. Reemplaza un diseño anterior (`#closing-banner`,
+sección nueva con overline/título/bajada/CTA propios) que se probó y se descartó por decisión de
+producto: se prefirió mantener el contenido real de la última sección de cada página y solo
+ponerle una foto de fondo detrás.
 
-- La imagen es **contenido, no color** — se pasa inline vía `style={{ '--closing-bg': "url('/img/closing-X.jpg')" } as React.CSSProperties}` en el `<section id="closing-banner">`. Esto está permitido por la regla de "sin hex crudo" porque no es un valor de color, es una URL de asset.
-- Si la imagen no existe, `background-image: ..., var(--closing-bg, var(--gradient-brand))` cae al gradiente de marca sin romper el build — placeholder intencional hasta subir fotos reales.
-- Estructura interna fija: `.closing-inner > .closing-overline + .closing-title(h2) + .closing-sub + .closing-cta(a href="/#contact")`.
-- ⚠️ Los tokens `--type-caption-*`/`--type-body-lg-*`/`--type-label-*` **no existen** en este proyecto (ni existe `design-tokens.md` en el repo) — el CSS real usa `--text-xs`/`--text-md`/`--text-sm` + `--font-weight-semibold`/`--tracking-widest`/`--tracking-wide`, los mismos tokens que ya usan `.hero-eyebrow`, `.hero-subtitle` y `.btn-primary`. Si un brief futuro pide tokens `--type-*`, verificar antes de copiar CSS — probablemente haya que mapearlos igual.
+- Selector `section.section-photo-bg` (especificidad 0,1,1) — deliberado, para ganarle a un
+  fondo de página de una sola clase. **Pero si la sección ya tiene su fondo en un selector de
+  ID** (`#seccion { background: ... }`, especificidad 1,0,0), ese ID gana siempre pase lo que
+  pase — hay que remover esa propiedad puntual del `page.css` correspondiente (no usar `!important`).
+  Esto pasó en las 4 páginas no-home: `#pd-partners`, `#resenas-cta`, `#wa-features`,
+  `#nosotros-cta` tenían `background`/`background-color` propio en su ID — removido.
+- La imagen es **contenido, no color** — se pasa inline vía `style={{ '--closing-bg': "url('/img/closing-X.jpg')" } as React.CSSProperties}`. Fotos reales ya subidas en `public/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg` (1280×720 — por debajo del ≥1920px ideal para full-bleed en pantallas grandes).
+- Variante `.section-photo-bg--veiled` (velo más oscuro: `--color-brand-navy-75` → `--color-brand-navy-90` → `--color-bg-base`) — **solo en home**, porque ahí la última sección es `#contact` (un formulario) y la foto necesita quedar como textura sutil, no protagonista. El resto de páginas usa la clase base sin `--veiled`.
+- En home, `.contact-bg` (div hijo de `#contact` que pintaba `var(--gradient-brand)` opaco) se neutralizó (se le quitó el `background`) porque, al ser un hijo en el DOM, pintaba encima del fondo de la sección y tapaba la foto por completo.
+- El form de `#contact` en home ahora usa `.surface-card` (reusada, no duplicada) + `padding: var(--card-padding)` para que se lea como superficie sólida sobre la foto; los inputs pasaron de `--color-bg-subtle` (translúcido) a `--color-bg-surface` (opaco) para contrastar contra la card.
+- Token `--color-brand-navy-90` (rgba(0,36,107,.90)) agregado a `:root` — no existía, lo necesitaba `--veiled`.
 
 ---
 
@@ -305,6 +313,26 @@ El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client componen
 ### WaPhoneMockup — Patrón de animación por fases
 El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases: `idle → sent → typing → received → read → pause → exit`) con `key={convIdx}` en el wrapper para forzar remount completo al cambiar conversación. **No usar** `animating` boolean simple — el remount es lo que dispara las animaciones CSS. Cada conversación tiene `phoneBg` y `headerBg` como inline styles (no tokens, porque son colores temáticos del mockup, no de la marca).
 
+### RotatingHeadline — H1 del hero home con segmento animado (2026-07-30)
+`app/components/RotatingHeadline.tsx` (client component, importado con el alias `@/app/components/...`
+como el resto de `app/components`) rota un array de frases (`DEFAULT_PHRASES`, 6 frases,
+`INTERVAL_MS = 2600`) con `key={i}` en el `<span>` interno para forzar remount y re-disparar la
+animación CSS de entrada (`heroWordIn`) — mismo patrón de "remount vía `key`" que `WaPhoneMockup`.
+**Solo se usa en el H1 de `app/page.tsx`** (home), no en otras páginas.
+
+- El `<h1>` pasó de una sola línea a 3 vía la clase `.hero-title--stacked` (`display:flex;
+  flex-direction:column`): `"Gestionamos"` (fija) → `<RotatingHeadline />` (rota) → `"de tu
+  empresa"` (fija). El `<h1>` sigue siendo uno solo y renderiza la frase 1 server-side (SEO/GEO
+  intactos — nada de contenido gateado por `useState`/`useEffect` antes del primer render).
+- CSS **home-only** en `app/styles/medano-home.css` (no en `globals.css`, porque no lo comparte
+  ninguna otra página): `.hero-rotator` reserva `min-height` (1.1em desktop / 2.2em mobile) para
+  no saltar el layout mientras rota; verificado con Playwright que ni la frase más larga ("el
+  community management y los diseños", 3 líneas en mobile) desplaza el contenido siguiente —
+  el hero tiene `min-height:100svh` con margen de sobra para absorber la diferencia.
+- El segmento rotante usa `background: var(--gradient-text)` + `background-clip:text` como acento
+  visual (distinto del patrón `<em>` + `color: var(--color-brand-mid)` que usa el resto del sitio
+  para énfasis) — deliberado, no un descuido de consistencia.
+
 ### Footer — Acordeón nativo en mobile (2026-07)
 El footer (`components/Footer.tsx`, ID real **`#footer`** — no `#site-footer`) colapsa sus
 columnas de links en mobile usando `<details>`/`<summary>` nativos, sin JS de por medio para
@@ -333,17 +361,22 @@ multiplicara por canal, `/guia/conseguir-resenas/[vertical]/[algo]`, o cualquier
 mismo tipo escala con `verticales × ciudades` (o similar producto cartesiano), no va en el
 footer; si es un set acotado 1:1 por vertical o por rubro, sí.
 
-### Banda de cierre `#closing-banner` — última sección antes del footer (2026-07-30)
-Componente visual compartido (CSS en §4) usado como **último elemento del `return`** de 5
-componentes de página — `app/page.tsx`, `app/resenas/ResenasContent.tsx`,
-`app/publicidad-digital/PublicidadDigitalContent.tsx`, `app/whatsapp-resenas/page.tsx`,
-`app/nosotros/NosotrosContent.tsx` (el archivo que renderiza el JSX real de `/nosotros` —
-`app/nosotros/page.tsx` es solo el wrapper con `generateMetadata`). Como `<Footer/>` es
-**global** (montado en `app/layout.tsx`, no por página), cada página monta su propio
-`<section id="closing-banner">` como último bloque; el `Footer` se agrega solo después, vía
-layout. Si se agrega una 6ª página con este patrón, seguir la misma regla: buscar el archivo
-que realmente contiene el JSX de esa ruta (`grep -rln "export default\|export function"` en su
-carpeta) antes de asumir que es el `page.tsx`.
+### Foto de fondo en la última sección antes del footer — `.section-photo-bg` (2026-07-30)
+La última sección (real, ya existente) de 5 páginas — `#contact` en `app/page.tsx`,
+`#resenas-cta` en `app/resenas/ResenasContent.tsx`, `#pd-partners` en
+`app/publicidad-digital/PublicidadDigitalContent.tsx`, `#wa-features` en
+`app/whatsapp-resenas/page.tsx`, `#nosotros-cta` en `app/nosotros/NosotrosContent.tsx` (el
+archivo que renderiza el JSX real de `/nosotros` — `app/nosotros/page.tsx` es solo el wrapper
+con `generateMetadata`) — recibe `className="... section-photo-bg"` + `style={{'--closing-bg': "url('/img/closing-X.jpg')"}}`
+en vez de una sección nueva. Como `<Footer/>` es **global** (montado en `app/layout.tsx`, no por
+página), esto es lo último que se ve antes de que aparezca el footer. Ver detalle técnico
+(especificidad, `--veiled`, `.contact-bg`) en §4.
+
+Si se agrega una 6ª página con este patrón: (1) buscar el archivo que realmente contiene el JSX
+de esa ruta (`grep -rln "export default\|export function"` en su carpeta) antes de asumir que es
+el `page.tsx`; (2) hacer `grep` de la última `<section id="...">` real y su regla de `background`
+en el `page.css` correspondiente — si el fondo está en un selector de ID, hay que removerlo para
+que `.section-photo-bg` se vea.
 
 ### Blog — Posts MDX
 - Los posts con componentes interactivos (ReadingProgress, etc.) tienen su propia carpeta estática en `app/notas/[nombre-completo]/`
@@ -798,8 +831,9 @@ npx tsc --noEmit
 | ✅ Fix contraste entre secciones homepage (mobile-first, v1): tokens `--surface-raised`/`--divider-hairline`/`--color-text-body` + clases `.surface-card` (logos, stats, servicios) y `.section-divider` (todas las secciones menos `#hero`); grilla de logos pasó de bordes internos a `gap` | Alta | Completado 2026-07-29, deployado a producción |
 | **v2 pendiente**: aplicar bandas hundidas (`--surface-recessed`/`--surface-base`, `[data-surface]`) — tokens ya definidos en §4/§5, falta decidir en qué secciones del home aplicarlas | Media | Pendiente |
 | ✅ Footer — acordeón `<details>` nativo en mobile para columnas de links (Servicios, Calculadoras, Por industria, DataTrackers). "Empresa" queda plana (fuera del acordeón) porque contiene el CTA `/#contact`, siempre visible. Ver patrón en §6 | Alta | Completado 2026-07-30 |
-| ✅ Banda de cierre `#closing-banner` full-bleed antes del footer en 5 páginas (home, `/resenas`, `/publicidad-digital`, `/whatsapp-resenas`, `/nosotros`). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
-| ✅ Fotos de `#closing-banner` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
+| ✅ Foto de fondo (`.section-photo-bg`) en la última sección real antes del footer, en 5 páginas — reemplaza el diseño anterior de sección nueva `#closing-banner` (descartado). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
+| ✅ Fotos de `.section-photo-bg` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
+| ✅ H1 del hero home en 3 líneas con segmento rotante (`RotatingHeadline.tsx`, home-only) — "Gestionamos" / [frase que rota, acento gradient-text] / "de tu empresa" | Alta | Completado 2026-07-30 |
 
 ---
 
@@ -1097,5 +1131,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (banda de cierre `#closing-banner` full-bleed en 5 páginas antes del footer global, §4/§6; patrón Footer acordeón `<details>` mobile en §6 — columna "Empresa" plana por el CTA `/#contact`; aclarada la regla de linking válido en footer; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (H1 del hero home con segmento rotante `RotatingHeadline` en §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; patrón Footer acordeón `<details>` mobile en §6; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
