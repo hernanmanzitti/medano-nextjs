@@ -185,7 +185,7 @@ export function NosotrosContent() {
               },
               {
                 name: 'María Florencia Turdó',
-                role: 'Directora de Publicidad Digital',
+                role: 'Directora de Marketing',
                 bio: 'Responsable de las campañas de publicidad digital y el análisis de datos para optimizar el rendimiento de cada cliente.',
                 img: '/img/florencia.jpeg',
                 initials: 'MT',
