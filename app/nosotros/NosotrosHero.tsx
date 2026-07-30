@@ -101,15 +101,24 @@ export default function NosotrosHero() {
                 className={`nh-panel${i === active ? " is-active" : ""}`}
                 aria-hidden={i !== active}
               >
-                <img
-                  className="nh-photo"
-                  src={p.photo}
-                  alt={`${p.name} — ${p.role}`}
-                  width={800}
-                  height={800}
-                  loading="eager"
-                  decoding="async"
-                />
+                <a
+                  className="nh-photo-link"
+                  href={p.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={i === active ? 0 : -1}
+                  aria-label={`${p.name} — ver LinkedIn`}
+                >
+                  <img
+                    className="nh-photo"
+                    src={p.photo}
+                    alt={`${p.name} — ${p.role}`}
+                    width={800}
+                    height={800}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </a>
                 <figcaption className="nh-meta">
                   <span className="nh-name">{p.name}</span>
                   <span className="nh-role">{p.role}</span>
@@ -150,7 +159,6 @@ export default function NosotrosHero() {
                 />
               ))}
             </div>
-            <span className="nh-hint">Pasá el mouse para pausar</span>
           </div>
 
           <p className="nh-live" aria-live="polite">
