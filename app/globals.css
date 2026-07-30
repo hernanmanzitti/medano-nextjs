@@ -825,6 +825,61 @@ body.nav-open {
   fill: currentColor;
 }
 
+/* ============================================================
+   FOOTER — Acordeón responsivo (solo mobile)
+   Desktop: <summary> = título estático, columnas expandidas.
+   Mobile:  cada columna colapsa; los <a> siguen en el DOM.
+   ============================================================ */
+
+/* --- Desktop base: summary se comporta como título, no colapsa --- */
+#footer .footer-acc > summary {
+  list-style: none;
+  cursor: default;
+  pointer-events: none;
+}
+#footer .footer-acc > summary::-webkit-details-marker { display: none; }
+#footer .footer-acc > summary::marker { content: ""; }
+#footer .footer-acc__chevron { display: none; }
+
+/* --- Mobile: acordeón activo --- */
+@media (max-width: 768px) {
+  #footer .footer-acc > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    cursor: pointer;
+    pointer-events: auto;
+    min-height: var(--space-12);
+    padding-block: var(--space-2);
+    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+  }
+  #footer .footer-acc__chevron {
+    display: block;
+    flex: none;
+    width: var(--space-4);
+    height: var(--space-4);
+    color: var(--color-text-secondary);
+    transition: var(--transition-transform);
+  }
+  #footer .footer-acc[open] > summary .footer-acc__chevron {
+    transform: rotate(180deg);
+  }
+  #footer .footer-acc[open] ul {
+    animation: footerAccReveal var(--duration-normal) var(--ease-out);
+  }
+}
+
+@keyframes footerAccReveal {
+  from { opacity: 0; transform: translateY(calc(-1 * var(--space-2))); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #footer .footer-acc__chevron { transition: none; }
+  #footer .footer-acc[open] ul { animation: none; }
+}
+
 /* ── WHATSAPP CHIP ────────────────────────────────────────── */
 .wa-chip {
   position: fixed;

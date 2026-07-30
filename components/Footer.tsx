@@ -1,4 +1,11 @@
 import Link from 'next/link'
+import FooterAccordionSync from './FooterAccordionSync'
+
+const chevron = (
+  <svg className="footer-acc__chevron" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
 
 export function Footer() {
   return (
@@ -30,15 +37,20 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>Servicios</h5>
-            <ul>
-              <li><Link href="/publicidad-digital">Publicidad Digital</Link></li>
-              <li><Link href="/resenas">Gestión de Reseñas</Link></li>
-              <li><Link href="/whatsapp-resenas">Reseñas Google por WhatsApp</Link></li>
-              <li><Link href="/#services">Community Management</Link></li>
-              <li><Link href="/#services">Analytics &amp; Data</Link></li>
-              <li><Link href="/#services">Diseño</Link></li>
-            </ul>
+            <details className="footer-acc" data-footer-acc open>
+              <summary>
+                <h5>Servicios</h5>
+                {chevron}
+              </summary>
+              <ul>
+                <li><Link href="/publicidad-digital">Publicidad Digital</Link></li>
+                <li><Link href="/resenas">Gestión de Reseñas</Link></li>
+                <li><Link href="/whatsapp-resenas">Reseñas Google por WhatsApp</Link></li>
+                <li><Link href="/#services">Community Management</Link></li>
+                <li><Link href="/#services">Analytics &amp; Data</Link></li>
+                <li><Link href="/#services">Diseño</Link></li>
+              </ul>
+            </details>
           </div>
 
           <div className="footer-col">
@@ -55,44 +67,59 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>Calculadoras</h5>
-            <ul>
-              <li><Link href="/calculadora/resenas">Calculadora de Reseñas</Link></li>
-              <li><Link href="/calculadora/resenas/restaurantes">Restaurantes</Link></li>
-              <li><Link href="/calculadora/resenas/clinicas">Clínicas</Link></li>
-              <li><Link href="/calculadora/resenas/hoteles">Hoteles</Link></li>
-              <li><Link href="/calculadora/resenas/gimnasios">Gimnasios</Link></li>
-              <li><Link href="/calculadora/resenas/inmobiliarias">Inmobiliarias</Link></li>
-              <li><Link href="/calculadora/resenas/veterinarias">Veterinarias</Link></li>
-              <li><Link href="/calculadora/resenas/hospitales">Hospitales</Link></li>
-              <li><Link href="/calculadora/resenas/farmacias">Farmacias</Link></li>
-              <li><Link href="/calculadora/resenas/supermercados">Supermercados</Link></li>
-            </ul>
+            <details className="footer-acc" data-footer-acc open>
+              <summary>
+                <h5>Calculadoras</h5>
+                {chevron}
+              </summary>
+              <ul>
+                <li><Link href="/calculadora/resenas">Calculadora de Reseñas</Link></li>
+                <li><Link href="/calculadora/resenas/restaurantes">Restaurantes</Link></li>
+                <li><Link href="/calculadora/resenas/clinicas">Clínicas</Link></li>
+                <li><Link href="/calculadora/resenas/hoteles">Hoteles</Link></li>
+                <li><Link href="/calculadora/resenas/gimnasios">Gimnasios</Link></li>
+                <li><Link href="/calculadora/resenas/inmobiliarias">Inmobiliarias</Link></li>
+                <li><Link href="/calculadora/resenas/veterinarias">Veterinarias</Link></li>
+                <li><Link href="/calculadora/resenas/hospitales">Hospitales</Link></li>
+                <li><Link href="/calculadora/resenas/farmacias">Farmacias</Link></li>
+                <li><Link href="/calculadora/resenas/supermercados">Supermercados</Link></li>
+              </ul>
+            </details>
           </div>
 
           <div className="footer-col">
-            <h5>Por industria</h5>
-            <ul>
-              <li><Link href="/industria/restaurantes">Restaurantes</Link></li>
-              <li><Link href="/industria/hoteles">Hoteles</Link></li>
-              <li><Link href="/industria/clinicas">Clínicas</Link></li>
-              <li><Link href="/industria/gimnasios">Gimnasios</Link></li>
-              <li><Link href="/industria/inmobiliarias">Inmobiliarias</Link></li>
-              <li><Link href="/industria/veterinarias">Veterinarias</Link></li>
-              <li><Link href="/industria/hospitales">Hospitales</Link></li>
-              <li><Link href="/industria/farmacias">Farmacias</Link></li>
-              <li><Link href="/industria/supermercados">Supermercados</Link></li>
-            </ul>
+            <details className="footer-acc" data-footer-acc open>
+              <summary>
+                <h5>Por industria</h5>
+                {chevron}
+              </summary>
+              <ul>
+                <li><Link href="/industria/restaurantes">Restaurantes</Link></li>
+                <li><Link href="/industria/hoteles">Hoteles</Link></li>
+                <li><Link href="/industria/clinicas">Clínicas</Link></li>
+                <li><Link href="/industria/gimnasios">Gimnasios</Link></li>
+                <li><Link href="/industria/inmobiliarias">Inmobiliarias</Link></li>
+                <li><Link href="/industria/veterinarias">Veterinarias</Link></li>
+                <li><Link href="/industria/hospitales">Hospitales</Link></li>
+                <li><Link href="/industria/farmacias">Farmacias</Link></li>
+                <li><Link href="/industria/supermercados">Supermercados</Link></li>
+              </ul>
+            </details>
           </div>
 
           <div className="footer-col">
-            <h5>DataTrackers</h5>
-            <ul>
-              <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Software de reseñas</a></li>
-              <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Gestión de reputación</a></li>
-              <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Para franquicias</a></li>
-              <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2i0iCAT2PidpUenqZLfQUtnBXPvttRlAUsLoNEIsGYog9JkaP1H04tOI2lOoMwaa5o8dJ7AKMG" target="_blank" rel="noopener">Demo gratuita</a></li>
-            </ul>
+            <details className="footer-acc" data-footer-acc open>
+              <summary>
+                <h5>DataTrackers</h5>
+                {chevron}
+              </summary>
+              <ul>
+                <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Software de reseñas</a></li>
+                <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Gestión de reputación</a></li>
+                <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">Para franquicias</a></li>
+                <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2i0iCAT2PidpUenqZLfQUtnBXPvttRlAUsLoNEIsGYog9JkaP1H04tOI2lOoMwaa5o8dJ7AKMG" target="_blank" rel="noopener">Demo gratuita</a></li>
+              </ul>
+            </details>
           </div>
         </div>
 
@@ -104,6 +131,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <FooterAccordionSync />
     </footer>
   )
 }
