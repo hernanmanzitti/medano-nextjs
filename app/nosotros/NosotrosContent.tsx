@@ -265,6 +265,19 @@ export function NosotrosContent() {
           </div>
         </div>
       </section>
+
+      {/* Banda de cierre — imagen full-bleed antes del footer */}
+      <section
+        id="closing-banner"
+        style={{ '--closing-bg': "url('/img/closing-nosotros.jpg')" } as React.CSSProperties}
+      >
+        <div className="closing-inner">
+          <span className="closing-overline">Sobre Médano</span>
+          <h2 className="closing-title">Somos el equipo detrás de tu crecimiento</h2>
+          <p className="closing-sub">Estrategia, ejecución y datos, con foco obsesivo en tus resultados.</p>
+          <a className="closing-cta" href="/#contact">Trabajemos juntos <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </>
   )
 }

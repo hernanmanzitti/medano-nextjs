@@ -541,6 +541,19 @@ export function ResenasContent() {
           </div>
         </div>
       </section>
+
+      {/* Banda de cierre — imagen full-bleed antes del footer */}
+      <section
+        id="closing-banner"
+        style={{ '--closing-bg': "url('/img/closing-resenas.jpg')" } as React.CSSProperties}
+      >
+        <div className="closing-inner">
+          <span className="closing-overline">Gestión de reseñas</span>
+          <h2 className="closing-title">Cada reseña es un cliente que decide</h2>
+          <p className="closing-sub">Convertí la reputación de tus locales en tu mejor canal de ventas.</p>
+          <a className="closing-cta" href="/#contact">Quiero gestionar mis reseñas <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </>
   )
 }

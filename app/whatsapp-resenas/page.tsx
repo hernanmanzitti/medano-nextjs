@@ -338,6 +338,18 @@ export default function WhatsappResenasPage() {
           </div>
         </section>
 
+        {/* Banda de cierre — imagen full-bleed antes del footer */}
+        <section
+          id="closing-banner"
+          style={{ '--closing-bg': "url('/img/closing-whatsapp.jpg')" } as React.CSSProperties}
+        >
+          <div className="closing-inner">
+            <span className="closing-overline">Reseñas por WhatsApp</span>
+            <h2 className="closing-title">Pedí reseñas donde tus clientes ya están</h2>
+            <p className="closing-sub">Un mensaje simple multiplica las reseñas de Google de cada local.</p>
+            <a className="closing-cta" href="/#contact">Empezá por WhatsApp <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
     </>
   )
 }

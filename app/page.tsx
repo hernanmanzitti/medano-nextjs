@@ -428,6 +428,19 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Banda de cierre — imagen full-bleed antes del footer */}
+      <section
+        id="closing-banner"
+        style={{ '--closing-bg': "url('/img/closing-home.jpg')" } as React.CSSProperties}
+      >
+        <div className="closing-inner">
+          <span className="closing-overline">Agencia de crecimiento digital</span>
+          <h2 className="closing-title">Hacemos crecer negocios con muchas sucursales</h2>
+          <p className="closing-sub">Reseñas, publicidad y datos que convierten cada local en una máquina de captar clientes.</p>
+          <a className="closing-cta" href="/#contact">Comprobá cómo <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </>
   )
 }

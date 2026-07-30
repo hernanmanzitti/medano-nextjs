@@ -374,6 +374,18 @@ export function PublicidadDigitalContent() {
         </div>
       </section>
 
+      {/* Banda de cierre — imagen full-bleed antes del footer */}
+      <section
+        id="closing-banner"
+        style={{ '--closing-bg': "url('/img/closing-publicidad.jpg')" } as React.CSSProperties}
+      >
+        <div className="closing-inner">
+          <span className="closing-overline">Publicidad digital</span>
+          <h2 className="closing-title">Campañas que llenan tus locales</h2>
+          <p className="closing-sub">Meta y Google Ads gestionados por sucursal, con presupuesto que rinde.</p>
+          <a className="closing-cta" href="/#contact">Quiero más clientes <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </>
   )
 }
