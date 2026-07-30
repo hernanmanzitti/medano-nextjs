@@ -985,9 +985,6 @@ body.nav-open {
   .nav-dropdown-panel {
     position: static;
     transform: none;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
     background: none;
     border: none;
     box-shadow: none;
@@ -999,6 +996,15 @@ body.nav-open {
     align-items: center;
     gap: var(--space-3);
     min-width: unset;
+  }
+
+  /* El panel solo se revela cuando el menú hamburguesa está efectivamente abierto —
+     si no se escopea a .is-open, hereda opacity:1/visibility:visible/pointer-events:auto
+     incluso con el menú cerrado y queda clickeable/invisible sobre el resto de la página. */
+  .nav-links.is-open .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-item-dropdown:hover .nav-dropdown-panel {
