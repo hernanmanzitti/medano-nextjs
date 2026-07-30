@@ -293,6 +293,34 @@ El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client componen
 ### WaPhoneMockup — Patrón de animación por fases
 El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases: `idle → sent → typing → received → read → pause → exit`) con `key={convIdx}` en el wrapper para forzar remount completo al cambiar conversación. **No usar** `animating` boolean simple — el remount es lo que dispara las animaciones CSS. Cada conversación tiene `phoneBg` y `headerBg` como inline styles (no tokens, porque son colores temáticos del mockup, no de la marca).
 
+### Footer — Acordeón nativo en mobile (2026-07)
+El footer (`components/Footer.tsx`, ID real **`#footer`** — no `#site-footer`) colapsa sus
+columnas de links en mobile usando `<details>`/`<summary>` nativos, sin JS de por medio para
+el contenido (SEO/GEO-safe: los `<a>` viven siempre en el HTML server-rendered, nunca detrás
+de `{isOpen && …}`).
+
+- Cada columna colapsable es `<div className="footer-col"><details className="footer-acc" data-footer-acc open><summary><h5>Título</h5>{chevron}</summary><ul>...</ul></details></div>`.
+- `components/FooterAccordionSync.tsx` (client component) es el único JS: en un `useEffect`,
+  usa `matchMedia('(max-width: 768px)')` para setear `.open` de cada `[data-footer-acc]` — abierto
+  en desktop, colapsado en mobile. Sync puro, no gatea el render de los links.
+- CSS del acordeón vive en `globals.css` bajo `#footer .footer-acc` (bloque agregado después de
+  `.social-link svg`, antes de `WHATSAPP CHIP`): reglas desktop-base primero (summary con
+  `pointer-events:none`, sin colapsar), luego `@media max-width:768px` con el chevron y la
+  animación `footerAccReveal` (usa `opacity: 0/1` crudo — no existen tokens `--opacity-0`/`--opacity-100`,
+  igual que `@keyframes fadeInUp` en el mismo archivo).
+- **La columna "Empresa" queda FUERA del acordeón** (estructura plana `<div className="footer-col"><h5>...</h5><ul>...</ul></div>`, sin `<details>` ni `data-footer-acc`) porque contiene el único link a `/#contact` del footer, y el CTA de contacto debe estar **siempre visible**, incluso colapsado el resto en mobile. Si se agrega una columna nueva con `/#contact` u otro CTA, debe nacer igual de plana — no envolverla en `.footer-acc`.
+- Al agregar una columna nueva de links normales (no-CTA), sí envolverla en el patrón `.footer-acc` para mantener consistencia visual en mobile.
+
+**Qué linking es válido en el footer**: las columnas del footer deben limitarse a hubs y nav
+principal — `/industria/[vertical]` (9 URLs, un hub fijo por vertical) **sí está permitido**,
+igual que `/calculadora/resenas` (hub) o `/calculadora/resenas/[vertical]` (9 URLs, índice por
+vertical). Lo que **no** debe entrar al footer son las combinaciones masivas de nivel ciudad —
+`/calculadora/resenas/[vertical]/[ciudad]` (~336 URLs), `/faq/resenas/[vertical]` si se
+multiplicara por canal, `/guia/conseguir-resenas/[vertical]/[algo]`, o cualquier
+`/glosario/[termino]` individual (22+ URLs). Regla práctica: si la cantidad de páginas del
+mismo tipo escala con `verticales × ciudades` (o similar producto cartesiano), no va en el
+footer; si es un set acotado 1:1 por vertical o por rubro, sí.
+
 ### Blog — Posts MDX
 - Los posts con componentes interactivos (ReadingProgress, etc.) tienen su propia carpeta estática en `app/notas/[nombre-completo]/`
 - Los posts simples se sirven desde `app/notas/[slug]/page.tsx` (ruta dinámica)
@@ -745,6 +773,7 @@ npx tsc --noEmit
 | Limpieza CSS huérfano tras remover CTAs/secciones: `.pd-hero-actions`, `.wa-hero-actions`, `#wa-cta`/`.wa-cta-card`/`.wa-cta-actions`/`.wa-cta-note`, `#pd-cta`/`.pd-cta-content`/`.pd-cta-label`/`.pd-cta-title`/`.pd-cta-sub`/`.pd-cta-actions` — sin ningún elemento en el JSX que las use | Baja | Pendiente |
 | ✅ Fix contraste entre secciones homepage (mobile-first, v1): tokens `--surface-raised`/`--divider-hairline`/`--color-text-body` + clases `.surface-card` (logos, stats, servicios) y `.section-divider` (todas las secciones menos `#hero`); grilla de logos pasó de bordes internos a `gap` | Alta | Completado 2026-07-29, deployado a producción |
 | **v2 pendiente**: aplicar bandas hundidas (`--surface-recessed`/`--surface-base`, `[data-surface]`) — tokens ya definidos en §4/§5, falta decidir en qué secciones del home aplicarlas | Media | Pendiente |
+| ✅ Footer — acordeón `<details>` nativo en mobile para columnas de links (Servicios, Calculadoras, Por industria, DataTrackers). "Empresa" queda plana (fuera del acordeón) porque contiene el CTA `/#contact`, siempre visible. Ver patrón en §6 | Alta | Completado 2026-07-30 |
 
 ---
 
@@ -1042,5 +1071,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-29 (sistema de superficies v1: `.surface-card`/`.section-divider`/`--surface-raised`/`--divider-hairline`/`--color-text-body` en §4/§5; grilla de logos de clientes pasó de bordes internos a gap; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (patrón Footer acordeón `<details>` mobile en §6 — columna "Empresa" plana por el CTA `/#contact`; aclarada la regla de linking válido en footer — hubs por vertical sí, combinaciones vertical×ciudad no; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
