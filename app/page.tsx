@@ -150,7 +150,7 @@ export default function HomePage() {
               <img src="/img/clientes_logo_medicus.png" alt="Medicus" className="client-logo-img" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
-              <img src="/img/clientes_logo_ar_holdings.png" alt="AR Holdings" className="client-logo-img" />
+              <img src="/img/clientes_logo_rapanui.png" alt="Rapanui" className="client-logo-img" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_petrotandil.png" alt="Petrotandil" className="client-logo-img" />
