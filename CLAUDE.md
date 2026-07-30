@@ -198,6 +198,18 @@ Clases utilitarias compartidas (`globals.css`, junto a `.btn-outline`):
 
 ⚠️ La grilla de logos de clientes (`.clients-grid` / `.client-logo-item` en `medano-home.css`) dejó de separar celdas con `border-right`/`border-bottom` internos — ahora cada celda es una `.surface-card` independiente y la separación es por `gap` (`var(--grid-gap)` desktop, `var(--grid-gap-sm)` en el `@media 768px` existente, declarado después del base).
 
+### `#closing-banner` — banda de cierre full-bleed antes del footer (2026-07-30)
+Clase/ID compartido (`globals.css`, junto a `.surface-card`/`.section-divider`) usado como
+**último bloque** de 5 páginas, justo antes de `<Footer/>` (que es global, montado en
+`app/layout.tsx`): home, `/resenas`, `/publicidad-digital`, `/whatsapp-resenas`, `/nosotros`.
+Patrón visual estilo "foto que se funde en el footer" (overlay `--color-brand-navy-25/50/75` →
+`--color-bg-base` sobre la imagen).
+
+- La imagen es **contenido, no color** — se pasa inline vía `style={{ '--closing-bg': "url('/img/closing-X.jpg')" } as React.CSSProperties}` en el `<section id="closing-banner">`. Esto está permitido por la regla de "sin hex crudo" porque no es un valor de color, es una URL de asset.
+- Si la imagen no existe, `background-image: ..., var(--closing-bg, var(--gradient-brand))` cae al gradiente de marca sin romper el build — placeholder intencional hasta subir fotos reales.
+- Estructura interna fija: `.closing-inner > .closing-overline + .closing-title(h2) + .closing-sub + .closing-cta(a href="/#contact")`.
+- ⚠️ Los tokens `--type-caption-*`/`--type-body-lg-*`/`--type-label-*` **no existen** en este proyecto (ni existe `design-tokens.md` en el repo) — el CSS real usa `--text-xs`/`--text-md`/`--text-sm` + `--font-weight-semibold`/`--tracking-widest`/`--tracking-wide`, los mismos tokens que ya usan `.hero-eyebrow`, `.hero-subtitle` y `.btn-primary`. Si un brief futuro pide tokens `--type-*`, verificar antes de copiar CSS — probablemente haya que mapearlos igual.
+
 ---
 
 ## 5. DESIGN TOKENS — Referencia Rápida
@@ -320,6 +332,18 @@ multiplicara por canal, `/guia/conseguir-resenas/[vertical]/[algo]`, o cualquier
 `/glosario/[termino]` individual (22+ URLs). Regla práctica: si la cantidad de páginas del
 mismo tipo escala con `verticales × ciudades` (o similar producto cartesiano), no va en el
 footer; si es un set acotado 1:1 por vertical o por rubro, sí.
+
+### Banda de cierre `#closing-banner` — última sección antes del footer (2026-07-30)
+Componente visual compartido (CSS en §4) usado como **último elemento del `return`** de 5
+componentes de página — `app/page.tsx`, `app/resenas/ResenasContent.tsx`,
+`app/publicidad-digital/PublicidadDigitalContent.tsx`, `app/whatsapp-resenas/page.tsx`,
+`app/nosotros/NosotrosContent.tsx` (el archivo que renderiza el JSX real de `/nosotros` —
+`app/nosotros/page.tsx` es solo el wrapper con `generateMetadata`). Como `<Footer/>` es
+**global** (montado en `app/layout.tsx`, no por página), cada página monta su propio
+`<section id="closing-banner">` como último bloque; el `Footer` se agrega solo después, vía
+layout. Si se agrega una 6ª página con este patrón, seguir la misma regla: buscar el archivo
+que realmente contiene el JSX de esa ruta (`grep -rln "export default\|export function"` en su
+carpeta) antes de asumir que es el `page.tsx`.
 
 ### Blog — Posts MDX
 - Los posts con componentes interactivos (ReadingProgress, etc.) tienen su propia carpeta estática en `app/notas/[nombre-completo]/`
@@ -774,6 +798,8 @@ npx tsc --noEmit
 | ✅ Fix contraste entre secciones homepage (mobile-first, v1): tokens `--surface-raised`/`--divider-hairline`/`--color-text-body` + clases `.surface-card` (logos, stats, servicios) y `.section-divider` (todas las secciones menos `#hero`); grilla de logos pasó de bordes internos a `gap` | Alta | Completado 2026-07-29, deployado a producción |
 | **v2 pendiente**: aplicar bandas hundidas (`--surface-recessed`/`--surface-base`, `[data-surface]`) — tokens ya definidos en §4/§5, falta decidir en qué secciones del home aplicarlas | Media | Pendiente |
 | ✅ Footer — acordeón `<details>` nativo en mobile para columnas de links (Servicios, Calculadoras, Por industria, DataTrackers). "Empresa" queda plana (fuera del acordeón) porque contiene el CTA `/#contact`, siempre visible. Ver patrón en §6 | Alta | Completado 2026-07-30 |
+| ✅ Banda de cierre `#closing-banner` full-bleed antes del footer en 5 páginas (home, `/resenas`, `/publicidad-digital`, `/whatsapp-resenas`, `/nosotros`). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
+| ✅ Fotos de `#closing-banner` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
 
 ---
 
@@ -1071,5 +1097,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (patrón Footer acordeón `<details>` mobile en §6 — columna "Empresa" plana por el CTA `/#contact`; aclarada la regla de linking válido en footer — hubs por vertical sí, combinaciones vertical×ciudad no; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (banda de cierre `#closing-banner` full-bleed en 5 páginas antes del footer global, §4/§6; patrón Footer acordeón `<details>` mobile en §6 — columna "Empresa" plana por el CTA `/#contact`; aclarada la regla de linking válido en footer; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
