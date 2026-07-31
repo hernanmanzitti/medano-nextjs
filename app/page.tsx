@@ -86,7 +86,6 @@ export default function HomePage() {
             <h1 className="hero-title-shared hero-title--stacked animate-in">
               <span className="hero-line">Gestionamos</span>
               <RotatingHeadline />
-              <span className="hero-line">de tu empresa</span>
             </h1>
             <p className="hero-subtitle animate-in">
               Gestionamos publicidad digital, reseñas y SEO para que más clientes

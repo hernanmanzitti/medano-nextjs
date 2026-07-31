@@ -117,7 +117,7 @@ export function NavBar({ activePage }: { activePage?: string }) {
                 <Link href="/resenas" aria-current={activePage === 'resenas' ? 'page' : undefined}>Gestión de Reseñas</Link>
               </li>
               <li role="menuitem">
-                <Link href="/whatsapp-resenas" aria-current={activePage === 'whatsapp-resenas' ? 'page' : undefined}>Reseñas Google por WhatsApp</Link>
+                <Link href="/whatsapp-resenas" aria-current={activePage === 'whatsapp-resenas' ? 'page' : undefined}>Pedir Reseñas por WhatsApp</Link>
               </li>
               {/*<li role="menuitem">
                 <Link href="/#seo">SEO y Posicionamiento</Link>

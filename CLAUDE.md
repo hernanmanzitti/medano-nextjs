@@ -388,30 +388,48 @@ canónico (era el único que ya usaba `--z-raised` en vez de un `z-index` crudo)
   corrigió como parte de esta misma tarea (verificación con Playwright reveló que el valor previo
   documentado acá no era correcto).
 
-### RotatingHeadline — H1 del hero home con segmento animado (2026-07-30)
-`app/components/RotatingHeadline.tsx` (client component, importado con el alias `@/app/components/...`
-como el resto de `app/components`) rota un array de frases (`DEFAULT_PHRASES`, 6 frases,
-`INTERVAL_MS = 2600`) con `key={i}` en el `<span>` interno para forzar remount y re-disparar la
-animación CSS de entrada (`heroWordIn`) — mismo patrón de "remount vía `key`" que `WaPhoneMockup`.
-**Solo se usa en el H1 de `app/page.tsx`** (home), no en otras páginas.
+### RotatingHeadline — H1 del hero home con efecto teclado + auto-fit (reescrito 2026-07-31)
+`app/components/RotatingHeadline.tsx` (client component, sin props — antes aceptaba
+`phrases`/`intervalMs`, ya no; **solo se usa en el H1 de `app/page.tsx`**, home). Reescritura
+completa: pasó de rotación simple con fade-in (`key={i}` + `heroWordIn`) a un efecto de
+**máquina de escribir** — tipea letra por letra, pausa con cursor titilando, borra, tipea la
+siguiente. Máquina de estados `Phase = 'typing'|'holding'|'deleting'|'gap'` con `setTimeout`
+encadenados (`TYPE_MS=60`, `DELETE_MS=32`, `HOLD_MS=1600`, `GAP_MS=320`).
 
-- El `<h1>` pasó de una sola línea a 3 vía la clase `.hero-title--stacked` (`display:flex;
-  flex-direction:column`): `"Gestionamos"` (fija) → `<RotatingHeadline />` (rota) → `"de tu
-  empresa"` (fija). El `<h1>` sigue siendo uno solo y renderiza la frase 1 server-side (SEO/GEO
-  intactos — nada de contenido gateado por `useState`/`useEffect` antes del primer render).
-- CSS **home-only** en `app/styles/medano-home.css` (no en `globals.css`, porque no lo comparte
-  ninguna otra página): `.hero-rotator` reserva `min-height` (**2.3em desktop / 3.5em mobile** —
-  valores corregidos y verificados con Playwright en 2026-07-31, medición real de
-  `getBoundingClientRect` en las 6 frases; los valores previos de 1.1em/2.2em documentados acá
-  NO eran correctos — con esos, la frase 6 en mobile ("el community management y los diseños",
-  que envuelve a **3 líneas**, no 2 como se asumía) desplazaba `.hero-subtitle` ~27.6px). El
-  criterio de aceptación es spread de Y entre frases < 2px; con 2.3em/3.5em el spread medido es
-  0.00px exacto en desktop (1280px) y mobile (390px) — a esos anchos el font-size del `clamp()`
-  cae en un extremo fijo (72px desktop, 48px mobile con `--leading-tight:1.15`), así que **todas**
-  las frases quedan ancladas al piso del `min-height` en vez de a su alto natural.
-- El segmento rotante usa `background: var(--gradient-text)` + `background-clip:text` como acento
-  visual (distinto del patrón `<em>` + `color: var(--color-brand-mid)` que usa el resto del sitio
-  para énfasis) — deliberado, no un descuido de consistencia.
+- El `<h1>` perdió su 3ª línea fija ("de tu empresa") — ahora es solo `"Gestionamos"` (fija) +
+  `<RotatingHeadline />` (rota), 2 líneas vía `.hero-title--stacked`. Frase 1 (`"las reseñas"`)
+  completa en SSR (`useState(PHRASES[0].length)` como estado inicial) — SEO/GEO intactos.
+- **5 frases nuevas** (reemplazan las 6 anteriores): `las reseñas`, `publicidad online`,
+  `el SEO y el GEO`, `el posicionamiento`, `el impacto causal`.
+- `prefers-reduced-motion: reduce` → rotación simple sin tipeo (`REDUCED_MS=2600`, sin cursor,
+  sin animación), mismo patrón que el resto del sitio.
+- **Auto-fit a 1 línea**: en vez de reservar `min-height` para 2-3 líneas (como antes), el
+  componente mide la frase con `canvas.measureText()` (fuente/peso/tracking del `<h1>` real,
+  `-0.02em` de letter-spacing sumado a mano porque canvas no lo aplica solo) contra el ancho
+  disponible del box, y escala `font-size` inline solo si hace falta (`Math.min(1, avail*0.97/w)`
+  — nunca agranda, solo achica). En desktop las 5 frases entran a tamaño full sin cambios
+  visuales; en mobile angosto (320-375px) `"el posicionamiento"` (la más larga) se ve levemente
+  más chica — esperado y verificado con Playwright (spread de Y de `.hero-subtitle` = 0.00px en
+  las 5 frases, en 320/375/390/1280px, sin overflow en ningún caso).
+- **Bug encontrado y corregido en la propia verificación**: la primera versión re-medía en un
+  listener de `window.addEventListener('resize', fit)`. Confirmado con Playwright
+  (`setViewportSize` en vivo 1280→340px sobre la misma página, sin reload) que ese listener podía
+  leer `box.clientWidth` **desactualizado** (348px en vez de los 308px reales) si el evento
+  `resize` se disparaba antes de que el layout terminara de asentarse tras el cambio de
+  viewport — el texto quedaba visualmente cortado contra el borde del viewport. Fix: `ResizeObserver`
+  sobre el propio `boxRef` en vez de `window.resize` — mide después de que el layout se asienta,
+  inmune a esa carrera. Con fuentes cargadas vía `<link>` de Google Fonts (no `next/font`, ver
+  `app/layout.tsx`), también se agregó `document.fonts.ready.then(fit)` para re-medir si la
+  primera medición cayó durante el FOUT.
+- CSS **home-only** en `app/styles/medano-home.css`: `.hero-rotator` ahora es
+  `min-height: 1.15em` (una sola línea — reemplaza los `2.3em`/`3.5em` del sistema anterior,
+  que ya no aplican porque el auto-fit garantiza 1 línea siempre) + `overflow:hidden` como red
+  de seguridad (no debería activarse nunca, pero si el auto-fit se equivoca por redondeo, recorta
+  en vez de romper el layout). `.hero-rotator-text` es el span real con el gradient-clip
+  (`background: var(--gradient-text)` + `-webkit-background-clip:text`, igual que antes) y el
+  cursor (`border-right` + `@keyframes heroCaretBlink`, `steps(1,end)` para que titile como
+  cursor real y no haga fade). Se eliminaron `.hero-rotator__word` y `@keyframes heroWordIn`
+  (huérfanos, confirmado con grep).
 
 ### Footer — Acordeón nativo en mobile, 100% CSS (sin JS) (2026-07, reescrito 2026-07-30)
 El footer (`components/Footer.tsx`, ID real **`#footer`** — no `#site-footer`) colapsa sus
@@ -988,6 +1006,7 @@ npx tsc --noEmit
 | ✅ Homogeneizar los 3 heroes (home, /resenas, /publicidad-digital) — chasis compartido `.hero-shell`/`.hero-inner` en globals.css, tomando `#resenas-hero` como patrón canónico. Home migró a `.hero-eyebrow-shared`/`.hero-title-shared`. Limpieza de huérfanos en las 3 hojas de estilo (incluye orphans preexistentes en resenas.css de una migración anterior). Fix de `min-height` del rotador (2.3em desktop / 3.5em mobile, spread 0px verificado con Playwright en las 6 frases) | Alta | Completado 2026-07-31 (mergeado a main) |
 | ✅ Title tag de home cambiado a "MÉDANO ▷ Gestión de reseñas y publicidad online" — `title.default` en `app/layout.tsx` (home no tiene `metadata` propio, hereda el default del root layout) | Media | Completado 2026-07-31 |
 | ✅ Menú mobile — oculto el label "Servicios" del dropdown (era un trigger inerte en mobile, ahora los 3 sub-links van directo debajo de "Home"). Desktop sin cambios. Ver §6 | Baja | Completado 2026-07-31 |
+| ✅ `RotatingHeadline` reescrito: efecto máquina de escribir (tipea/borra/cursor titilando) + auto-fit a 1 línea vía `canvas.measureText()`, 5 frases nuevas, se quitó "de tu empresa" del H1. `min-height` del rotador pasó a 1.15em (ya no depende de reservar 2-3 líneas). Bug de `ResizeObserver` vs `window.resize` encontrado y corregido en la verificación. Ver §6 | Alta | Completado 2026-07-31 |
 
 ---
 
@@ -1285,5 +1304,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo, fix del `min-height` del rotador de home corregido con Playwright (2.3em/3.5em, spread 0px) — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (`RotatingHeadline` reescrito: efecto máquina de escribir + auto-fit a 1 línea vía canvas, 5 frases nuevas, quitada la 3ª línea del H1 ("de tu empresa"), bug de `ResizeObserver` vs `window.resize` encontrado y corregido — §6; title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*
