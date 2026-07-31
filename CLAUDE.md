@@ -141,6 +141,18 @@ Restaurar con `* -1` en JS clampea a 0 y deja la página "trabada arriba".
    default `true` para el botón toggle y Escape (ahí sí hay que restaurar scroll + devolver foco
    al toggle), pero el listener de clicks en links del menú llama `closeMenu({ restoreScroll: false })`.
 
+### Menú mobile — label "Servicios" oculto, sub-links directos (2026-07-31)
+En el panel mobile del nav (`components/NavBar.tsx`), el ítem `.nav-item-dropdown` renderiza el
+botón `.nav-dropdown-trigger` ("Servicios") + el panel `.nav-dropdown-panel` (Publicidad Digital,
+Gestión de Reseñas, Reseñas Google por WhatsApp). En mobile ese trigger YA era inerte
+(`pointer-events:none; cursor:default`) — es un simple label estático, el panel de sub-links
+siempre está expandido debajo (no es un acordeón real, a diferencia del footer). Se ocultó el
+label completo con `display:none` dentro de `#nav-menu` `@media (max-width:768px)` en
+`app/globals.css` (regla `.nav-dropdown-trigger`, agregada junto a las demás propiedades
+existentes de esa regla, sin tocarlas) — los 3 sub-links quedan visibles directo debajo de
+"Home", sin el encabezado "Servicios" arriba. **Solo mobile**: el trigger + chevron + hover del
+dropdown en desktop no se tocaron, siguen funcionando igual.
+
 ### WaChip flotante — solapamiento con contenido interactivo en mobile (bug fix 2026-07)
 El WaChip global (`components/WaChip.tsx`, montado en `app/layout.tsx`, `position:fixed`
 bottom-right, `z-index: var(--z-fixed)` = 300) puede solaparse con inputs/CTAs que caen en la
@@ -973,7 +985,9 @@ npx tsc --noEmit
 | ✅ Foto de fondo (`.section-photo-bg`) en la última sección real antes del footer, en 5 páginas — reemplaza el diseño anterior de sección nueva `#closing-banner` (descartado). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
 | ✅ Fotos de `.section-photo-bg` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
 | ✅ H1 del hero home en 3 líneas con segmento rotante (`RotatingHeadline.tsx`, home-only) — "Gestionamos" / [frase que rota, acento gradient-text] / "de tu empresa" | Alta | Completado 2026-07-30 |
-| ✅ Homogeneizar los 3 heroes (home, /resenas, /publicidad-digital) — chasis compartido `.hero-shell`/`.hero-inner` en globals.css, tomando `#resenas-hero` como patrón canónico. Home migró a `.hero-eyebrow-shared`/`.hero-title-shared`. Limpieza de huérfanos en las 3 hojas de estilo (incluye orphans preexistentes en resenas.css de una migración anterior). Fix de `min-height` del rotador (2.3em desktop / 3.5em mobile, spread 0px verificado con Playwright en las 6 frases) | Alta | Completado 2026-07-31 (branch `hero-shell-unify`, pendiente merge a main) |
+| ✅ Homogeneizar los 3 heroes (home, /resenas, /publicidad-digital) — chasis compartido `.hero-shell`/`.hero-inner` en globals.css, tomando `#resenas-hero` como patrón canónico. Home migró a `.hero-eyebrow-shared`/`.hero-title-shared`. Limpieza de huérfanos en las 3 hojas de estilo (incluye orphans preexistentes en resenas.css de una migración anterior). Fix de `min-height` del rotador (2.3em desktop / 3.5em mobile, spread 0px verificado con Playwright en las 6 frases) | Alta | Completado 2026-07-31 (mergeado a main) |
+| ✅ Title tag de home cambiado a "MÉDANO ▷ Gestión de reseñas y publicidad online" — `title.default` en `app/layout.tsx` (home no tiene `metadata` propio, hereda el default del root layout) | Media | Completado 2026-07-31 |
+| ✅ Menú mobile — oculto el label "Servicios" del dropdown (era un trigger inerte en mobile, ahora los 3 sub-links van directo debajo de "Home"). Desktop sin cambios. Ver §6 | Baja | Completado 2026-07-31 |
 
 ---
 
@@ -1271,5 +1285,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo, fix del `min-height` del rotador de home corregido con Playwright (2.3em/3.5em, spread 0px) — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo, fix del `min-height` del rotador de home corregido con Playwright (2.3em/3.5em, spread 0px) — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*

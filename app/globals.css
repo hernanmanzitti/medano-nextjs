@@ -1095,6 +1095,7 @@ body.nav-open {
   }
 
   .nav-dropdown-trigger {
+    display: none;
     font-size: var(--text-xl);
     letter-spacing: var(--tracking-wide);
     pointer-events: none;

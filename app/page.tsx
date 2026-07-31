@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="hero-inner">
             <div className="hero-eyebrow-shared">
               <span className="hero-dot" aria-hidden="true"></span>
-              Crecimiento Digital
+              Empresas en crecimiento
             </div>
             <h1 className="hero-title-shared hero-title--stacked animate-in">
               <span className="hero-line">Gestionamos</span>

@@ -9,7 +9,7 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://medano.co'),
   title: {
-    default: 'médano — Agencia de reseñas y publicidad digital',
+    default: 'MÉDANO ▷ Gestión de reseñas y publicidad online',
     template: '%s | médano',
   },
   description:
