@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import FooterAccordionSync from './FooterAccordionSync'
 
 const chevron = (
   <svg className="footer-acc__chevron" viewBox="0 0 24 24" aria-hidden="true">
@@ -37,7 +36,7 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <details className="footer-acc" data-footer-acc open>
+            <details className="footer-acc" data-footer-acc>
               <summary>
                 <h5>Servicios</h5>
                 {chevron}
@@ -54,20 +53,25 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>Empresa</h5>
-            <ul>
-              <li><Link href="/nosotros">Nosotros</Link></li>
-              <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">DataTrackers</a></li>
-              <li><Link href="/notas">Notas</Link></li>
-              <li><Link href="/glosario">Glosario de reputación</Link></li>
-              <li><Link href="/faq/resenas">FAQ Reseñas</Link></li>
-              <li><Link href="/guia/conseguir-resenas">Guías por rubro</Link></li>
-              <li><Link href="/#contact">Contacto</Link></li>
-            </ul>
+            <details className="footer-acc" data-footer-acc>
+              <summary>
+                <h5>Empresa</h5>
+                {chevron}
+              </summary>
+              <ul>
+                <li><Link href="/nosotros">Nosotros</Link></li>
+                <li><a href="https://datatrackers.co/" target="_blank" rel="noopener">DataTrackers</a></li>
+                <li><Link href="/notas">Notas</Link></li>
+                <li><Link href="/glosario">Glosario de reputación</Link></li>
+                <li><Link href="/faq/resenas">FAQ Reseñas</Link></li>
+                <li><Link href="/guia/conseguir-resenas">Guías por rubro</Link></li>
+                <li><Link href="/#contact">Contacto</Link></li>
+              </ul>
+            </details>
           </div>
 
           <div className="footer-col">
-            <details className="footer-acc" data-footer-acc open>
+            <details className="footer-acc" data-footer-acc>
               <summary>
                 <h5>Calculadoras</h5>
                 {chevron}
@@ -88,7 +92,7 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <details className="footer-acc" data-footer-acc open>
+            <details className="footer-acc" data-footer-acc>
               <summary>
                 <h5>Por industria</h5>
                 {chevron}
@@ -108,7 +112,7 @@ export function Footer() {
           </div>
 
           <div className="footer-col">
-            <details className="footer-acc" data-footer-acc open>
+            <details className="footer-acc" data-footer-acc>
               <summary>
                 <h5>DataTrackers</h5>
                 {chevron}
@@ -131,7 +135,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <FooterAccordionSync />
     </footer>
   )
 }

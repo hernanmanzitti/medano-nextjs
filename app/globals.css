@@ -860,9 +860,11 @@ body.nav-open {
 }
 
 /* ============================================================
-   FOOTER — Acordeón responsivo (solo mobile)
-   Desktop: <summary> = título estático, columnas expandidas.
-   Mobile:  cada columna colapsa; los <a> siguen en el DOM.
+   FOOTER — Acordeón responsivo (solo mobile), 100% nativo (sin JS)
+   Desktop: <summary> = título estático, columnas siempre expandidas
+            (visible por CSS, sin depender del atributo [open]).
+   Mobile:  cada columna colapsa vía <details>/<summary> nativos;
+            los <a> siguen en el DOM aunque esté cerrado.
    ============================================================ */
 
 /* --- Desktop base: summary se comporta como título, no colapsa --- */
@@ -875,8 +877,41 @@ body.nav-open {
 #footer .footer-acc > summary::marker { content: ""; }
 #footer .footer-acc__chevron { display: none; }
 
-/* --- Mobile: acordeón activo --- */
+/* El JSX no trae `open` hardcodeado (el server siempre renderiza <details> cerrado,
+   así mobile nace colapsado sin flash) — en desktop forzamos el contenido visible
+   sin depender del atributo nativo.
+   Chrome/Edge/Firefox recientes envuelven el contenido no-summary de <details> en un
+   pseudo-elemento interno `::details-content` (reemplaza el viejo mecanismo de
+   `display:none` plano vía UA stylesheet) — su propio content-visibility/block-size
+   es lo que realmente oculta el contenido cerrado, así que hay que overridear ESE
+   pseudo-elemento, no alcanza con estilar el <ul> liviano de adentro. Se mantiene
+   también la regla sobre `> ul` como fallback para motores sin `::details-content`. */
+#footer .footer-acc > ul {
+  display: block;
+}
+#footer .footer-acc::details-content {
+  content-visibility: visible;
+  display: block;
+  overflow: visible;
+  block-size: auto;
+}
+
+/* --- Mobile: acordeón nativo, sin JS --- */
 @media (max-width: 768px) {
+  #footer .footer-acc::details-content {
+    content-visibility: revert;
+    display: revert;
+    overflow: revert;
+    block-size: revert;
+  }
+  #footer .footer-acc > ul {
+    display: none;
+  }
+  #footer .footer-acc[open] > ul {
+    display: flex;
+    padding-top: var(--space-4);
+    animation: footerAccReveal var(--duration-normal) var(--ease-out);
+  }
   #footer .footer-acc > summary {
     display: flex;
     align-items: center;
@@ -887,6 +922,9 @@ body.nav-open {
     min-height: var(--space-12);
     padding-block: var(--space-2);
     border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+  }
+  #footer .footer-acc > summary h5 {
+    margin-bottom: 0;
   }
   #footer .footer-acc__chevron {
     display: block;
@@ -899,9 +937,6 @@ body.nav-open {
   #footer .footer-acc[open] > summary .footer-acc__chevron {
     transform: rotate(180deg);
   }
-  #footer .footer-acc[open] ul {
-    animation: footerAccReveal var(--duration-normal) var(--ease-out);
-  }
 }
 
 @keyframes footerAccReveal {
@@ -911,7 +946,7 @@ body.nav-open {
 
 @media (prefers-reduced-motion: reduce) {
   #footer .footer-acc__chevron { transition: none; }
-  #footer .footer-acc[open] ul { animation: none; }
+  #footer .footer-acc[open] > ul { animation: none; }
 }
 
 /* ── WHATSAPP CHIP ────────────────────────────────────────── */

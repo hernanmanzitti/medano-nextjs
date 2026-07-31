@@ -333,23 +333,58 @@ animación CSS de entrada (`heroWordIn`) — mismo patrón de "remount vía `key
   visual (distinto del patrón `<em>` + `color: var(--color-brand-mid)` que usa el resto del sitio
   para énfasis) — deliberado, no un descuido de consistencia.
 
-### Footer — Acordeón nativo en mobile (2026-07)
+### Footer — Acordeón nativo en mobile, 100% CSS (sin JS) (2026-07, reescrito 2026-07-30)
 El footer (`components/Footer.tsx`, ID real **`#footer`** — no `#site-footer`) colapsa sus
-columnas de links en mobile usando `<details>`/`<summary>` nativos, sin JS de por medio para
-el contenido (SEO/GEO-safe: los `<a>` viven siempre en el HTML server-rendered, nunca detrás
-de `{isOpen && …}`).
+columnas de links en mobile usando `<details>`/`<summary>` nativos. **Ya no depende de JS en
+absoluto** — ni para el toggle (siempre fue nativo) ni para el estado inicial mobile-vs-desktop
+(antes lo hacía `FooterAccordionSync.tsx`, eliminado). SEO/GEO-safe: los `<a>` viven siempre en
+el HTML server-rendered, nunca detrás de `{isOpen && …}`.
 
-- Cada columna colapsable es `<div className="footer-col"><details className="footer-acc" data-footer-acc open><summary><h5>Título</h5>{chevron}</summary><ul>...</ul></details></div>`.
-- `components/FooterAccordionSync.tsx` (client component) es el único JS: en un `useEffect`,
-  usa `matchMedia('(max-width: 768px)')` para setear `.open` de cada `[data-footer-acc]` — abierto
-  en desktop, colapsado en mobile. Sync puro, no gatea el render de los links.
+- Cada columna colapsable es `<div className="footer-col"><details className="footer-acc" data-footer-acc><summary><h5>Título</h5>{chevron}</summary><ul>...</ul></details></div>`
+  — **sin `open` hardcodeado**. El server renderiza siempre cerrado; mobile nace colapsado sin
+  flash (antes, con `open` fijo en el JSX, el HTML llegaba abierto y recién se cerraba post-
+  hidratación vía `useEffect` — flash garantizado en cualquier mobile).
+- **`components/FooterAccordionSync.tsx` fue eliminado** (import, uso y archivo) — quedó sin
+  función: el toggle mobile es 100% nativo (el browser togglea el atributo `open` al click en
+  `summary`, sin JS), y el "siempre expandido" desktop es 100% CSS (ver próximo punto), no
+  depende de que el atributo `open` esté en `true`.
+- **Gotcha de motores modernos — `::details-content`**: Chrome/Edge/Firefox recientes ya NO
+  ocultan el contenido no-`summary` de un `<details>` cerrado con un `display:none` plano vía UA
+  stylesheet sobre los hijos — lo envuelven en un pseudo-elemento interno `::details-content`
+  cuyo propio `content-visibility`/`block-size` es lo que realmente oculta el contenido. Un
+  override tipo `#footer .footer-acc > ul { display:block }` (para forzarlo visible en desktop
+  sin depender del atributo `open`) **no alcanza** en esos motores — hay que overridear el
+  pseudo-elemento directamente: `#footer .footer-acc::details-content { content-visibility:
+  visible; display:block; overflow:visible; block-size:auto; }`. Confirmado con Playwright que
+  sin esto las columnas desktop muestran el título pero NINGÚN link (contenido con rect/color
+  normales en getComputedStyle pero sin pintar — síntoma característico de este bug). La regla
+  sobre `> ul` se mantiene igual como fallback para motores sin `::details-content`.
 - CSS del acordeón vive en `globals.css` bajo `#footer .footer-acc` (bloque agregado después de
-  `.social-link svg`, antes de `WHATSAPP CHIP`): reglas desktop-base primero (summary con
-  `pointer-events:none`, sin colapsar), luego `@media max-width:768px` con el chevron y la
-  animación `footerAccReveal` (usa `opacity: 0/1` crudo — no existen tokens `--opacity-0`/`--opacity-100`,
+  `.social-link svg`, antes de `WHATSAPP CHIP`): reglas desktop-base primero (`::details-content`
+  y `> ul` forzados visibles, summary con `pointer-events:none`), luego `@media max-width:768px`
+  que revierte `::details-content` a `revert` (vuelve al comportamiento nativo atado a `[open]`),
+  oculta `> ul` por default y lo muestra solo con `[open] > ul`, más el chevron y la animación
+  `footerAccReveal` (usa `opacity: 0/1` crudo — no existen tokens `--opacity-0`/`--opacity-100`,
   igual que `@keyframes fadeInUp` en el mismo archivo).
-- **La columna "Empresa" queda FUERA del acordeón** (estructura plana `<div className="footer-col"><h5>...</h5><ul>...</ul></div>`, sin `<details>` ni `data-footer-acc`) porque contiene el único link a `/#contact` del footer, y el CTA de contacto debe estar **siempre visible**, incluso colapsado el resto en mobile. Si se agrega una columna nueva con `/#contact` u otro CTA, debe nacer igual de plana — no envolverla en `.footer-acc`.
-- Al agregar una columna nueva de links normales (no-CTA), sí envolverla en el patrón `.footer-acc` para mantener consistencia visual en mobile.
+- **Gap de la primera fila**: `.footer-col h5 { margin-bottom: var(--space-5) }` (regla
+  compartida con todas las columnas, donde da el espaciado correcto en desktop) también
+  matcheaba el `<h5>` de adentro del `summary`. En mobile, `summary` es `display:flex` (fila) —
+  el `margin-bottom` del `h5` cuenta como parte de la altura de esa fila (cross-axis), empujando
+  el `border-bottom` del summary ~20px más abajo de lo esperado y dejando un hueco descalibrado
+  entre la línea y el primer link. Fix: `#footer .footer-acc > summary h5 { margin-bottom: 0 }`
+  en mobile (no toca desktop, donde ese margin-bottom sigue siendo el espaciado deseado) +
+  `padding-top: var(--space-4)` deliberado en `#footer .footer-acc[open] > ul`.
+- **Las 5 columnas de links son colapsables** (Servicios, Empresa, Calculadoras, Por industria,
+  DataTrackers) — todas siguen el mismo patrón `.footer-acc`, sin excepciones. **Decisión
+  revertida en 2026-07-30**: hasta esa fecha "Empresa" quedaba deliberadamente plana (fuera del
+  acordeón) porque es la única columna con el CTA `/#contact`, y la regla era que ese link debía
+  quedar siempre visible aunque el resto estuviera colapsado en mobile. Se decidió priorizar la
+  consistencia visual de las 5 columnas por sobre esa garantía — en mobile, `/#contact` ahora
+  vive detrás de un tap en "Empresa" como cualquier otro link. Si se necesita revertir esto (ej.
+  si el CTA de contacto pierde visibilidad/conversión en mobile y se detecta en analytics), la
+  columna "Empresa" es la candidata a volver a sacar del acordeón.
+- Al agregar una columna nueva, envolverla siempre en el patrón `.footer-acc` para mantener
+  consistencia — no hay más columnas "planas" en el footer.
 
 **Qué linking es válido en el footer**: las columnas del footer deben limitarse a hubs y nav
 principal — `/industria/[vertical]` (9 URLs, un hub fijo por vertical) **sí está permitido**,
@@ -864,7 +899,9 @@ npx tsc --noEmit
 | Limpieza CSS huérfano tras remover CTAs/secciones: `.pd-hero-actions`, `.wa-hero-actions`, `#wa-cta`/`.wa-cta-card`/`.wa-cta-actions`/`.wa-cta-note`, `#pd-cta`/`.pd-cta-content`/`.pd-cta-label`/`.pd-cta-title`/`.pd-cta-sub`/`.pd-cta-actions` — sin ningún elemento en el JSX que las use | Baja | Pendiente |
 | ✅ Fix contraste entre secciones homepage (mobile-first, v1): tokens `--surface-raised`/`--divider-hairline`/`--color-text-body` + clases `.surface-card` (logos, stats, servicios) y `.section-divider` (todas las secciones menos `#hero`); grilla de logos pasó de bordes internos a `gap` | Alta | Completado 2026-07-29, deployado a producción |
 | **v2 pendiente**: aplicar bandas hundidas (`--surface-recessed`/`--surface-base`, `[data-surface]`) — tokens ya definidos en §4/§5, falta decidir en qué secciones del home aplicarlas | Media | Pendiente |
-| ✅ Footer — acordeón `<details>` nativo en mobile para columnas de links (Servicios, Calculadoras, Por industria, DataTrackers). "Empresa" queda plana (fuera del acordeón) porque contiene el CTA `/#contact`, siempre visible. Ver patrón en §6 | Alta | Completado 2026-07-30 |
+| ✅ Footer — acordeón `<details>` nativo en mobile para columnas de links. Ver patrón en §6 | Alta | Completado 2026-07-30 |
+| ✅ Footer — acordeón sin flash de "abierto" en mobile (quitado `open` hardcodeado del JSX) + `FooterAccordionSync.tsx` eliminado (quedó sin función, todo pasó a ser CSS-nativo vía `::details-content`) + gap descalibrado de la primera fila corregido. Ver §6 | Alta | Completado 2026-07-30 |
+| ✅ Footer — columna "Empresa" pasó a ser colapsable como el resto (antes quedaba plana por el CTA `/#contact`). Revierte esa excepción; ver nota de rollback en §6 por si hace falta volver atrás | Media | Completado 2026-07-30 |
 | ✅ Foto de fondo (`.section-photo-bg`) en la última sección real antes del footer, en 5 páginas — reemplaza el diseño anterior de sección nueva `#closing-banner` (descartado). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
 | ✅ Fotos de `.section-photo-bg` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
 | ✅ H1 del hero home en 3 líneas con segmento rotante (`RotatingHeadline.tsx`, home-only) — "Gestionamos" / [frase que rota, acento gradient-text] / "de tu empresa" | Alta | Completado 2026-07-30 |
@@ -1165,5 +1202,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (H1 del hero home con segmento rotante `RotatingHeadline` en §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; patrón Footer acordeón `<details>` mobile en §6; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; H1 del hero home con segmento rotante `RotatingHeadline` en §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*

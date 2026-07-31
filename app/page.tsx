@@ -206,7 +206,7 @@ export default function HomePage() {
             <span className="clients-industry-item">Hotelería</span>
           </div>
         </div>
-        <div className="clients-section-divider" aria-hidden="true"></div>
+        {/*<div className="clients-section-divider" aria-hidden="true"></div>*/}
       </section>
 
       {/* SERVICES */}
@@ -284,7 +284,7 @@ export default function HomePage() {
                     <circle cx="19" cy="19" r="1.5" fill="currentColor" stroke="none"/>
                   </svg>
                 </div>
-                <h3>Community Management &amp; Diseño</h3>
+                <h3>Com. Management &amp; Diseño</h3>
               </div>
               <p>Social media, diseño gráfico y producción de video.</p>
             </article>
