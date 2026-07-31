@@ -87,11 +87,11 @@ export function ResenasContent() {
       />
 
       {/* HERO */}
-      <section id="resenas-hero" aria-label="Mejorá tu reputación online">
+      <section id="resenas-hero" className="hero-shell" aria-label="Mejorá tu reputación online">
         <div className="resenas-hero-bg" aria-hidden="true"></div>
         <div className="resenas-hero-grid" aria-hidden="true"></div>
         <div className="container">
-          <div className="resenas-hero-inner">
+          <div className="hero-inner">
 
             <div className="hero-eyebrow-shared animate-in">
               <span className="hero-dot" aria-hidden="true"></span>
@@ -224,7 +224,7 @@ export function ResenasContent() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
                 </div>
                 <div className="resenas-service-wide-body">
-                  <h3 className="resenas-service-title">Rendimietnos histórico</h3>
+                  <h3 className="resenas-service-title">Gráfico Histórico</h3>
                   <div className="resenas-service-sub">Evolución en el tiempo</div>
                   <p className="resenas-service-desc">Reportes detallados de rating, cantidad de reseñas, tasa de respuesta y velocidad de respuesta. Incluye comparativa de periodos y evolución con comparación directa frente a Google Maps.</p>
                   <div className="resenas-feature-chips">

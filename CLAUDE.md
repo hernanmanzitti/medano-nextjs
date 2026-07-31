@@ -313,6 +313,69 @@ El componente `app/calculadora/resenas/CalculadoraHub.tsx` es un client componen
 ### WaPhoneMockup — Patrón de animación por fases
 El componente `components/WaPhoneMockup.tsx` usa una máquina de estados (fases: `idle → sent → typing → received → read → pause → exit`) con `key={convIdx}` en el wrapper para forzar remount completo al cambiar conversación. **No usar** `animating` boolean simple — el remount es lo que dispara las animaciones CSS. Cada conversación tiene `phoneBg` y `headerBg` como inline styles (no tokens, porque son colores temáticos del mockup, no de la marca).
 
+### Chasis compartido de hero — `.hero-shell` / `.hero-inner` (2026-07-31)
+Las 3 páginas con hero (home, `/resenas`, `/publicidad-digital`) comparten ahora el mismo
+"chasis" de layout vía dos clases nuevas en `globals.css`, tomando `#resenas-hero` como patrón
+canónico (era el único que ya usaba `--z-raised` en vez de un `z-index` crudo):
+
+```css
+.hero-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-brand);
+  padding-top: 100px;
+}
+.hero-inner {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 780px;
+  padding-bottom: var(--space-20);
+}
+```
+
+- El `<section id="hero|resenas-hero|pd-hero">` de cada página suma `className="hero-shell"` (el
+  ID se conserva como ancla/selector de sus fondos decorativos propios — `.hero-bg-pattern`,
+  `.resenas-hero-bg`, `.pd-hero-grid`, etc. — que siguen siendo locales a cada page.css).
+  El `<div>` contenedor de contenido (`.hero-content`, `.resenas-hero-inner`, `.pd-hero-inner`)
+  pasó a `className="hero-inner"` en las 3 páginas.
+- El eyebrow y el `<h1>` de home migraron de `.hero-eyebrow`/`.hero-title` (propias de
+  `medano-home.css`) a `.hero-eyebrow-shared`/`.hero-title-shared` (ya existían en `globals.css`,
+  usadas antes solo por resenas/pd) — mismo pill, misma tipografía en las 3 páginas.
+  **Deliberado**: el eyebrow de home NO lleva `animate-in` (a diferencia de resenas/pd, que sí) —
+  así estaba en el JSX original y la tarea no pidió agregarlo; es la única asimetría de
+  comportamiento (fade-in de entrada) que sobrevive entre las 3, cosmética y menor.
+- **Limpieza de huérfanos ejecutada junto con la migración** (verificado con `grep` que no
+  quedaba ninguna referencia en JSX antes de borrar):
+  - `medano-home.css`: `.hero-content`, `.hero-eyebrow` (base + su override en
+    `@media max-width:480px`), `.hero-title`/`.hero-title em` (base + su override en
+    `@media max-width:768px`). **Se conservó** `.hero-dot`/`@keyframes pulse` — el elemento
+    `<span class="hero-dot">` lo sigue usando, solo que ahora la especificidad de
+    `.hero-eyebrow-shared .hero-dot` (`globals.css`) gana con valores idénticos; no es un orphan
+    real y no estaba en el alcance pedido, pero es candidato a limpieza futura (duplica
+    `@keyframes pulse` vs `@keyframes heroDotPulse`, mismos valores).
+  - `resenas.css`: `.resenas-hero-inner`, y además `.resenas-hero-eyebrow`/`.resenas-hero-dot`
+    (+ su propio `@keyframes heroDotPulse` duplicado) y `.resenas-hero-title`/`em` — estas 4
+    últimas ya estaban huérfanas ANTES de esta tarea (sobras de una migración previa a las
+    clases `-shared`, sin ninguna referencia en el JSX), se aprovechó para sacarlas.
+  - `publicidad-digital.css`: `.pd-hero-inner`, y los duplicados locales completos de
+    `.hero-eyebrow-shared`/`.hero-title-shared`/`.hero-title-shared em` (el propio archivo tenía
+    un comentario admitiendo que eran "fallback" por si `globals.css` no las definía — ya las
+    definía, hace tiempo). También su override mobile `.hero-title-shared{font-size:var(--text-4xl)}`
+    — confirmado que quitarlo es seguro: `clamp(var(--text-4xl), 7vw, var(--text-6xl))` ya resuelve
+    exactamente a `--text-4xl` en cualquier viewport ≤~686px, y en la franja 686-768px el título
+    queda apenas más grande sin el piso — que es el comportamiento que YA tenía `/resenas` (nunca
+    tuvo ese override), o sea esto homogeneiza en vez de introducir una diferencia.
+  - **No se tocó** `#resenas-hero { padding-top: 80px }` dentro de `@media max-width:768px` — no
+    estaba en el alcance pedido, y al ser un selector de ID (specificity 1,0,0) sigue ganándole a
+    `.hero-shell` (0,1,0) sin conflicto; es un ajuste mobile-específico preexistente de esa página.
+- Ver próximo punto (`RotatingHeadline`) para el fix de `min-height` del rotador de home, que se
+  corrigió como parte de esta misma tarea (verificación con Playwright reveló que el valor previo
+  documentado acá no era correcto).
+
 ### RotatingHeadline — H1 del hero home con segmento animado (2026-07-30)
 `app/components/RotatingHeadline.tsx` (client component, importado con el alias `@/app/components/...`
 como el resto de `app/components`) rota un array de frases (`DEFAULT_PHRASES`, 6 frases,
@@ -325,10 +388,15 @@ animación CSS de entrada (`heroWordIn`) — mismo patrón de "remount vía `key
   empresa"` (fija). El `<h1>` sigue siendo uno solo y renderiza la frase 1 server-side (SEO/GEO
   intactos — nada de contenido gateado por `useState`/`useEffect` antes del primer render).
 - CSS **home-only** en `app/styles/medano-home.css` (no en `globals.css`, porque no lo comparte
-  ninguna otra página): `.hero-rotator` reserva `min-height` (1.1em desktop / 2.2em mobile) para
-  no saltar el layout mientras rota; verificado con Playwright que ni la frase más larga ("el
-  community management y los diseños", 3 líneas en mobile) desplaza el contenido siguiente —
-  el hero tiene `min-height:100svh` con margen de sobra para absorber la diferencia.
+  ninguna otra página): `.hero-rotator` reserva `min-height` (**2.3em desktop / 3.5em mobile** —
+  valores corregidos y verificados con Playwright en 2026-07-31, medición real de
+  `getBoundingClientRect` en las 6 frases; los valores previos de 1.1em/2.2em documentados acá
+  NO eran correctos — con esos, la frase 6 en mobile ("el community management y los diseños",
+  que envuelve a **3 líneas**, no 2 como se asumía) desplazaba `.hero-subtitle` ~27.6px). El
+  criterio de aceptación es spread de Y entre frases < 2px; con 2.3em/3.5em el spread medido es
+  0.00px exacto en desktop (1280px) y mobile (390px) — a esos anchos el font-size del `clamp()`
+  cae en un extremo fijo (72px desktop, 48px mobile con `--leading-tight:1.15`), así que **todas**
+  las frases quedan ancladas al piso del `min-height` en vez de a su alto natural.
 - El segmento rotante usa `background: var(--gradient-text)` + `background-clip:text` como acento
   visual (distinto del patrón `<em>` + `color: var(--color-brand-mid)` que usa el resto del sitio
   para énfasis) — deliberado, no un descuido de consistencia.
@@ -905,6 +973,7 @@ npx tsc --noEmit
 | ✅ Foto de fondo (`.section-photo-bg`) en la última sección real antes del footer, en 5 páginas — reemplaza el diseño anterior de sección nueva `#closing-banner` (descartado). CSS en §4, patrón en §6 | Alta | Completado 2026-07-30 |
 | ✅ Fotos de `.section-photo-bg` subidas (`/img/closing-{home,publicidad,resenas,whatsapp,nosotros}.jpg`) — actualmente 1280×720, por debajo del ≥1920px recomendado para full-bleed en pantallas grandes; considerar reemplazar por versiones de mayor resolución más adelante | Media | Completado 2026-07-30 (calidad a mejorar) |
 | ✅ H1 del hero home en 3 líneas con segmento rotante (`RotatingHeadline.tsx`, home-only) — "Gestionamos" / [frase que rota, acento gradient-text] / "de tu empresa" | Alta | Completado 2026-07-30 |
+| ✅ Homogeneizar los 3 heroes (home, /resenas, /publicidad-digital) — chasis compartido `.hero-shell`/`.hero-inner` en globals.css, tomando `#resenas-hero` como patrón canónico. Home migró a `.hero-eyebrow-shared`/`.hero-title-shared`. Limpieza de huérfanos en las 3 hojas de estilo (incluye orphans preexistentes en resenas.css de una migración anterior). Fix de `min-height` del rotador (2.3em desktop / 3.5em mobile, spread 0px verificado con Playwright en las 6 frases) | Alta | Completado 2026-07-31 (branch `hero-shell-unify`, pendiente merge a main) |
 
 ---
 
@@ -1202,5 +1271,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-30 (cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; H1 del hero home con segmento rotante `RotatingHeadline` en §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo, fix del `min-height` del rotador de home corregido con Playwright (2.3em/3.5em, spread 0px) — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*

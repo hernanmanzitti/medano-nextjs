@@ -76,11 +76,11 @@ export function PublicidadDigitalContent() {
       />
 
       {/* HERO */}
-      <section id="pd-hero" aria-label="Publicidad Digital — Hero">
+      <section id="pd-hero" className="hero-shell" aria-label="Publicidad Digital — Hero">
         <div className="pd-hero-bg" aria-hidden="true"></div>
         <div className="pd-hero-grid" aria-hidden="true"></div>
         <div className="container">
-          <div className="pd-hero-inner">
+          <div className="hero-inner">
 
             <div className="hero-eyebrow-shared animate-in">
               <span className="hero-dot" aria-hidden="true"></span>

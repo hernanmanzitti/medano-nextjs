@@ -74,16 +74,16 @@ export default function HomePage() {
       />
 
       {/* HERO */}
-      <section id="hero" aria-label="Presentación">
+      <section id="hero" className="hero-shell" aria-label="Presentación">
         <div className="hero-bg-pattern" aria-hidden="true"></div>
         <div className="hero-grid-lines" aria-hidden="true"></div>
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-eyebrow">
+          <div className="hero-inner">
+            <div className="hero-eyebrow-shared">
               <span className="hero-dot" aria-hidden="true"></span>
               Crecimiento Digital
             </div>
-            <h1 className="hero-title hero-title--stacked animate-in">
+            <h1 className="hero-title-shared hero-title--stacked animate-in">
               <span className="hero-line">Gestionamos</span>
               <RotatingHeadline />
               <span className="hero-line">de tu empresa</span>
