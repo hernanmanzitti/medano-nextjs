@@ -890,3 +890,67 @@
     width: 100%;
   }
 }
+
+/* ===== #hero — layout 2 columnas (copy izq / collage der) — HOME ONLY ===== */
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* La columna de texto sigue siendo .hero-inner (chasis compartido, no se toca).
+   Solo se neutraliza su padding-bottom para centrarla en la grilla. */
+.home-hero-grid .hero-inner {
+  max-width: 620px;
+  padding-bottom: 0;
+}
+
+.home-hero-visual {
+  position: relative;
+  z-index: var(--z-raised);
+  justify-self: end;
+}
+
+/* Glow de marca detrás del collage — profundidad, no color plano */
+.home-hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 8% 4% 12% 6%;
+  z-index: var(--z-below);
+  background: radial-gradient(60% 60% at 60% 40%,
+              var(--color-brand-royal-50) 0%, transparent 70%);
+  filter: blur(60px);
+  border-radius: var(--radius-full);
+}
+
+.home-hero-collage {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(var(--shadow-xl));
+  animation: heroCollageIn var(--duration-slower) var(--ease-brand) both;
+}
+.home-hero-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes heroCollageIn {
+  from { opacity: 0; transform: translateY(var(--space-6)) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Mobile: 1 columna, collage debajo del texto */
+@media (max-width: 768px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .home-hero-grid .hero-inner { max-width: none; }
+  .home-hero-visual { justify-self: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-collage { animation: none; }
+}

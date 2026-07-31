@@ -388,6 +388,45 @@ canónico (era el único que ya usaba `--z-raised` en vez de un `z-index` crudo)
   corrigió como parte de esta misma tarea (verificación con Playwright reveló que el valor previo
   documentado acá no era correcto).
 
+### Hero home — layout 2 columnas (copy izq / collage der) (2026-07-31)
+El hero de home (`#hero`, `app/page.tsx`) pasó de una sola columna centrada a un layout de 2
+columnas estilo Skydropx: copy a la izquierda, imagen collage a la derecha. **Solo home** —
+`/resenas` y `/publicidad-digital` no se tocaron (verificado visualmente, siguen single-column).
+CSS **home-only** en `medano-home.css`, agregado al final del archivo; el chasis compartido
+`.hero-shell`/`.hero-inner` en `globals.css` no se modificó.
+
+- **Estructura**: `.hero-inner` ya vivía dentro de `<div className="container">` (Caso A del
+  patrón "grilla sobre container existente") — se le sumó la clase `home-hero-grid` a ESE mismo
+  div en vez de agregar un wrapper nuevo, y por eso `.home-hero-grid` en CSS **no** define
+  `max-width`/`margin-inline`/`padding-inline` (los hereda de `.container`, que ya los define
+  idénticos en `globals.css:281-285` — evita duplicación).
+  `display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1.05fr)` — copy | collage.
+- **`.home-hero-grid .hero-inner`** (selector descendiente, solo matchea si el ancestro
+  `.home-hero-grid` está presente): `max-width:620px` (angosta la columna de texto, antes 780px
+  del chasis compartido) + `padding-bottom:0` (el espaciado ahora lo da el `gap` de la grilla).
+  Como es un selector descendiente scoped a una clase que **solo existe en home**, `/resenas` y
+  `/publicidad-digital` —que usan `.hero-inner` sin ese wrapper— nunca lo matchean; confirmado
+  con grep antes de tocar nada.
+- **Imagen**: `<picture>` con `<source type="image/webp">` (`/img/hero-collage.webp`, 1614×1228,
+  fondo transparente) + `<img>` fallback (`/img/hero-collage.png`). `.home-hero-collage` fuerza
+  `display:block` en el `<picture>` (es `inline` por default, necesario para que `width:100%` del
+  `img` hijo calcule bien) + `filter:drop-shadow(var(--shadow-xl))` + entrada
+  `@keyframes heroCollageIn` (fade+scale, respeta `prefers-reduced-motion`). Detrás, un glow de
+  marca (`.home-hero-visual::before`, radial-gradient + blur, `z-index:var(--z-below)`) da
+  profundidad sin ser un color plano.
+- **Mobile** (`@media max-width:768px`): grid colapsa a `1fr` (1 columna, collage debajo del
+  texto vía orden natural del DOM) y `.home-hero-grid .hero-inner { max-width:none }` — recupera
+  el ancho completo, así el auto-fit de `RotatingHeadline` (ver próximo punto) sigue midiendo
+  contra el mismo ancho disponible que tenía antes de este cambio (verificado con Playwright:
+  "el posicionamiento" a 320/360px da los mismos valores que la baseline pre-2-columnas, sin
+  overflow).
+- El collage está **contenido en su columna** (no sangra al borde del viewport como en la
+  referencia de Skydropx). Si más adelante se quiere más agresivo, es un segundo pase con
+  `margin-right: calc(-1 * var(--container-padding-x))` + ancho extra en `.home-hero-visual`
+  desktop — no implementado, queda como posible mejora futura.
+- El `alt` del `<img>` es descriptivo (suma para SEO/AEO) en vez de decorativo (`alt=""`) —
+  decisión deliberada.
+
 ### RotatingHeadline — H1 del hero home con efecto teclado + auto-fit (reescrito 2026-07-31)
 `app/components/RotatingHeadline.tsx` (client component, sin props — antes aceptaba
 `phrases`/`intervalMs`, ya no; **solo se usa en el H1 de `app/page.tsx`**, home). Reescritura
@@ -1007,6 +1046,7 @@ npx tsc --noEmit
 | ✅ Title tag de home cambiado a "MÉDANO ▷ Gestión de reseñas y publicidad online" — `title.default` en `app/layout.tsx` (home no tiene `metadata` propio, hereda el default del root layout) | Media | Completado 2026-07-31 |
 | ✅ Menú mobile — oculto el label "Servicios" del dropdown (era un trigger inerte en mobile, ahora los 3 sub-links van directo debajo de "Home"). Desktop sin cambios. Ver §6 | Baja | Completado 2026-07-31 |
 | ✅ `RotatingHeadline` reescrito: efecto máquina de escribir (tipea/borra/cursor titilando) + auto-fit a 1 línea vía `canvas.measureText()`, 5 frases nuevas, se quitó "de tu empresa" del H1. `min-height` del rotador pasó a 1.15em (ya no depende de reservar 2-3 líneas). Bug de `ResizeObserver` vs `window.resize` encontrado y corregido en la verificación. Ver §6 | Alta | Completado 2026-07-31 |
+| ✅ Hero home — layout 2 columnas (copy izq / collage der, estilo Skydropx). `.home-hero-grid`/`.home-hero-visual`/`.home-hero-collage` home-only en `medano-home.css`; collage `/img/hero-collage.{webp,png}`; chasis compartido `.hero-shell`/`.hero-inner` intacto (verificado que /resenas y /publicidad-digital no cambiaron). Ver §6 | Alta | Completado 2026-07-31 (branch `home-hero-2col`, pendiente deploy preview + merge) |
 
 ---
 
@@ -1304,5 +1344,5 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (`RotatingHeadline` reescrito: efecto máquina de escribir + auto-fit a 1 línea vía canvas, 5 frases nuevas, quitada la 3ª línea del H1 ("de tu empresa"), bug de `ResizeObserver` vs `window.resize` encontrado y corregido — §6; title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (hero home con layout 2 columnas copy/collage — `.home-hero-grid`/`.home-hero-visual`/`.home-hero-collage`, home-only, chasis compartido intacto — §6; `RotatingHeadline` reescrito: efecto máquina de escribir + auto-fit a 1 línea vía canvas, 5 frases nuevas, quitada la 3ª línea del H1 ("de tu empresa"), bug de `ResizeObserver` vs `window.resize` encontrado y corregido — §6; title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
 *Repo: hernanmanzitti/medano-nextjs*

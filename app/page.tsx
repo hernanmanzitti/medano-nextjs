@@ -77,7 +77,7 @@ export default function HomePage() {
       <section id="hero" className="hero-shell" aria-label="Presentación">
         <div className="hero-bg-pattern" aria-hidden="true"></div>
         <div className="hero-grid-lines" aria-hidden="true"></div>
-        <div className="container">
+        <div className="container home-hero-grid">
           <div className="hero-inner">
             <div className="hero-eyebrow-shared">
               <span className="hero-dot" aria-hidden="true"></span>
@@ -105,6 +105,20 @@ export default function HomePage() {
                 <p className="hero-metric-label">En el mercado</p>
               </div>
             </div>*/}
+          </div>
+          <div className="home-hero-visual">
+            <picture className="home-hero-collage">
+              <source srcSet="/img/hero-collage.webp" type="image/webp" />
+              <img
+                src="/img/hero-collage.png"
+                alt="Panel de Médano: campañas de Google y Instagram Ads, métricas de Google Analytics y reseñas de Google y Tripadvisor"
+                width="1614"
+                height="1228"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
       </section>
