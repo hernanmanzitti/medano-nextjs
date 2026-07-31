@@ -178,7 +178,7 @@ export default function HomePage() {
               <img src="/img/clientes_logo_hb.png" alt="Británico" className="client-logo-img" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
-              <img src="/img/clientes_logo_la_delfina.png" alt="La Delfina" className="client-logo-img client-logo-img--wide" />
+              <img src="/img/clientes_logo_la_delfina.png" alt="La Delfina" className="client-logo-img client-logo-img--xl" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_faro.png" alt="Grupo Faro Verde" className="client-logo-img" />
@@ -190,13 +190,13 @@ export default function HomePage() {
               <img src="/img/clientes_logo_otamendi.png" alt="Sanatorio Otamendi" className="client-logo-img client-logo-img--wide" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
-              <img src="/img/clientes_logo_assistravel.png" alt="Assistravel" className="client-logo-img" />
+              <img src="/img/clientes_logo_assistravel.png" alt="Assistravel" className="client-logo-img client-logo-img--xl" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
-              <img src="/img/clientes_logo_outback.png" alt="Outback" className="client-logo-img" />
+              <img src="/img/clientes_logo_outback.png" alt="Outback" className="client-logo-img client-logo-img--xl" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
-              <img src="/img/clientes_logo_unicomer.png" alt="Grupo Unicomer" className="client-logo-img" />
+              <img src="/img/clientes_logo_unicomer.png" alt="Grupo Unicomer" className="client-logo-img client-logo-img--xl" />
             </div>
             <div className="client-logo-item surface-card" role="listitem">
               <img src="/img/clientes_logo_nexus.png" alt="Nexus Sport" className="client-logo-img" />
