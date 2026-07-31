@@ -107,24 +107,24 @@ export function ResenasContent() {
               <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
             </div>
             <p className="resenas-hero-sub">
-              Aumentá la cantidad de reseñas, subí tu puntuación media y respondé a todos tus clientes.
-              Rankeá primero en Google, TripAdvisor, Apple Maps y más.
+              <strong>Rankeá primero en Google, Google Maps, TripAdvisor, Booking y más.</strong>
             </p>
 
             <div className="resenas-kpi-strip" role="list" aria-label="Resultados clave">
               <div className="resenas-kpi-card" role="listitem">
-                <p className="resenas-kpi-number">10x</p>
+                <p className="resenas-kpi-number">4.8&#9733;</p>
+                <p className="resenas-kpi-title">Puntuación media</p>
+                <p className="resenas-kpi-desc">Superá 4.2 &#9733; convertí las visitas en clientes</p>
+              </div>
+              <div className="resenas-kpi-card" role="listitem">
+                <p className="resenas-kpi-number">&#128172; +100 mil</p>
                 <p className="resenas-kpi-title">Reseñas nuevas</p>
                 <p className="resenas-kpi-desc">Más opiniones, más visibilidad en buscadores</p>
               </div>
+
               <div className="resenas-kpi-card" role="listitem">
-                <p className="resenas-kpi-number">4.8&#9733;</p>
-                <p className="resenas-kpi-title">Puntuación media</p>
-                <p className="resenas-kpi-desc">Superá 4&#9733; y convertí más visitas en clientes</p>
-              </div>
-              <div className="resenas-kpi-card" role="listitem">
-                <p className="resenas-kpi-number">24 hs</p>
-                <p className="resenas-kpi-title">Tiempo de respuesta</p>
+                <p className="resenas-kpi-number">&#10003; - de 1 día</p>
+                <p className="resenas-kpi-title">Clientes satisfechos</p>
                 <p className="resenas-kpi-desc">Respondemos a cada reseña en menos de un día</p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export function ResenasContent() {
         <div className="resenas-platforms-bar reveal">
           <div className="container">
             <div className="resenas-platforms-bar-inner">
-              <span className="resenas-platforms-label">Plataformas</span>
+              <span className="resenas-platforms-label">Plataformas de Reseñas que Monitoreamos</span>
               <div className="resenas-platforms-logos">
                 <span>Google</span>
                 <span className="resenas-sep" aria-hidden="true">·</span>
@@ -396,7 +396,7 @@ export function ResenasContent() {
         </div>
       </section>
 
-      {/* CALCULADORA CTA */}
+      {/* CALCULADORA CTA
       <section id="resenas-calc-cta" aria-label="Calculadora de reseñas">
         <div className="container">
           <div className="resenas-calc-cta-inner reveal">
@@ -444,9 +444,9 @@ export function ResenasContent() {
 
           </div>
         </div>
-      </section>
+      </section>*/}
 
-      {/* TESTIMONIOS */}
+      {/* TESTIMONIOS 
       <section id="resenas-testimonios">
         <div className="container">
 
@@ -516,12 +516,12 @@ export function ResenasContent() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* NOTAS PREVIEW */}
-      <NotasPreview />
+      {/*<NotasPreview /> */}
 
-      {/* CTA */}
+      {/* CTA*/} 
       <section
         id="resenas-cta"
         className="section-photo-bg"
