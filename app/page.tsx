@@ -92,7 +92,7 @@ export default function HomePage() {
               Gestionamos publicidad digital, reseñas y SEO para que más clientes
               te encuentren, te elijan y vuelvan a elegirte.
             </p>
-            <div className="hero-metrics" role="list" aria-label="Métricas destacadas">
+            {/*<div className="hero-metrics" role="list" aria-label="Métricas destacadas">
               <div role="listitem">
                 <p className="hero-metric-value">+50</p>
                 <p className="hero-metric-label">Marcas gestionadas</p>
@@ -100,12 +100,12 @@ export default function HomePage() {
                {/*<div role="listitem">
                 <p className="hero-metric-value">8×</p>
                 <p className="hero-metric-label">ROI promedio</p>
-              </div>*/}
+              </div>
               <div role="listitem">
                 <p className="hero-metric-value">+10 años</p>
                 <p className="hero-metric-label">En el mercado</p>
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </section>
@@ -229,53 +229,63 @@ export default function HomePage() {
             <Link href="/publicidad-digital" className="service-card-link">
               <article className="service-card surface-card animate-in" role="listitem">
                 <span className="service-number" aria-hidden="true">01</span>
-                <div className="service-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <div className="service-title-row">
+                  <div className="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  </div>
+                  <h3>Publicidad Digital</h3>
                 </div>
-                <h3>Publicidad Digital</h3>
                 <p>Paid media con foco en crecimiento rentable y sostenido.</p>
               </article>
             </Link>
             <Link href="/resenas" className="service-card-link">
               <article className="service-card surface-card animate-in" role="listitem">
                 <span className="service-number" aria-hidden="true">02</span>
-                <div className="service-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <div className="service-title-row">
+                  <div className="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <h3>Gestión de Reseñas</h3>
                 </div>
-                <h3>Gestión de Reseñas</h3>
                 <p>Google, TripAdvisor, Meta, UberEats y más plataformas.</p>
               </article>
             </Link>
             <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">03</span>
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <div className="service-title-row">
+                <div className="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3>Analytics &amp; Data</h3>
               </div>
-              <h3>Analytics &amp; Data</h3>
               <p>Dashboards en tiempo real, atribución multicanal y reporting ejecutivo para decisiones basadas en datos reales.</p>
             </article>
             <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">04</span>
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <div className="service-title-row">
+                <div className="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                <h3>SEO &amp; Posicionamiento</h3>
               </div>
-              <h3>SEO &amp; Posicionamiento</h3>
               <p>Estrategia orgánica y optimización técnica para convertir buscadores en fuentes de rentabilidad sostenible.</p>
             </article>
             <article className="service-card surface-card animate-in" role="listitem">
               <span className="service-number" aria-hidden="true">05</span>
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-                  <circle cx="5" cy="5" r="1.5" fill="currentColor" stroke="none"/>
-                  <circle cx="19" cy="5" r="1.5" fill="currentColor" stroke="none"/>
-                  <circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/>
-                  <circle cx="19" cy="19" r="1.5" fill="currentColor" stroke="none"/>
-                </svg>
+              <div className="service-title-row">
+                <div className="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                    <circle cx="5" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+                    <circle cx="19" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+                    <circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+                    <circle cx="19" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <h3>Community Management &amp; Diseño</h3>
               </div>
-              <h3>Community Management &amp; Diseño</h3>
               <p>Social media, diseño gráfico y producción de video.</p>
             </article>
           </div>

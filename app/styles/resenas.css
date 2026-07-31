@@ -300,18 +300,22 @@
   text-transform: uppercase; color: var(--color-brand-mid);
   margin-bottom: var(--space-4);
 }
+.resenas-service-title-row {
+  display: flex; align-items: center; gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
 .resenas-service-icon {
-  width: 44px; height: 44px; display: flex; align-items: center;
+  width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center;
   justify-content: center; background-color: var(--color-bg-subtle);
   border-radius: var(--radius-md);
   border: var(--border-width-thin) solid var(--color-border-default);
-  color: var(--color-brand-mid); margin-bottom: var(--space-5);
+  color: var(--color-brand-mid);
 }
 .resenas-service-icon svg { width: 22px; height: 22px; }
 .resenas-service-title {
   font-family: var(--font-display); font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold); color: var(--color-text-primary);
-  line-height: var(--leading-snug); margin-bottom: var(--space-2);
+  line-height: var(--leading-snug); margin: 0;
 }
 .resenas-service-sub {
   font-family: var(--font-ui); font-size: var(--text-xs);

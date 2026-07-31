@@ -293,15 +293,17 @@
 }
 
 .pd-service-num {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-6);
   font-family: var(--font-display);
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-border-default);
   line-height: var(--leading-none);
   letter-spacing: var(--tracking-tighter);
-  margin-bottom: var(--space-4);
   transition: color var(--duration-normal) var(--ease-out);
-  position: relative;
+  pointer-events: none;
   z-index: var(--z-raised);
 }
 
@@ -309,20 +311,28 @@
   color: var(--color-border-default);
 }
 
+.pd-service-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-20);
+  margin-bottom: var(--space-2);
+  position: relative;
+  z-index: var(--z-raised);
+}
+
 .pd-service-icon-wrap {
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   background: var(--color-bg-subtle);
   border: var(--border-width-thin) solid var(--color-border-default);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-5);
   color: var(--color-brand-light);
   transition: var(--transition-default);
-  position: relative;
-  z-index: var(--z-raised);
 }
 
 .pd-service-card:hover .pd-service-icon-wrap {
@@ -335,9 +345,7 @@
   font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-2);
-  position: relative;
-  z-index: var(--z-raised);
+  margin: 0;
 }
 
 .pd-service-tagline {
@@ -363,6 +371,7 @@
 .pd-service-icons-duo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   gap: var(--space-2);
 }
 

@@ -112,7 +112,7 @@ export function ResenasContent() {
 
             <div className="resenas-kpi-strip" role="list" aria-label="Resultados clave">
               <div className="resenas-kpi-card" role="listitem">
-                <p className="resenas-kpi-number">4.8&#9733;</p>
+                <p className="resenas-kpi-number">4.8 &#9733;</p>
                 <p className="resenas-kpi-title">Puntuación media</p>
                 <p className="resenas-kpi-desc">Superá 4.2 &#9733; convertí las visitas en clientes</p>
               </div>
@@ -224,8 +224,8 @@ export function ResenasContent() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
                 </div>
                 <div className="resenas-service-wide-body">
-                  <h3 className="resenas-service-title">Analítica &amp; Evolución</h3>
-                  <div className="resenas-service-sub">Dashboard con comparativa de períodos</div>
+                  <h3 className="resenas-service-title">Rendimietnos histórico</h3>
+                  <div className="resenas-service-sub">Evolución en el tiempo</div>
                   <p className="resenas-service-desc">Reportes detallados de rating, cantidad de reseñas, tasa de respuesta y velocidad de respuesta. Incluye comparativa de periodos y evolución con comparación directa frente a Google Maps.</p>
                   <div className="resenas-feature-chips">
                     <span className="resenas-feature-chip">Rating histórico</span>
@@ -241,10 +241,12 @@ export function ResenasContent() {
             {/* 2. Solicitud de reseñas */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Solicitud</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Solicitud de reseñas</h3>
               </div>
-              <h3 className="resenas-service-title">Solicitud de reseñas</h3>
               <div className="resenas-service-sub">Email, QR, SMS y NPS</div>
               <p className="resenas-service-desc">Activamos campañas automáticas de email marketing que dirigen a tus clientes a dejar reseñas en las plataformas correctas. También usamos códigos QR, encuestas privadas y SMS.</p>
             </div>
@@ -252,21 +254,25 @@ export function ResenasContent() {
             {/* 3. Bandeja unificada */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Gestión</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Bandeja unificada</h3>
               </div>
-              <h3 className="resenas-service-title">Bandeja unificada</h3>
-              <div className="resenas-service-sub">Todas las plataformas en un lugar</div>
+              <div className="resenas-service-sub">Todas las reseñas en un lugar</div>
               <p className="resenas-service-desc">Centralizamos todas tus reseñas en una sola bandeja de entrada. Clasificamos por estado: respondida, pendiente y en proceso, para que no se escape ninguna oportunidad.</p>
             </div>
 
             {/* 4. Respuestas inteligentes */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Respuestas</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Responde con IA</h3>
               </div>
-              <h3 className="resenas-service-title">Respuestas inteligentes</h3>
               <div className="resenas-service-sub">IA + criterio humano</div>
               <p className="resenas-service-desc">Respondemos todas tus reseñas en menos de 24 horas. Combinamos respuestas prediseñadas con inteligencia artificial, para que cada cliente sienta que la marca se preocupa por él.</p>
             </div>
@@ -274,10 +280,12 @@ export function ResenasContent() {
             {/* 5. Análisis de palabras clave */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Análisis</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Análisis de palabras clave</h3>
               </div>
-              <h3 className="resenas-service-title">Análisis de palabras clave</h3>
               <div className="resenas-service-sub">Insights desde la voz del cliente</div>
               <p className="resenas-service-desc">Transformamos la experiencia de compra obteniendo información precisa a nivel de palabra. Descubrí qué valoran y qué les molesta a tus clientes con datos reales.</p>
             </div>
@@ -285,10 +293,12 @@ export function ResenasContent() {
             {/* 6. Benchmark competidores */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Competencia</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Benchmark competidores</h3>
               </div>
-              <h3 className="resenas-service-title">Benchmark competidores</h3>
               <div className="resenas-service-sub">Hasta 10 competidores por ubicación</div>
               <p className="resenas-service-desc">Analizamos la puntuación, cantidad de reseñas y palabras clave de tu competencia. Identificá en qué te destacás y dónde hay oportunidades de mejora.</p>
             </div>
@@ -296,20 +306,24 @@ export function ResenasContent() {
             {/* 7. Comparativa de sucursales */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Sucursales</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Comparativa de sucursales</h3>
               </div>
-              <h3 className="resenas-service-title">Comparativa de sucursales</h3>
               <div className="resenas-service-sub">Multi-location</div>
               <p className="resenas-service-desc">Comparamos el desempeño de todas tus sucursales: reseñas, puntuación, tasa y velocidad de respuesta. Identificá cuál necesita más atención y actuá en consecuencia.</p>
             </div>
 {/* 8. Reportes y Alertas */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Reportes</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Informes y Alertas</h3>
               </div>
-              <h3 className="resenas-service-title">Informes y Alertas</h3>
               <div className="resenas-service-sub">Automatización a medida</div>
               <p className="resenas-service-desc">Configuramos KPIs personalizados con periodicidad flexible. Recibí alertas inmediatas ante reseñas críticas para proteger tu reputación en tiempo real.</p>
             </div>
@@ -317,10 +331,12 @@ export function ResenasContent() {
             {/* 9. Jerarquía de Usuarios */}
             <div className="resenas-service-card reveal">
               <div className="resenas-service-tag">Gestión Corporativa</div>
-              <div className="resenas-service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              <div className="resenas-service-title-row">
+                <div className="resenas-service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                </div>
+                <h3 className="resenas-service-title">Jerarquía de Usuarios</h3>
               </div>
-              <h3 className="resenas-service-title">Jerarquía de Usuarios</h3>
               <div className="resenas-service-sub">Control por niveles</div>
               <p className="resenas-service-desc">Asigná accesos diferenciados para administradores centrales, gerentes regionales o encargados de sucursal. Gestión segura y escalable para toda tu organización.</p>
             </div>

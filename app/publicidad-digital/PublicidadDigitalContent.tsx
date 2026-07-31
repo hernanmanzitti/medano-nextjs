@@ -150,12 +150,14 @@ export function PublicidadDigitalContent() {
             {/* Google Ads */}
             <article className="pd-service-card reveal reveal-delay-1" role="listitem">
               <p className="pd-service-num" aria-hidden="true">01</p>
-              <div className="pd-service-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z" />
-                </svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z" />
+                  </svg>
+                </div>
+                <h3 className="pd-service-name">Google Ads</h3>
               </div>
-              <h3 className="pd-service-name">Google Ads</h3>
               <p className="pd-service-tagline">Search · Display · Shopping · PMax</p>
               <p className="pd-service-desc">Capturamos la intención de compra en el momento exacto. Estructuramos campañas de búsqueda, display, shopping y Performance Max para maximizar el retorno sobre inversión.</p>
             </article>
@@ -163,21 +165,23 @@ export function PublicidadDigitalContent() {
             {/* Meta Ads */}
             <article className="pd-service-card reveal reveal-delay-2" role="listitem">
               <p className="pd-service-num" aria-hidden="true">02</p>
-              <div className="pd-service-icons-duo" aria-hidden="true">
-                {/* Instagram */}
-                <div className="pd-service-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icons-duo" aria-hidden="true">
+                  {/* Instagram */}
+                  <div className="pd-service-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                  </div>
+                  {/* Facebook */}
+                  <div className="pd-service-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </div>
                 </div>
-                {/* Facebook */}
-                <div className="pd-service-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </div>
+                <h3 className="pd-service-name">Meta Ads</h3>
               </div>
-              <h3 className="pd-service-name">Meta Ads</h3>
               <p className="pd-service-tagline">Facebook · Instagram · Audience Network</p>
               <p className="pd-service-desc">Impacto en las plataformas sociales con mayor alcance. Diseñamos creativos, segmentamos audiencias y optimizamos el funnel completo desde awareness hasta conversión.</p>
             </article>
@@ -185,19 +189,21 @@ export function PublicidadDigitalContent() {
             {/* Video Ads */}
             <article className="pd-service-card reveal reveal-delay-3" role="listitem">
               <p className="pd-service-num" aria-hidden="true">03</p>
-              <div className="pd-service-icons-duo" aria-hidden="true">
-                <div className="pd-service-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
-                  </svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icons-duo" aria-hidden="true">
+                  <div className="pd-service-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+                    </svg>
+                  </div>
+                  <div className="pd-service-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z" />
+                    </svg>
+                  </div>
                 </div>
-                <div className="pd-service-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z" />
-                  </svg>
-                </div>
+                <h3 className="pd-service-name">Video Ads</h3>
               </div>
-              <h3 className="pd-service-name">Video Ads</h3>
               <p className="pd-service-tagline">TikTok · YouTube</p>
               <p className="pd-service-desc">Formatos de video que generan awareness y performance. Producimos piezas adaptadas al contexto de cada plataforma para maximizar el engagement y las conversiones.</p>
             </article>
@@ -205,10 +211,12 @@ export function PublicidadDigitalContent() {
             {/* LinkedIn Ads */}
             <article className="pd-service-card reveal reveal-delay-1" role="listitem">
               <p className="pd-service-num" aria-hidden="true">04</p>
-              <div className="pd-service-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+                </div>
+                <h3 className="pd-service-name">LinkedIn Ads</h3>
               </div>
-              <h3 className="pd-service-name">LinkedIn Ads</h3>
               <p className="pd-service-tagline">B2B · Lead Gen · Sponsored Content</p>
               <p className="pd-service-desc">La plataforma B2B por excelencia. Segmentación por cargo, industria y empresa para alcanzar tomadores de decisión con mensajes que convierten.</p>
             </article>
@@ -216,10 +224,12 @@ export function PublicidadDigitalContent() {
             {/* Programática */}
             <article className="pd-service-card reveal reveal-delay-2" role="listitem">
               <p className="pd-service-num" aria-hidden="true">05</p>
-              <div className="pd-service-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
+                </div>
+                <h3 className="pd-service-name">Programmatic</h3>
               </div>
-              <h3 className="pd-service-name">Programmatic</h3>
               <p className="pd-service-tagline">Display · Native · DOOH</p>
               <p className="pd-service-desc">Alcance masivo y preciso a través de compra programática. Display, native advertising y publicidad exterior digital para construir presencia de marca en todos los puntos de contacto.</p>
             </article>
@@ -227,10 +237,12 @@ export function PublicidadDigitalContent() {
             {/* Analytics */}
             <article className="pd-service-card reveal reveal-delay-3" role="listitem">
               <p className="pd-service-num" aria-hidden="true">06</p>
-              <div className="pd-service-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+              <div className="pd-service-title-row">
+                <div className="pd-service-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                </div>
+                <h3 className="pd-service-name">Reportes &amp; Analytics</h3>
               </div>
-              <h3 className="pd-service-name">Reportes &amp; Analytics</h3>
               <p className="pd-service-tagline">Data Studio · GA4 · Dashboards</p>
               <p className="pd-service-desc">Visibilidad total de tu inversión. Dashboards en tiempo real en Looker Studio y GA4 para que veas qué funciona, qué no y cuánto vale cada peso invertido.</p>
             </article>

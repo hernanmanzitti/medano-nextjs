@@ -236,16 +236,23 @@
   opacity: 1;
 }
 
+.service-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
 .service-icon {
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--color-brand-royal) 0%, var(--color-brand-mid) 100%);
   border: var(--border-width-default) solid var(--color-brand-mid);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-6);
   color: var(--color-text-primary);
   box-shadow:
     0 0 12px rgba(100, 108, 170, 0.45),
@@ -296,7 +303,7 @@
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-3);
+  margin: 0;
   letter-spacing: var(--tracking-tight);
 }
 

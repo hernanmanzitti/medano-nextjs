@@ -111,36 +111,42 @@ export default function WhatsappResenasPage() {
               {/* PASO 01 */}
               <div className="wp-paso-card">
                 <span className="wp-paso-num">01</span>
-                <div className="wp-paso-icon-wrap" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                  </svg>
+                <div className="wp-paso-title-row">
+                  <div className="wp-paso-icon-wrap" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </div>
+                  <h3 className="wp-paso-name">Cargás el contacto</h3>
                 </div>
-                <h3 className="wp-paso-name">Cargás el contacto</h3>
                 <p className="wp-paso-desc">Nombre y teléfono. Sin CSV, sin Excel. Un cliente por vez, en segundos, desde la app.</p>
               </div>
 
               {/* PASO 02 */}
               <div className="wp-paso-card">
                 <span className="wp-paso-num">02</span>
-                <div className="wp-paso-icon-wrap" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-                  </svg>
+                <div className="wp-paso-title-row">
+                  <div className="wp-paso-icon-wrap" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </div>
+                  <h3 className="wp-paso-name">Elegís la sucursal</h3>
                 </div>
-                <h3 className="wp-paso-name">Elegís la sucursal</h3>
                 <p className="wp-paso-desc">Seleccionás desde qué sede fue el cliente. El link de reseña correcto se asigna automáticamente.</p>
               </div>
 
               {/* PASO 03 */}
               <div className="wp-paso-card">
                 <span className="wp-paso-num">03</span>
-                <div className="wp-paso-icon-wrap" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
+                <div className="wp-paso-title-row">
+                  <div className="wp-paso-icon-wrap" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  </div>
+                  <h3 className="wp-paso-name">Enviás y listo</h3>
                 </div>
-                <h3 className="wp-paso-name">Enviás y listo</h3>
                 <p className="wp-paso-desc">El mensaje sale por WhatsApp oficial. Ves en tiempo real si fue entregado, leído, y si el cliente respondió.</p>
               </div>
 

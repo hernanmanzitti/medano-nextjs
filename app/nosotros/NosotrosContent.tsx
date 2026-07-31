@@ -53,7 +53,39 @@ export function NosotrosContent() {
 
       {/* HERO */}
       <NosotrosHero />
+      {/* TIMELINE */}
+      <section id="nuestro-camino" aria-labelledby="camino-title">
+        <div className="nosotros-timeline-geo" aria-hidden="true"></div>
+        <div className="container">
+          <div className="nosotros-timeline-header">
+            <div>
+              <span className="nosotros-section-label">Nuestro camino</span>
+              <h2 id="camino-title" className="nosotros-timeline-title">
+                A lo largo<br/>del tiempo
+              </h2>
+            </div>
+          </div>
 
+          <ol className="nosotros-timeline" aria-label="Hitos del equipo Médano">
+            {[
+              { year: '2016', title: 'Fundación de Médano', desc: 'Nacemos en Argentina con la misión de ayudar a empresas a construir y mejorar su reputación digital en Latinoamérica, bajo el nombre DataTrackers.' },
+              { year: '2016', title: 'Primeros clientes', desc: 'Comenzamos a trabajar con las primeras marcas, desarrollando estrategias de reseñas y SEO con resultados medibles desde el primer mes.' },
+              { year: '2017', title: 'Lanzamiento de DataTrackers', desc: 'Desarrollamos nuestra propia plataforma de analytics para que nuestros clientes monitoreen su reputación en tiempo real en todas las plataformas.' },
+              { year: '2019', title: 'Expansión en Latam', desc: 'Crecemos con nuevos clientes en Costa Rica, Panamá y distintas industrias: gastronomía, salud, turismo y retail.' },
+              { year: '2024', title: 'Crecimiento regional', desc: 'Expandimos operaciones a México, Chile y Colombia, alcanzando más de 50 clientes activos en la región con presencia en 6 países.' },
+              { year: '2025', title: 'Nueva plataforma & AI', desc: 'Lanzamos la nueva versión de DataTrackers con inteligencia artificial y ampliamos nuestra oferta con servicios integrales de publicidad digital.' },
+            ].map((m, i) => (
+              <li key={i} className="nosotros-milestone">
+                <div className="nosotros-milestone-year">{m.year}</div>
+                <div className="nosotros-milestone-content">
+                  <h3 className="nosotros-milestone-title">{m.title}</h3>
+                  <p className="nosotros-milestone-desc">{m.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>  
       {/* QUIENES SOMOS */}
       <section id="quienes-somos" aria-labelledby="quienes-somos-title">
         <div className="nosotros-qs-geo" aria-hidden="true"></div>
@@ -124,39 +156,6 @@ export function NosotrosContent() {
         </div>
       </section>
 
-      {/* TIMELINE */}
-      <section id="nuestro-camino" aria-labelledby="camino-title">
-        <div className="nosotros-timeline-geo" aria-hidden="true"></div>
-        <div className="container">
-          <div className="nosotros-timeline-header">
-            <div>
-              <span className="nosotros-section-label">Nuestro camino</span>
-              <h2 id="camino-title" className="nosotros-timeline-title">
-                A lo largo<br/>del tiempo
-              </h2>
-            </div>
-          </div>
-
-          <ol className="nosotros-timeline" aria-label="Hitos del equipo Médano">
-            {[
-              { year: '2016', title: 'Fundación de Médano', desc: 'Nacemos en Argentina con la misión de ayudar a empresas a construir y mejorar su reputación digital en Latinoamérica, bajo el nombre DataTrackers.' },
-              { year: '2016', title: 'Primeros clientes', desc: 'Comenzamos a trabajar con las primeras marcas, desarrollando estrategias de reseñas y SEO con resultados medibles desde el primer mes.' },
-              { year: '2017', title: 'Lanzamiento de DataTrackers', desc: 'Desarrollamos nuestra propia plataforma de analytics para que nuestros clientes monitoreen su reputación en tiempo real en todas las plataformas.' },
-              { year: '2019', title: 'Expansión en Latam', desc: 'Crecemos con nuevos clientes en Costa Rica, Panamá y distintas industrias: gastronomía, salud, turismo y retail.' },
-              { year: '2024', title: 'Crecimiento regional', desc: 'Expandimos operaciones a México, Chile y Colombia, alcanzando más de 50 clientes activos en la región con presencia en 6 países.' },
-              { year: '2025', title: 'Nueva plataforma & AI', desc: 'Lanzamos la nueva versión de DataTrackers con inteligencia artificial y ampliamos nuestra oferta con servicios integrales de publicidad digital.' },
-            ].map((m, i) => (
-              <li key={i} className="nosotros-milestone">
-                <div className="nosotros-milestone-year">{m.year}</div>
-                <div className="nosotros-milestone-content">
-                  <h3 className="nosotros-milestone-title">{m.title}</h3>
-                  <p className="nosotros-milestone-desc">{m.desc}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       {/* EQUIPO */}
       {/* <section id="el-equipo" aria-labelledby="equipo-title">

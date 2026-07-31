@@ -421,6 +421,40 @@ Ejemplo válido:
 
 **Headings target**: entre **10 y 19 H2/H3** por post (rango óptimo cross-vertical para mix Education + B2B SaaS). Cero headings es peor que 10-19, pero mejor que el dead zone 3-4.
 
+### Cards de servicio — ícono + título en la misma fila (2026-07-30)
+Patrón aplicado en las cards de servicio de 4 páginas — home (`app/page.tsx` → `.service-card`),
+`/publicidad-digital` (`PublicidadDigitalContent.tsx` → `.pd-service-card`), `/resenas`
+(`ResenasContent.tsx` → `.resenas-service-card`, cards 2-9 apiladas) y `/whatsapp-resenas`
+(`app/whatsapp-resenas/page.tsx` → `.wp-paso-card`, sección `#wp-proceso`, 3 pasos). Cada una
+tenía ícono y `<h3>` como hermanos sueltos en flujo de bloque (título siempre debajo del ícono,
+no al lado). Fix: envolver ícono + `<h3>` en un wrapper `display:flex; align-items:center` nuevo
+por página (`.service-title-row`, `.pd-service-title-row`, `.resenas-service-title-row`,
+`.wp-paso-title-row`), y mover el `margin-bottom` que tenía el `<h3>` (o el ícono) a ese wrapper
+para conservar el espaciado antes del subtítulo/descripción. El ícono pasa a `flex-shrink:0` para
+no comprimirse con títulos largos o de 2 líneas (con `align-items:center` el ícono queda centrado
+respecto a las 2 líneas — probado visualmente en `/resenas`, se ve bien, no hace falta override
+mobile a `flex-start`).
+
+- **Home**: `.service-number` ya era `position:absolute` top-right — no se tocó, el wrapper solo
+  afecta ícono+título (que están a la izquierda, sin conflicto de superposición).
+- **`/publicidad-digital`**: `.pd-service-num` estaba en flujo normal (bloque, con
+  `margin-bottom`) ANTES del ícono. Se lo pasó a `position:absolute; top:var(--space-6);
+  left:var(--space-6); pointer-events:none` (mismo patrón que home) y se agregó
+  `margin-top:var(--space-20)` a `.pd-service-title-row` para que la fila ícono+título no quede
+  debajo del número — verificado visualmente con Playwright, sin superposición. `Meta Ads` y
+  `Video Ads` tienen 2 íconos: se reusó el wrapper existente `.pd-service-icons-duo` (ya era
+  flex) como el elemento "ícono" dentro de `.pd-service-title-row`, sin duplicar estructura.
+- **`/resenas`**: sin número (no aplica). Cards 2-9 pasaron de `eyebrow → icon → h3 → sub → desc`
+  (todos hermanos sueltos) a `eyebrow → [title-row: icon + h3] → sub → desc`. La card 1
+  (`--wide`, "Analítica & Evolución") **no se tocó** — su ícono está al lado de TODO el bloque de
+  contenido (`.resenas-service-wide-inner`, título+sub+desc+chips), no solo del título; no es el
+  mismo patrón y forzarlo ahí rompería el layout de 2 columnas de esa card.
+- **`/whatsapp-resenas`**: el CSS de `.wp-paso-card` ya traía el comentario "patrón
+  pd-service-card" — mismo problema exacto (número en flujo antes del ícono), mismo fix 1:1:
+  `.wp-paso-num` a absolute top-left + `margin-top:var(--space-20)` en `.wp-paso-title-row`.
+- Ningún token nuevo — gap de la fila con `--space-4` (no existe `--component-gap-md` en este
+  proyecto, solo la escala `--space-*` de `globals.css`).
+
 ---
 
 ## 7. SEO — SITEMAP Y ROBOTS
