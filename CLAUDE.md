@@ -1344,5 +1344,40 @@ done
 
 ---
 
-*CLAUDE.md — Médano Next.js | Actualizado: 2026-07-31 (hero home con layout 2 columnas copy/collage — `.home-hero-grid`/`.home-hero-visual`/`.home-hero-collage`, home-only, chasis compartido intacto — §6; `RotatingHeadline` reescrito: efecto máquina de escribir + auto-fit a 1 línea vía canvas, 5 frases nuevas, quitada la 3ª línea del H1 ("de tu empresa"), bug de `ResizeObserver` vs `window.resize` encontrado y corregido — §6; title tag de home actualizado en `app/layout.tsx`; menú mobile — label "Servicios" oculto, sub-links directos, ver §6; chasis de hero compartido `.hero-shell`/`.hero-inner` en globals.css — homogeneiza home/resenas/publicidad-digital tomando `#resenas-hero` como canónico, limpieza de CSS huérfano en las 3 hojas de estilo — §6; cards de servicio con ícono+título en la misma fila en home/publicidad-digital/resenas/whatsapp-resenas — §6; acordeón del footer reescrito a 100% CSS/sin JS, `FooterAccordionSync.tsx` eliminado, fix de flash-de-abierto y gap de la primera fila, gotcha de `::details-content` documentado, columna "Empresa" pasó a ser colapsable como el resto — §6; `.section-photo-bg` reemplaza el diseño descartado de `#closing-banner` en §4/§6 — foto de fondo sobre la última sección EXISTENTE de 5 páginas, no una sección nueva; PENDIENTES actualizado)*
+## 16. MEDICIÓN / ANALYTICS
+
+**Cuenta definitiva:** `hola@medano.co` (Google Analytics / GTM / Ads).
+
+**Contenedor GTM canónico en el sitio:** `GTM-NSSSTRN9` — instalado en `app/layout.tsx` vía
+`<GoogleTagManager gtmId="GTM-NSSSTRN9" />` (`@next/third-parties/google`), como hijo directo
+de `<html>`, antes de `<head>`. **Sin gating por entorno** (nada de `process.env`/`NODE_ENV`) —
+la separación producción/preview/dev se filtra por hostname dentro de la UI de GTM, no en el
+repo. Cobertura sin JS: `<noscript>` con iframe a `googletagmanager.com/ns.html?id=GTM-NSSSTRN9`
+al inicio de `<body>`.
+
+**Dentro del contenedor (config vive en GTM, no en el repo — Versión 5 publicada):**
+- Etiqueta de Google → GA4 canónica `G-CFYD352WMG` (con historia, 144 users) — tags "All Pages" + "Initialization"
+- Ads `AW-16634442053` → Enlazador de conversiones, "All Pages"
+- Seguimiento de conversiones y remarketing de Ads: **no configurados** — no hay campañas activas. Pendiente para cuando se prenda Ads.
+
+**Retirados (duplicados, gestionados fuera del repo):**
+- Contenedor GTM `GTM-N3JKVHGW`
+- Propiedad GA4 `G-TYW48LBQ44`
+
+**Regla dura:** el repo **nunca** referencia IDs de GA (`G-...`) ni de Ads (`AW-...`)
+directos — ni `gtag.js` manual, ni `next/script` apuntando a `googletagmanager.com/gtag/js`,
+ni componentes `<GoogleAnalytics>`. Toda medición pasa por el único contenedor GTM. Si se
+necesita un evento custom, se empuja a `dataLayer` desde el componente (`window.dataLayer.push(...)`)
+y se mapea a un tag dentro de GTM — nunca se agrega un tag de destino nuevo directo en el código.
+
+**Un solo `<GoogleTagManager />`** en toda la app, solo en `app/layout.tsx` (root layout). Si
+se agrega un layout anidado, no debe instalar un segundo contenedor.
+
+---
+
+*CLAUDE.md — Médano Next.js | Actualizado: 2026-08-12 (medición/analytics consolidada: contenedor GTM
+manual reemplazado por `<GoogleTagManager gtmId="GTM-NSSSTRN9" />` vía `@next/third-parties/google`
+en `app/layout.tsx` — antes era un `<Script>` inline con el snippet de gtm.js escrito a mano; sin
+gating por entorno, separación por hostname en la UI de GTM; nueva §16 documenta el inventario
+completo de cuentas/IDs canónicos vs. retirados para que no se repita la confusión de duplicados)*
 *Repo: hernanmanzitti/medano-nextjs*
